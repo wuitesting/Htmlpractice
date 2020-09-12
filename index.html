@@ -9,7 +9,12 @@
         <div id="puzzle-container"></div>
         <div id="puzzle-words"></div>
         <input type="button" id="solveBTN" value="Solve puzzle"/>
-
+         <label for="wordlist">words:</label>
+          <textarea id="wordlist" name="wordlist" rows="4" cols="100">
+                 Comma separated Word list....... 
+           </textarea> <br><br>
+          <br><br>
+        <input type="submit" value="make puzzle">
         <!-- Add dependencies -->
         <script src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
         <link rel="stylesheet" href="wordfind.css"> 
@@ -38,14 +43,5 @@
                 console.log(result);
             });
         </script>
-
-<form action="">
-  <label for="wordlist">words:</label>
-  <textarea id="wordlist" name="wordlist" rows="4" cols="100">
-Comma separated Word list....... 
-</textarea> <br><br>
- <br><br>
-  <input type="submit" value="Submit">
-</form>
     </body>
 </html>
