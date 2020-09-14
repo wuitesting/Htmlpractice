@@ -15,6 +15,9 @@
            </textarea> <br><br>
           <br><br>
         <input id="mkpuzz" type="submit" value="make puzzle">
+        
+        <div id="puzzle-container1"></div>
+        <div id="puzzle-words1"></div>
         <!-- Add dependencies -->
         <script src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
         <link rel="stylesheet" href="wordfind.css"> 
@@ -51,7 +54,7 @@
                words=$("#wordlist").value;
                
                console.log(words);
-           gamePuzzle = wordfindgame.create(words, '#puzzle-container', '#puzzle-words');
+           var gamePuzzle1 = wordfindgame.create(words, '#puzzle-container1', '#puzzle-words1');
 
            });
         </script>
