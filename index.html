@@ -49,6 +49,8 @@
            $("#mkpuzz").click(function(){
                if($("#wordlist").value!=null)
                words=$("#wordlist").value;
+               
+               console.log(words);
            gamePuzzle = wordfindgame.create(words, '#puzzle-container', '#puzzle-words');
 
            });
