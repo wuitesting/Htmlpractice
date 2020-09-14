@@ -14,7 +14,7 @@
                  Comma separated Word list....... 
            </textarea> <br><br>
           <br><br>
-        <input type="submit" value="make puzzle">
+        <input id="mkpuzz" type="submit" value="make puzzle">
         <!-- Add dependencies -->
         <script src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
         <link rel="stylesheet" href="wordfind.css"> 
@@ -34,7 +34,8 @@
                'respiration'
            ];
 
-           words=document.getElementById("wordlist").value;
+            
+          // words=document.getElementById("wordlist").value;
 
             // Start a basic word game without customization !
             var gamePuzzle = wordfindgame.create(words, '#puzzle-container', '#puzzle-words');
@@ -44,6 +45,14 @@
                 var result = wordfindgame.solve(gamePuzzle, words);
                 console.log(result);
             });
+            
+           $("mkpuzz").click(function(){
+               if($("#wordlist").value!=null)
+               words=$("#wordlist").value;
+           gamePuzzle = wordfindgame.create(words, '#puzzle-container', '#puzzle-words');
+
+           });
         </script>
+        
     </body>
 </html>
