@@ -15,12 +15,12 @@
 <script type="text/javascript">
     var config = {
     type: Phaser.AUTO,
-    width: 800,
-    height: 600,
+    width: 1200,
+    height: 800,
     physics: {
         default: 'arcade',
         arcade: {
-            gravity: { y: 300 },
+            gravity: { y: 30 },
             debug: false
         }
     },
@@ -51,18 +51,30 @@ function preload ()
     //this.load.spritesheet('dude', 'assets/dude.png', { frameWidth: 32, frameHeight: 48 });
 }
 
-
+function create()
+{
 //  Input Events
-cursors = this.input.keyboard.createCursorKeys();
+//cursors = this.InputEvent// this.input.keyboard.createCursorKeys();
           
 
 //  Some stars to collect, 12 in total, evenly spaced 70 pixels apart along the x axis
 stars = this.physics.add.group({
     key: 'star',
-    repeat: 3,
+    repeat: 5,
     setXY: { x: 12, y: 0, stepX: 70 }
 });
 
+}
+
+function update ()
+{
+
+    if(this.input.activePointer.isDown)
+    {
+        if(stars.x==this.input.activePointer.position.x && stars.y==this.input.activePointer.position.y)
+         score++;
+    }
+}
 
 </script>
 
