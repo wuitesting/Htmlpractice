@@ -20,7 +20,7 @@
     physics: {
         default: 'arcade',
         arcade: {
-            gravity: { y: 10 },
+            gravity: { y: 4 },
             debug: false
         }
     },
@@ -69,12 +69,12 @@ stars = this.physics.add.group({
 function update ()
 {
 
-    if(this.input.activePointer.isDown)
+    if(this.input.activePointer.isDown>-1)
     {
         if(stars.x==this.input.activePointer.position.x && stars.y==this.input.activePointer.position.y)
          score++;
 
-         console.log(score);
+         console.log(this.input.activePointer.position.x);
     }
 }
 
