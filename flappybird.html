@@ -103,7 +103,10 @@ function update ()
     }
     bird.anims.play('fly', true);
 }
-
+function birdDie(b,p){
+    b.active = false 
+    b.disableBody(true, true)
+}
 </script>
 
 </body>
