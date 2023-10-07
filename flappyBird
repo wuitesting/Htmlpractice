@@ -1,0 +1,110 @@
+<!doctype html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8" />
+    <title>Making your first Phaser 3 Game - Flappy bird</title>
+    <script src="//cdn.jsdelivr.net/npm/phaser@3.11.0/dist/phaser.js"></script>
+    <style type="text/css">
+        body {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+<script type="text/javascript">
+    var config = {
+    type: Phaser.AUTO,
+    scale: {
+              width: innerWidth-15,
+              height: innerHeight-15,
+            }
+    backgroundColor: '#000000',
+    physics: {
+        default: 'arcade',
+        arcade: {
+            gravity: { y: 50 },
+            debug: false
+        }
+    },
+    scene: {
+        preload: preload,
+        create: create,
+        update: update
+    }
+};
+
+var bird;
+var pipeup;
+var pipedown;
+var pointer1;
+var cursors;
+var score = 0;
+var gameOver = false;
+var scoreText;
+
+var game = new Phaser.Game(config);
+
+function preload ()
+{
+    //this.load.image('sky', 'assets/sky.png');
+    //this.load.image('ground', 'assets/platform.png');
+    this.load.image('pipeup', 'flappy-Bird-master/assets/pipeUp.png');
+    this.load.image('pipedown', 'flappy-Bird-master/assets/pipeDown.png');
+    this.load.spritesheet('bird', 'flappy-Bird-master/assets/birdsprite.png', { frameWidth: 81, frameHeight: 81 });
+}
+
+function create()
+{
+//  Input Events
+//cursors = this.InputEvent// this.input.keyboard.createCursorKeys();
+          
+//this.inputEnabled=true;
+pointer1=this.input.activepointer;
+//  Some stars to collect, 3 in total, evenly spaced 100 pixels apart along the x axis
+uppipes = this.physics.add.group({
+    key: 'pipeup',
+    allowGravity: false,
+    repeat: 3,
+    setXY: { x: 1500, y: 40, stepX: 100 }
+});
+downpipes = this.physics.add.group({
+    key: 'pipedown',
+    allowGravity: false,
+    repeat: 3,
+    setXY: { x: 1500, y: config.height+40, stepX: 100 }
+});
+//bird animation
+ bird = this.physics.add.sprite(100,game.config.height/2,'bird',0);
+    this.anims.create({
+        key: 'fly',
+        frames: this.anims.generateFrameNumbers('bird',{
+            start: 0, end: 3
+        }),
+        frameRate: 15, 
+        repeat : -1
+    })
+//bird aand pipe collision
+ bird.setCollideWorldBounds(true);
+    this.physics.add.collider(bird, downpipes,birdDie);
+    this.physics.add.collider(bird, uppipes,birdDie);
+}
+
+function update ()
+{
+
+    uppipes.setvelocityX(-200);
+    downpipes.setvelocityX(-200);
+
+    if(pointer1.isDown)
+    {
+        bird.setVelocityY(100);
+         console.log(pointer1.x);
+    }
+    bird.anims.play('fly', true);
+}
+
+</script>
+
+</body>
+</html>
