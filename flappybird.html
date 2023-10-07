@@ -66,13 +66,13 @@ uppipes = this.physics.add.group({
     key: 'pipeup',
     allowGravity: false,
     repeat: 3,
-    setXY: { x: 1500, y: 40, stepX: 100 }
+    setXY: { x: config.width, y: 40, stepX: 100 }
 });
 downpipes = this.physics.add.group({
     key: 'pipedown',
     allowGravity: false,
     repeat: 3,
-    setXY: { x: 1500, y: config.height+40, stepX: 100 }
+    setXY: { x: config.width, y: config.height+40, stepX: 100 }
 });
 //bird animation
  bird = this.physics.add.sprite(100,game.config.height/2,'bird',0);
@@ -93,8 +93,8 @@ downpipes = this.physics.add.group({
 function update ()
 {
 
-    uppipes.setvelocityX(-200);
-    downpipes.setvelocityX(-200);
+    uppipes.setVelocityX(-200);
+    downpipes.setVelocityX(-200);
 
     if(pointer1.isDown)
     {
