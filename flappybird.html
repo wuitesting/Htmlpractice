@@ -37,7 +37,6 @@
 var bird;
 var uppipes;
 var downpipes;
-const pointer1;
 var cursors;
 var score = 0;
 var gameOver = false;
@@ -60,7 +59,7 @@ function create()
 //cursors = this.InputEvent// this.input.keyboard.createCursorKeys();
           
 //this.inputEnabled=true;
-pointer1=this.input.activepointer;
+const pointer1=this.input.activepointer;
 //  Some stars to collect, 3 in total, evenly spaced 100 pixels apart along the x axis
 uppipes = this.physics.add.group({
     key: 'pipeup',
@@ -89,7 +88,8 @@ downpipes = this.physics.add.group({
     this.physics.add.collider(bird, downpipes,birdDie);
     this.physics.add.collider(bird, uppipes,birdDie);
 
-    this.input.on('pointerdown', birdfly(), this);
+    this.input.on('pointerdown', birdfly(pointer1), this);
+
 }
 
 function update ()
@@ -109,6 +109,15 @@ function birdDie(b,p){
     b.active = false 
     b.disableBody(true, true)
 }
+
+function birdfly(pointer)
+        {
+
+            console.log(pointer);
+
+           // this.add.image(pointer.x, pointer.y, 'balls', Phaser.Math.Between(0, 5));
+
+        }
 </script>
 
 </body>
