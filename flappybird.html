@@ -69,7 +69,7 @@ uppipes = this.physics.add.group({
     repeat: 3,
     setXY: { x: config.width, y: 40, stepX: 100 }
 });//.setscale(2);
-    uppipes.body.allowGravity=False;
+    uppipes.body.allowGravity=false;
 downpipes = this.physics.add.group({
     key: 'pipedown',
     //allowGravity: false,
@@ -77,7 +77,7 @@ downpipes = this.physics.add.group({
     setXY: { x: config.width, y: config.height-140, stepX: 100 }
 });//.setscale(2);
     uppipes.scale.set(2,2);
-    downpipes.body.allowGravity=False;
+    downpipes.body.allowGravity=false;
 //bird animation
  bird = this.physics.add.sprite(100,game.config.height/2,'bird',0);
     this.anims.create({
