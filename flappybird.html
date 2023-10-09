@@ -61,7 +61,7 @@ function create()
           
 this.inputEnabled=true;
 //const 
-    pointer1=this.input.activepointer;
+//    pointer1=this.input.activepointer;
 //  Some stars to collect, 3 in total, evenly spaced 100 pixels apart along the x axis
 uppipes = this.physics.add.group({
     key: 'pipeup',
@@ -96,11 +96,11 @@ downpipes = this.physics.add.group({
 
 function update ()
 {
-
+    pointer1=this.input.activepointer;
     uppipes.setVelocityX(-200);
     downpipes.setVelocityX(-200);
-
-    if(pointer1.x!=-1)
+    
+    if(pointer1.isDown!=-1)
     {
         bird.setVelocityY(100);
          console.log(pointer1.x);
