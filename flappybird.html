@@ -23,7 +23,7 @@
     physics: {
         default: 'arcade',
         arcade: {
-            gravity: { y: 10 },
+            gravity: { y: 1 },
             debug: false
         }
     },
@@ -67,6 +67,7 @@ uppipes = this.physics.add.group({
     key: 'pipeup',
     //allowGravity: false,
     repeat: 3,
+    setScale: {x: 2,y: 2},
     setXY: { x: config.width, y: 40, stepX: 100 }
 });//.setscale(2);
     //uppipes.body.allowGravity=false;
