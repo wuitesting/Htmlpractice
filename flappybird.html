@@ -23,7 +23,7 @@
     physics: {
         default: 'arcade',
         arcade: {
-            gravity: { y: 50 },
+            gravity: { y: 10 },
             debug: false
         }
     },
@@ -74,8 +74,9 @@ downpipes = this.physics.add.group({
     key: 'pipedown',
     //allowGravity: false,
     repeat: 3,
-    setXY: { x: config.width, y: config.height+40, stepX: 100 }
-}).setscale(2);
+    setXY: { x: config.width, y: config.height-140, stepX: 100 }
+});//.setscale(2);
+    uppipes.scale.set(2,2);
     downpipes.body.allowGravity=False;
 //bird animation
  bird = this.physics.add.sprite(100,game.config.height/2,'bird',0);
@@ -98,13 +99,13 @@ downpipes = this.physics.add.group({
 
 function update ()
 {
-  const  pointer1=this.input.activePointer;
+  
     uppipes.setVelocityX(-200);
     downpipes.setVelocityX(-200);
-    
+const  pointer1=this.input.activePointer;    
     if(pointer1.isDown>-1)
     {
-        bird.setVelocityY(100);
+        bird.setVelocityY(0);
          console.log(pointer1.x);
     }
     bird.anims.play('fly', true);
