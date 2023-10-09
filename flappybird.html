@@ -41,7 +41,7 @@ var cursors;
 var score = 0;
 var gameOver = false;
 var scoreText;
-var pointer1;
+//var pointer1;
 
 var game = new Phaser.Game(config);
 
@@ -96,11 +96,11 @@ downpipes = this.physics.add.group({
 
 function update ()
 {
-    pointer1=this.input.activepointer;
+  const  pointer1=this.input.activepointer;
     uppipes.setVelocityX(-200);
     downpipes.setVelocityX(-200);
     
-    if(pointer1.isDown!=-1)
+    if(pointer1.isDown>-1)
     {
         bird.setVelocityY(100);
          console.log(pointer1.x);
