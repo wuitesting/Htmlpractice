@@ -74,8 +74,9 @@ uppipes = this.physics.add.group({
     //uppipes.body.allowGravity=false;
 downpipes = this.physics.add.group({
     key: 'pipedown',
-    allowGravity: false,
+    setAllowGravity: false,
     repeat: 3,
+    setScale: {x: 2,y: 2},
     setXY: { x: game.config.width, y: game.config.height-140, stepX: 10 }
 });//.setscale(2);
    // uppipes.scale.set(2,2);
