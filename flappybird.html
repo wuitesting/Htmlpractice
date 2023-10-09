@@ -37,7 +37,7 @@
 var bird;
 var uppipes;
 var downpipes;
-var pointer1;
+const pointer1;
 var cursors;
 var score = 0;
 var gameOver = false;
@@ -88,6 +88,8 @@ downpipes = this.physics.add.group({
  bird.setCollideWorldBounds(true);
     this.physics.add.collider(bird, downpipes,birdDie);
     this.physics.add.collider(bird, uppipes,birdDie);
+
+    this.input.on('pointerdown', birdfly(), this);
 }
 
 function update ()
@@ -96,7 +98,7 @@ function update ()
     uppipes.setVelocityX(-200);
     downpipes.setVelocityX(-200);
 
-    if(pointer1.x!=null)
+    if(pointer1.x!=0)
     {
         bird.setVelocityY(100);
          console.log(pointer1.x);
