@@ -68,14 +68,15 @@ uppipes = this.physics.add.group({
     //allowGravity: false,
     repeat: 3,
     setScale: {x: 2,y: 2},
-    setXY: { x: game.config.width, y: 40, stepX: 100 }
+    //setXY: { x: game.config.width, y: 40, stepX: 10 }
+    setXY: { x: 100, y: 40, stepX: 10 }
 });//.setscale(2);
     //uppipes.body.allowGravity=false;
 downpipes = this.physics.add.group({
     key: 'pipedown',
     allowGravity: false,
     repeat: 3,
-    setXY: { x: game.config.width, y: game.config.height-140, stepX: 100 }
+    setXY: { x: game.config.width, y: game.config.height-140, stepX: 10 }
 });//.setscale(2);
    // uppipes.scale.set(2,2);
    // downpipes.body.allowGravity=false;
@@ -101,8 +102,8 @@ downpipes = this.physics.add.group({
 function update ()
 {
   
-    uppipes.setVelocityX(-200);
-    downpipes.setVelocityX(-200);
+    //uppipes.setVelocityX(-200);
+    //downpipes.setVelocityX(-200);
 const  pointer1=this.input.activePointer;    
     if(pointer1.isDown>-1)
     {
