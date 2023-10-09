@@ -65,16 +65,18 @@ this.inputEnabled=true;
 //  Some stars to collect, 3 in total, evenly spaced 100 pixels apart along the x axis
 uppipes = this.physics.add.group({
     key: 'pipeup',
-    allowGravity: false,
+    //allowGravity: false,
     repeat: 3,
     setXY: { x: config.width, y: 40, stepX: 100 }
-});
+}).setscale(2);
+    uppipes.body.allowGravity=False;
 downpipes = this.physics.add.group({
     key: 'pipedown',
-    allowGravity: false,
+    //allowGravity: false,
     repeat: 3,
     setXY: { x: config.width, y: config.height+40, stepX: 100 }
-});
+}).setscale(2);
+    downpipes.body.allowGravity=False;
 //bird animation
  bird = this.physics.add.sprite(100,game.config.height/2,'bird',0);
     this.anims.create({
