@@ -67,8 +67,8 @@ uppipes = this.physics.add.group({
     key: 'pipeup',
     allowGravity: false,
     repeat: 3,
-    setScale: {x: 2,y: 2},
-    setXY: { x: game.config.width, y: 40, stepX: 100 }
+    setScale: {x: 2,y: 3},
+    // setXY: { x: game.config.width, y: 40, stepX: 100 }
     //setXY: { x: 100, y: 40, stepX: 100 }
 });//.setscale(2);
     //uppipes.body.allowGravity=false;
@@ -76,13 +76,14 @@ downpipes = this.physics.add.group({
     key: 'pipedown',
     allowGravity: false,
     repeat: 3,
-    setScale: {x: 2,y: 2},
-    setXY: { x: game.config.width, y: game.config.height-140, stepX: 100 }
-});//.setscale(2);
+    setScale: {x: 2,y: 3},
+   // setXY: { x: game.config.width, y: game.config.height-140, stepX: 100 }
+ });
+    //.setscale(2);
    // uppipes.scale.set(2,2);
    // downpipes.body.allowGravity=false;
 //bird animation
- bird = this.physics.add.sprite(100,game.config.height/2,'bird',0);
+bird = this.physics.add.sprite(100,game.config.height/2,'bird',0);
     this.anims.create({
         key: 'fly',
         frames: this.anims.generateFrameNumbers('bird',{
@@ -102,7 +103,8 @@ downpipes = this.physics.add.group({
 
 function update ()
 {
-  
+ uppies.create(game.config.width, 140, 100);
+ downpies.create(game.config.width, game.config.height-140, 100);
     uppipes.setVelocityX(-200);
     downpipes.setVelocityX(-200);
 const  pointer1=this.input.activePointer;    
