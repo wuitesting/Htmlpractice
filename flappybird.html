@@ -101,10 +101,13 @@ bird = this.physics.add.sprite(100,game.config.height/2,'bird',0);
 
 }
 
-function update ()
+function update (time)
 {
- uppipes.create(game.config.width, 140, 100);
- downpipes.create(game.config.width, game.config.height-140, 100);
+    if(time%7)
+    {
+      uppipes.create(game.config.width, 140, 100);
+      downpipes.create(game.config.width, game.config.height-140, 100);
+    }
     uppipes.setVelocityX(-200);
     downpipes.setVelocityX(-200);
 const  pointer1=this.input.activePointer;    
