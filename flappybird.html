@@ -115,10 +115,10 @@ function update (time)
     uppipes.setVelocityX(-200);
     downpipes.setVelocityX(-200);
 const  pointer1=this.input.activePointer;    
-    if(pointer1.isDown>-1)
+    if(pointer1.isDown > -1)
     {
         bird.setVelocityY(100);
-         console.log(time);
+         console.log("bird up");
     }
     bird.anims.play('fly', true);
 }
