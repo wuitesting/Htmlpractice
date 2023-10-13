@@ -110,8 +110,8 @@ function update ()
     {
         if(exenum%6 == 0)
         {
-         uppipes.create(game.config.width, 40);
-         downpipes.create(game.config.width, game.config.height-140).scale(2,3);
+         uppipes.create(game.config.width, 40).setScale(2,3);
+         downpipes.create(game.config.width, game.config.height-140);
          console.log(exenum);
         }
         else{
