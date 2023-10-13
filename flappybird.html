@@ -110,8 +110,8 @@ function update ()
     {
         if(exenum%6 == 0)
         {
-         uppipes.create(game.config.width, 40).setScale(2,3);
-         downpipes.create(game.config.width, game.config.height-140).setScale(2,3);
+         uppipes.create(game.config.width+exenum, 40).setScale(2,3);
+         downpipes.create(game.config.width+exenum, game.config.height-140).setScale(2,3);
          console.log(exenum);
         }
         else{
@@ -120,7 +120,7 @@ function update ()
          //console.log(exenum);
         }
     }
-    exenum++;
+    exenum=exenum+100;
     uppipes.setVelocityX(-200);
     downpipes.setVelocityX(-200);
  // pointer1=this.input.activePointer;    
