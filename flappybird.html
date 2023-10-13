@@ -41,7 +41,7 @@ var cursors,exenum;
 var score = 0;
 var gameOver = false;
 var scoreText;
-//var pointer1;
+var pointer1;
 
 var game = new Phaser.Game(config);
 
@@ -61,8 +61,10 @@ function create()
           
 this.inputEnabled=true;
 exenum=0;
+pointer1=this.input.activePointer;    
+
 //const 
-//    pointer1=this.input.activepointer;
+//    pointer1=this.input.activepointer; p smallcase
 //  Some stars to collect, 3 in total, evenly spaced 100 pixels apart along the x axis
 uppipes = this.physics.add.group({
     key: 'pipeup',
@@ -120,12 +122,13 @@ function update ()
     }
     uppipes.setVelocityX(-200);
     downpipes.setVelocityX(-200);
-const  pointer1=this.input.activePointer;    
-    if(pointer1.isDown > -1)
+ // pointer1=this.input.activePointer;    
+    if(pointer1.isDown != 0)
     {
         bird.setVelocityY(-10);
          console.log("bird up");
     }
+
     bird.anims.play('fly', true);
 }
 function birdDie(b,p){
