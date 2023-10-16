@@ -67,7 +67,7 @@ pointer1=this.input.activePointer;
 //    pointer1=this.input.activepointer; p smallcase
 //  Some stars to collect, 3 in total, evenly spaced 100 pixels apart along the x axis
 uppipes = this.physics.add.group({
-    key: 'pipeup',
+    //key: 'pipeup',
     allowGravity: false
     //repeat: 1
     //setScale: {x: 2,y: 3},
@@ -110,10 +110,10 @@ function update ()
     {
         if(exenum%6 == 0)
         {
-         var up=uppipes.create(exenum+100, 40);
+         var up=uppipes.create(exenum+100, 40,'pipeup');
          up.setActive(true);
          up.setVisible(true);
-         up.setScale(2,2);
+         up.setScale(4,4);
          up.refreshBody();
          downpipes.create(exenum+100, game.config.height-50).setScale(3).refreshBody();
          console.log(exenum);
