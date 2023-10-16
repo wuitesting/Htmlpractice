@@ -102,13 +102,13 @@
         function update(time) {
             if (time % 9 == 0) {
                 if (time % 6 == 0) {
-                    this.captus5.get().setActive(true).setVisible(true).setPosition(posX, game.config.height - 210).setScale(1, 1);
+                    this.captus5.get().setActive(true).setVisible(true).setPosition(posX, game.config.height - 50).setScale(1, 1);
                 } else {
-                    this.captus1.get().setActive(true).setVisible(true).setPosition(posX, game.config.height - 210).setScale(1, 1);
+                    this.captus1.get().setActive(true).setVisible(true).setPosition(posX, game.config.height - 50).setScale(1, 1);
                 }
-                posX += 200
+                posX += 100
             } else if (time % 4 == 0) {
-                this.captus6.get().setActive(true).setVisible(true).setPosition(posX, game.config.height - 210).setScale(1, 1);
+                this.captus6.get().setActive(true).setVisible(true).setPosition(posX, game.config.height - 50).setScale(1, 1);
                 posX += 100
             }
             this.captus1.setVelocityX(-300)
