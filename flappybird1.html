@@ -13,6 +13,7 @@
 <body>
 
 <script type="text/javascript">
+
     var config = {
     type: Phaser.AUTO,
     scale: {
@@ -66,7 +67,7 @@ pointer1=this.input.activePointer;
 //const 
 //    pointer1=this.input.activepointer; p smallcase
 //  Some stars to collect, 3 in total, evenly spaced 100 pixels apart along the x axis
-fruits = this.physics.add.staticgroup();{
+fruits = this.physics.add.staticgroup();//{
     //key: 'pipeup',
     //allowGravity: false,
     //repeat: 1
@@ -94,7 +95,7 @@ bird = this.physics.add.sprite(100,game.config.height/2,'bird',0);
         }),
         frameRate: 15, 
         repeat : -1
-    })
+    });
 //bird aand pipe collision
  bird.setCollideWorldBounds(true);
     //this.physics.add.collider(bird, downpipes,birdDie);
@@ -110,7 +111,9 @@ function update ()
     {
         if(exenum%6 == 0)
         {*/
-         fruits.create(Phaser.Math.Between(200, 800), Phaser.Math.Between(200, 800)).setScale(3).refreshBody();
+         fruit=fruits.create(Phaser.Math.Between(200, 800), Phaser.Math.Between(200, 800),'fruit');
+         fruit.setScale(3,3);
+         fruit.refreshBody();
         // downpipes.create(exenum+100, game.config.height-200).setScale(3).refreshBody();
          console.log(exenum);
      /*   }
@@ -134,8 +137,8 @@ function update ()
     bird.anims.play('fly', true);
 }
 function birdDie(b,p){
-    p.active = false 
-    p.disableBody(true, true)
+    p.active = false ;
+    p.disableBody(true, true);
 }
 
 /*function birdfly(pointer)
