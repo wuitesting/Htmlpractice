@@ -103,10 +103,10 @@
         function update(time) {
             if (Phaser.Math.FloorTo(time) % 9 == 0) {
                 if (Phaser.Math.FloorTo(time)  % 6 == 0) {
-                    this.captus5.get().setActive(true).setVisible(true).setPosition(posX, game.config.height - 50).setScale(1, 1);
+                    this.captus5.get().setActive(true).setVisible(true).setPosition(posX, game.config.height - 100).setScale(1, 1);
                     console.log(this.captus5.y + " captus5" + this.platform.y)
                 } else {
-                    this.captus1.get().setActive(true).setVisible(true).setPosition(posX, game.config.height - 50).setScale(1, 1);
+                    this.captus1.get().setActive(true).setVisible(true).setPosition(posX, game.config.height - 100).setScale(1, 1);
                     console.log(this.captus1.y + " captus1 " + this.platform.y)
                 }
                 posX += 100
@@ -119,7 +119,7 @@
             //}
             this.captus1.setVelocityX(-200)
             this.captus5.setVelocityX(-200)
-            this.captus6.setVelocityX(-200)
+            //this.captus6.setVelocityX(-200)
 
 
             console.log(this.dino.y + " " + this.platform.y)
