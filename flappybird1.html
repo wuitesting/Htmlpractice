@@ -1,0 +1,152 @@
+<!doctype html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8" />
+    <title>Making your first Phaser 3 Game - Flappy bird</title>
+    <script src="//cdn.jsdelivr.net/npm/phaser@3.50.0/dist/phaser.js"></script>
+    <style type="text/css">
+        body {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+<script type="text/javascript">
+    var config = {
+    type: Phaser.AUTO,
+    scale: {
+              width: innerWidth-15,
+              height: innerHeight-15,
+            },
+    backgroundColor: '#000000',
+    physics: {
+        default: 'arcade',
+        arcade: {
+            gravity: { y: 10 },
+            debug: false
+        }
+    },
+    scene: {
+        preload: preload,
+        create: create,
+        update: update
+    }
+};
+
+var bird;
+var fruite;
+var downpipes;
+var cursors,exenum;
+var score = 0;
+var gameOver = false;
+var scoreText;
+var pointer1;
+
+var game = new Phaser.Game(config);
+
+function preload ()
+{
+    //this.load.image('sky', 'assets/sky.png');
+    //this.load.image('ground', 'assets/platform.png');
+    this.load.image('fruit', 'flappy-Bird-master/assets/strawberry.png');
+    //this.load.image('pipedown', 'flappy-Bird-master/assets/pipeDown.png');
+    this.load.spritesheet('bird', 'flappy-Bird-master/assets/birdsprite.png', { frameWidth: 81, frameHeight: 81 });
+}
+
+function create()
+{
+//  Input Events
+//cursors = this.InputEvent// this.input.keyboard.createCursorKeys();
+          
+this.inputEnabled=true;
+exenum=0;
+pointer1=this.input.activePointer;    
+
+//const 
+//    pointer1=this.input.activepointer; p smallcase
+//  Some stars to collect, 3 in total, evenly spaced 100 pixels apart along the x axis
+fruits = this.physics.add.staticgroup();{
+    //key: 'pipeup',
+    //allowGravity: false,
+    //repeat: 1
+    //setScale: {x: 2,y: 3},
+    // setXY: { x: game.config.width, y: 40, stepX: 100 }
+    //setXY: { x: 100, y: 40, stepX: 100 }
+//});//.setscale(2);
+    //uppipes.body.allowGravity=false;
+/*downpipes = this.physics.add.group({
+    key: 'pipedown',
+    allowGravity: false,
+    repeat: 1
+    //setScale: {x: 2,y: 3}
+   // setXY: { x: game.config.width, y: game.config.height-140, stepX: 100 }
+ });*/
+    //.setscale(2);
+   // uppipes.scale.set(2,2);
+   // downpipes.body.allowGravity=false;
+//bird animation
+bird = this.physics.add.sprite(100,game.config.height/2,'bird',0);
+    this.anims.create({
+        key: 'fly',
+        frames: this.anims.generateFrameNumbers('bird',{
+            start: 0, end: 3
+        }),
+        frameRate: 15, 
+        repeat : -1
+    })
+//bird aand pipe collision
+ bird.setCollideWorldBounds(true);
+    //this.physics.add.collider(bird, downpipes,birdDie);
+    this.physics.add.collider(bird, fruits,birdDie);
+
+   // this.input.on('pointerdown', birdfly(pointer1), this);
+
+}
+
+function update ()
+{
+    /*if(exenum%9 == 0)
+    {
+        if(exenum%6 == 0)
+        {*/
+         fruits.create(Phaser.Math.Between(200, 800), Phaser.Math.Between(200, 800)).setScale(3).refreshBody();
+        // downpipes.create(exenum+100, game.config.height-200).setScale(3).refreshBody();
+         console.log(exenum);
+     /*   }
+        else{
+        // uppipes.create(game.config.width, 140-exenum, 100);
+         //downpipes.create(game.config.width, game.config.height-140, 100).scale(2,3);
+         //console.log(exenum);
+        }
+    }*/
+    exenum=exenum+100;
+  //  uppipes.setVelocityX(-200);
+  //  downpipes.setVelocityX(-200);
+ // pointer1=this.input.activePointer;    
+    if(pointer1.isDown != 0)
+    {
+       // bird.setVelocityY(-10);
+       bird.moveto(pointer1.position);
+         console.log("bird up");
+    }
+
+    bird.anims.play('fly', true);
+}
+function birdDie(b,p){
+    p.active = false 
+    p.disableBody(true, true)
+}
+
+/*function birdfly(pointer)
+        {
+
+            console.log(pointer);
+
+           // this.add.image(pointer.x, pointer.y, 'balls', Phaser.Math.Between(0, 5));
+
+        }*/
+</script>
+
+</body>
+</html>
