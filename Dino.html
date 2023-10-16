@@ -98,18 +98,21 @@
             this.physics.add.collider(this.dino, this.captus6, dinoDie);
             this.physics.add.collider(this.dino, this.platform)
         }
-        var posX = 1300;
+        var posX = 1000;
         function update(time) {
             if (time % 9 == 0) {
                 if (time % 6 == 0) {
-                    this.captus5.get().setActive(true).setVisible(true).setPosition(posX, game.config.height - 50).setScale(1, 1);
+                    this.captus5.get().setActive(true).setVisible(true).setPosition(posX, game.config.height - 100).setScale(1, 1);
+                    console.log(this.captus5.y + " captus5" + this.platform.y)
                 } else {
-                    this.captus1.get().setActive(true).setVisible(true).setPosition(posX, game.config.height - 50).setScale(1, 1);
+                    this.captus1.get().setActive(true).setVisible(true).setPosition(posX, game.config.height - 100).setScale(1, 1);
+                    console.log(this.captus1.y + " captus1 " + this.platform.y)
                 }
                 posX += 100
             } else if (time % 4 == 0) {
-                this.captus6.get().setActive(true).setVisible(true).setPosition(posX, game.config.height - 50).setScale(1, 1);
+                this.captus6.get().setActive(true).setVisible(true).setPosition(posX, game.config.height - 100).setScale(1, 1);
                 posX += 100
+                console.log(this.captus6.y + " captus6 " + this.platform.y)
             }
             this.captus1.setVelocityX(-200)
             this.captus5.setVelocityX(-300)
