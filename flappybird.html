@@ -76,7 +76,7 @@ uppipes = this.physics.add.group({
 });//.setscale(2);
     //uppipes.body.allowGravity=false;
 downpipes = this.physics.add.group({
-    key: 'pipedown',
+    //key: 'pipedown',
     allowGravity: false
     //repeat: 1
     //setScale: {x: 2,y: 3}
@@ -115,7 +115,10 @@ function update ()
          up.setVisible(true);
          up.setScale(4,4);
          up.refreshBody();
-         downpipes.create(exenum+100, game.config.height-50).setScale(3).refreshBody();
+         dp=downpipes.create(exenum+100, game.config.height-50,'pipedown');
+         dp.setScale(3,3);
+         dp.setVisible(true);
+         dp.refreshBody();
          console.log(exenum);
         }
         else{
