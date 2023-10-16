@@ -60,7 +60,7 @@ function create()
 //cursors = this.InputEvent// this.input.keyboard.createCursorKeys();
           
 this.inputEnabled=true;
-exenum=0;
+exenum=900;
 pointer1=this.input.activePointer;    
 
 //const 
@@ -111,12 +111,12 @@ function update ()
     {
         if(exenum%6 == 0)
         {
-         var up=uppipes.create(exenum+100, 40,'pipeup');
+         var up=uppipes.create(exenum+100, 140,'pipeup');
          up.setScale(3,3);
          //up.setActive(true);
          up.setVisible(true);
          up.refreshBody();
-         dp=downpipes.create(exenum+296, game.config.height-50,'pipedown');
+         dp=downpipes.create(exenum+396, game.config.height-50,'pipedown');
          dp.setScale(3,3);
          dp.setVisible(true);
          dp.refreshBody();
