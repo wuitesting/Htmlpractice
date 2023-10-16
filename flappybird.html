@@ -111,9 +111,9 @@ function update ()
         if(exenum%6 == 0)
         {
          var up=uppipes.create(exenum+100, 40,'pipeup');
-         up.setActive(true);
-         up.setVisible(true);
          up.setScale(3,3);
+         //up.setActive(true);
+         up.setVisible(true);
          up.refreshBody();
          dp=downpipes.create(exenum+100, game.config.height-50,'pipedown');
          dp.setScale(3,3);
