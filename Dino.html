@@ -86,7 +86,7 @@
                 frameRate: 15,
                 repeat: -1
             })
-            this.platform = this.add.tileSprite(640, game.config.height-50, 1200, 30, "platform");
+            this.platform = this.add.tileSprite(640, game.config.height-25, 1200, 30, "platform");
             this.physics.add.existing(this.platform, true);
             this.platform.body.collideWorldBounds = true;
             this.platform.body.immovable = true;
@@ -102,10 +102,10 @@
         function update(time) {
             if (Phaser.Math.FloorTo(time) % 9 == 0) {
                 if (Phaser.Math.FloorTo(time)  % 6 == 0) {
-                    this.captus5.get().setActive(true).setVisible(true).setPosition(posX, game.config.height - 150).setScale(1, 1);
+                    this.captus5.get().setActive(true).setVisible(true).setPosition(posX, game.config.height - 50).setScale(1, 1);
                     console.log(this.captus5.y + " captus5" + this.platform.y)
                 } else {
-                    this.captus1.get().setActive(true).setVisible(true).setPosition(posX, game.config.height - 150).setScale(1, 1);
+                    this.captus1.get().setActive(true).setVisible(true).setPosition(posX, game.config.height - 50).setScale(1, 1);
                     console.log(this.captus1.y + " captus1 " + this.platform.y)
                 }
                 posX += 100
