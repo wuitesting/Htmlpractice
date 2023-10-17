@@ -111,11 +111,11 @@ function update ()
     {
         if(exenum%6 == 0)
         {
-         var up=uppipes.create(exenum+100, 90,'pipeup');
-         up.setScale(3,3);
+         //var up=uppipes.create(exenum+100, 90,'pipeup');
+         //up.setScale(3,3);
          //up.setActive(true);
-         up.setVisible(true);
-         up.refreshBody();
+         //up.setVisible(true);
+         //up.refreshBody();
          dp=downpipes.create(exenum+496, game.config.height-50,'pipedown');
          dp.setScale(3,3);
          dp.setVisible(true);
@@ -129,12 +129,12 @@ function update ()
         }
     }
     exenum=exenum+100;
-    uppipes.setVelocityX(-200);
+    //uppipes.setVelocityX(-200);
     downpipes.setVelocityX(-200);
  // pointer1=this.input.activePointer;    
     if(pointer1.isDown != 0)
     {
-        bird.setVelocityY(-10);
+        bird.setVelocityY(-30);
          console.log("bird up");
     }
 
