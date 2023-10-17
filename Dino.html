@@ -104,6 +104,7 @@
             if (Phaser.Math.FloorTo(time) % 9 == 0) {
                 if (Phaser.Math.FloorTo(time)  % 6 == 0) {
                     this.captus5.get().setActive(true).setVisible(true).setPosition(posX, game.config.height - 100).setScale(1, 1);
+                    this.captus5.setTint(0x0000ff);
                     console.log(this.captus5.y + " captus5" + this.platform.y)
                 } else {
                     this.captus1.get().setActive(true).setVisible(true).setPosition(posX, game.config.height - 100).setScale(1, 1);
@@ -125,7 +126,7 @@
             console.log(this.dino.y + " " + this.platform.y)
 
             if (this.cursors.up.isDown && this.dino.y > this.platform.y - 100) {
-                this.dino.setVelocityY(-300)
+                this.dino.setVelocityY(-600)
                 this.dino.anims.play('run', false);
             }
             this.dino.anims.play('run', true);
