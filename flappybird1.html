@@ -111,7 +111,8 @@ function update ()
     {
         if(exenum%6 == 0)
         {
-         fruit=fruits.create(Phaser.Math.Between(200, 800), Phaser.Math.Between(200, 800),'fruit');
+         //fruit=fruits.create(Phaser.Math.Between(200, 800), Phaser.Math.Between(200, 800),'fruit');
+         fruit=fruits.create(exenum+100, Phaser.Math.Between(200, 800),'fruit');
          //fruit.setScale(3,3);
          fruit.refreshBody();
         // downpipes.create(exenum+100, game.config.height-200).setScale(3).refreshBody();
