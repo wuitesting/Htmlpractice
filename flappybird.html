@@ -61,6 +61,7 @@ function create()
 exenum=1000;         
 //this.inputEnabled=true;
 flyb = this.add.text(0, game.config.height-40, 'Fly Higher', { fill: '#0f0' });
+scoreText = this.add.text(0, 20, 'score ', { fill: '#0f0' });
 flyb.setStyle({background:0xffffff});
  flyb.setInteractive({ useHandCursor: true });
  flyb.on('pointerdown', flyHigh);
