@@ -24,7 +24,7 @@
     physics: {
         default: 'arcade',
         arcade: {
-            gravity: { y: 10 },
+            gravity: { y: 0 },
             debug: false
         }
     },
@@ -69,7 +69,7 @@ pointer1=this.input.activePointer;
 //  Some stars to collect, 3 in total, evenly spaced 100 pixels apart along the x axis
 fruits = this.physics.add.group({//{
     //key: 'pipeup',
-    //allowGravity: false,
+    allowGravity: false,
     //repeat: 1
     //setScale: {x: 2,y: 3},
     // setXY: { x: game.config.width, y: 40, stepX: 100 }
