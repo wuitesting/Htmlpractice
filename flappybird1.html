@@ -131,10 +131,9 @@ function update ()
     if(pointer1.isDown != 0)
     {
        // bird.setVelocityY(-10);
-       bird.moveto(pointer1.position);
+       bird.moveTo(pointer1.position);
          console.log("bird up");
     }
-
     bird.anims.play('fly', true);
 }
 function birdDie(b,p){
