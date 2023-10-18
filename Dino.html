@@ -91,7 +91,11 @@
             scoreText = this.add.text(0, 40, 'score ', { fill: '#0f0' });
             flyb.setStyle({bg:0xffffff});
             flyb.setInteractive({ useHandCursor: true });
-            flyb.on('pointerdown', flyHigh);
+            flyb.on('pointerdown', ()=>
+       {
+        dino.setVelocityY(-500);
+         console.log("bird up");
+       });
             this.dino.setTint(0xff0000)
             this.platform = this.add.tileSprite(640, game.config.height-25, 1200, 30, "platform");
             this.physics.add.existing(this.platform, true);
