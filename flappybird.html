@@ -34,7 +34,7 @@
     }
 };
 
-var bird;
+var bird,flyb;
 var uppipes;
 var downpipes;
 var cursors,exenum;
@@ -58,10 +58,12 @@ function create()
 {
 //  Input Events
 //cursors = this.InputEvent// this.input.keyboard.createCursorKeys();
-          
-this.inputEnabled=true;
-exenum=1200;
-pointer1=this.input.activePointer;    
+exenum=1000;         
+//this.inputEnabled=true;
+flyb = this.add.text(0, game.config.height-10, 'Fly Higher', { fill: '#0f0' });
+ flyb.setInteractive();
+ flyb.on('pointerdown', flyHigh);
+//pointer1=this.input.activePointer;    
 
 //const 
 //    pointer1=this.input.activepointer; p smallcase
@@ -99,7 +101,7 @@ bird = this.physics.add.sprite(100,game.config.height/2,'bird',0);
 //bird aand pipe collision
  bird.setCollideWorldBounds(true);
     this.physics.add.collider(bird, downpipes,birdDie);
-    this.physics.add.collider(bird, uppipes,birdDie);
+    //this.physics.add.collider(bird, uppipes,birdDie);
 
    // this.input.on('pointerdown', birdfly(pointer1), this);
 
@@ -121,6 +123,7 @@ function update ()
          dp.setScale(3,3);
          dp.setVisible(true);
          dp.refreshBody();
+         score++;
          console.log(exenum);
         }
         else{
@@ -133,18 +136,20 @@ function update ()
     //uppipes.setVelocityX(-200);
     downpipes.setVelocityX(-200);
  // pointer1=this.input.activePointer;    
-    if(pointer1.isDown != 0)
-    {
-        bird.setVelocityY(-30);
-         console.log("bird up");
-    }
-
+    
     bird.anims.play('fly', true);
 }
 function birdDie(b,p){
     b.active = false 
     b.disableBody(true, true)
 }
+
+function flyHigh()
+    {
+        bird.setVelocityY(-30);
+         console.log("bird up");
+    }
+
 
 /*function birdfly(pointer)
         {
