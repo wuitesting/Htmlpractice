@@ -88,10 +88,10 @@
                 repeat: -1
             })
             flyb = this.add.text(0, game.config.height-80, 'Fly Higher', { fill: '#0f0' });
-scoreText = this.add.text(0, 40, 'score ', { fill: '#0f0' });
-flyb.setStyle({bg:0xffffff});
- flyb.setInteractive({ useHandCursor: true });
- flyb.on('pointerdown', flyHigh);
+            scoreText = this.add.text(0, 40, 'score ', { fill: '#0f0' });
+            flyb.setStyle({bg:0xffffff});
+            flyb.setInteractive({ useHandCursor: true });
+            flyb.on('pointerdown', flyHigh);
             this.dino.setTint(0xff0000)
             this.platform = this.add.tileSprite(640, game.config.height-25, 1200, 30, "platform");
             this.physics.add.existing(this.platform, true);
@@ -142,9 +142,9 @@ flyb.setStyle({bg:0xffffff});
             this.dino.anims.play('run', true);
             this.platform.tilePositionX += 5;
         }
-        function flyHigh(dino)
+        function flyHigh()
        {
-        dino.setVelocityY(-500)
+        dino.setVelocityY(-500);
          console.log("bird up");
        }
         function dinoDie(d, p) {
