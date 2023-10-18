@@ -60,7 +60,8 @@ function create()
 //cursors = this.InputEvent// this.input.keyboard.createCursorKeys();
 exenum=1000;         
 //this.inputEnabled=true;
-flyb = this.add.text(0, game.config.height-10, 'Fly Higher', { fill: '#0f0' });
+flyb = this.add.text(0, game.config.height-40, 'Fly Higher', { fill: '#0f0' });
+flyb.setBackground(0xffffff);
  flyb.setInteractive();
  flyb.on('pointerdown', flyHigh);
 //pointer1=this.input.activePointer;    
@@ -146,7 +147,7 @@ function birdDie(b,p){
 
 function flyHigh()
     {
-        bird.setVelocityY(-30);
+        bird.setVelocityY(-50);
          console.log("bird up");
     }
 
