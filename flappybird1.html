@@ -61,7 +61,7 @@ function create()
 //cursors = this.InputEvent// this.input.keyboard.createCursorKeys();
           
 this.inputEnabled=true;
-exenum=0;
+exenum=1200;
 pointer1=this.input.activePointer;    
 
 //const 
@@ -131,8 +131,7 @@ function update ()
     if(pointer1.isDown != 0)
     {
        // bird.setVelocityY(-10);
-       bird.position.x=pointer1.position.x;
-       bird.position.y=pointer1.position.y;
+       bird.setPosition(pointer1.position.x,pointer1.position.y);
 
          console.log("bird up");
     }
@@ -141,8 +140,8 @@ function update ()
 function birdDie(b,p){
     p.active = false ;
     p.disableBody(true, true);
-    bird.position.x=50;
-    bird.position.y=50;
+    bird.setX(50);
+    bird.setY(50);
 }
 
 /*function birdfly(pointer)
