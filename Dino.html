@@ -47,7 +47,8 @@
                 Phaser.GameObjects.Image.call(this, scene, 0, 0, 'captus5');
             }
         });
-        var exenum=0;
+        var exenum=0,score=0;
+        var scoretext,flyb;
         let game = new Phaser.Game(config);
 
         function preload() {
@@ -86,6 +87,11 @@
                 frameRate: 15,
                 repeat: -1
             })
+            flyb = this.add.text(0, game.config.height-80, 'Fly Higher', { fill: '#0f0' });
+scoreText = this.add.text(0, 40, 'score ', { fill: '#0f0' });
+flyb.setStyle({bg:0xffffff});
+ flyb.setInteractive({ useHandCursor: true });
+ flyb.on('pointerdown', flyHigh);
             this.dino.setTint(0xff0000)
             this.platform = this.add.tileSprite(640, game.config.height-25, 1200, 30, "platform");
             this.physics.add.existing(this.platform, true);
@@ -114,6 +120,8 @@
                 }
                 posX += 100
                 exenum+=100
+                score++
+                scoreText.setText('score:'+score);
             } /*else if (Phaser.Math.FloorTo(time)  % 4 == 0) {
                 this.captus6.get().setActive(true).setVisible(true).setPosition(posX, game.config.height - 150).setScale(1, 1);
                 */
@@ -128,13 +136,17 @@
             console.log(this.dino.y + " " + this.platform.y)
 
             if (this.cursors.up.isDown && this.dino.y > this.platform.y - 100) {
-                this.dino.setVelocityY(-600)
+                this.dino.setVelocityY(-500)
                 this.dino.anims.play('run', false);
             }
             this.dino.anims.play('run', true);
             this.platform.tilePositionX += 5;
         }
-
+        function flyHigh()
+    {
+        this.dino.setVelocityY(-500)
+         console.log("bird up");
+    }
         function dinoDie(d, p) {
             d.active = false
             d.disableBody(true, true)
