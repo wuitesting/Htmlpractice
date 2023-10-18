@@ -62,7 +62,7 @@ exenum=1000;
 //this.inputEnabled=true;
 flyb = this.add.text(0, game.config.height-40, 'Fly Higher', { fill: '#0f0' });
 scoreText = this.add.text(0, 20, 'score ', { fill: '#0f0' });
-flyb.setStyle({background:0xffffff});
+flyb.setStyle({bg:0xffffff});
  flyb.setInteractive({ useHandCursor: true });
  flyb.on('pointerdown', flyHigh);
 //pointer1=this.input.activePointer;    
@@ -138,7 +138,7 @@ function update ()
     //uppipes.setVelocityX(-200);
     downpipes.setVelocityX(-200);
  // pointer1=this.input.activePointer;    
-    
+    scoreText.scoreText('score:'+score);
     bird.anims.play('fly', true);
 }
 function birdDie(b,p){
