@@ -21,7 +21,7 @@
                 width: innerWidth - 15,
                 height: innerHeight - 15,
             },
-            backgroundColor: '#f7f7f7',
+            backgroundColor: '#000000',
             physics: {
                 default: 'arcade',
                 arcade: {
@@ -124,7 +124,7 @@
                 }
                 posX += 100
                 exenum+=100
-                score++
+                //score++
                 scoreText.setText('score:'+score);
             } /*else if (Phaser.Math.FloorTo(time)  % 4 == 0) {
                 this.captus6.get().setActive(true).setVisible(true).setPosition(posX, game.config.height - 150).setScale(1, 1);
@@ -152,8 +152,9 @@
          console.log("bird up");
        }
         function dinoDie(d, p) {
-            d.active = false
-            d.disableBody(true, true)
+            //d.active = false
+            score++;
+            //d.disableBody(true, true)
         }
 
     </script>
