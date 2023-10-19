@@ -125,7 +125,7 @@ function update ()
          dp.setScale(3,3);
          dp.setVisible(true);
          dp.refreshBody();
-         score++;
+         //score++;
          console.log(exenum);
         }
         else{
@@ -142,8 +142,9 @@ function update ()
     bird.anims.play('fly', true);
 }
 function birdDie(b,p){
-    b.active = false 
-    b.disableBody(true, true)
+   // b.active = false
+   score++ 
+   // b.disableBody(true, true)
 }
 
 function flyHigh()
