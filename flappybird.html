@@ -17,7 +17,7 @@
     type: Phaser.AUTO,
     scale: {
               width: innerWidth-15,
-              height: innerHeight-15,
+              height: innerHeight-5,
             },
     backgroundColor: '#000000',
     physics: {
@@ -49,6 +49,8 @@ function preload ()
 {
     //this.load.image('sky', 'assets/sky.png');
     //this.load.image('ground', 'assets/platform.png');
+    this.load.image('upa', 'flappy-Bird-master/assets/uparrow.png'); 
+    this.load.image('downa', 'flappy-Bird-master/assets/downarrow.png'); 
     this.load.image('pipeup', 'flappy-Bird-master/assets/pipeUp.png');
     this.load.image('pipedown', 'flappy-Bird-master/assets/pipeDown.png');
     this.load.spritesheet('bird', 'flappy-Bird-master/assets/birdsprite.png', { frameWidth: 81, frameHeight: 81 });
@@ -58,15 +60,22 @@ function create()
 {
 //  Input Events
 //cursors = this.InputEvent// this.input.keyboard.createCursorKeys();
-exenum=1000;         
+exenum=0;         
 //this.inputEnabled=true;
-flyb = this.add.text(0, game.config.height-40, 'Fly Higher', { fill: '#0f0' });
+flyb = this.add.text(0, game.config.height+40, 'Fly Higher', { fill: '#0f0' });
 scoreText = this.add.text(0, 20, 'score ', { fill: '#0f0' });
 flyb.setStyle({backgroundColor :0xffffff});
  flyb.setInteractive({ useHandCursor: true });
  flyb.on('pointerdown', flyHigh);
 //pointer1=this.input.activePointer;    
-
+upabtns = this.physics.add.staticGroup();
+downabtns= this.physics.add.staticGroup();
+upabtn=create(game.config.width/4,game.config.height,'upa');
+downa=create(game.config.width/4,game.config.height,'downa');
+upabtn.setInteractive({ useHandCursor: true });
+ upabtn.on('pointerdown', flyHigh);
+ downabtn.setInteractive({ useHandCursor: true });
+ downabtn.on('pointerdown', flyDown);
 //const 
 //    pointer1=this.input.activepointer; p smallcase
 //  Some stars to collect, 3 in total, evenly spaced 100 pixels apart along the x axis
@@ -120,11 +129,12 @@ function update ()
          //up.setActive(true);
          //up.setVisible(true);
          //up.refreshBody();
-         dp=downpipes.create(exenum+496, game.config.height-50,'pipedown');
+         dp=downpipes.create(exenum+496, game.config.height-100,'pipedown');
             dp.setTint(0x0000ff);
          dp.setScale(3,3);
-         dp.setVisible(true);
          dp.refreshBody();
+         dp.setVisible(true);
+         
          //score++;
          console.log(exenum);
         }
@@ -132,10 +142,17 @@ function update ()
         // uppipes.create(game.config.width, 140-exenum, 100);
          //downpipes.create(game.config.width, game.config.height-140, 100).scale(2,3);
          //console.log(exenum);
-        }
+         var up=uppipes.create(exenum+500, 0,'pipeup');
+         up.setTint(0x0000ff);
+         up.setScale(3,3);
+         up.refreshBody();
+
+         //up.setActive(true);
+         up.setVisible(true);
+                 }
     }
     exenum=exenum+100;
-    //uppipes.setVelocityX(-200);
+    uppipes.setVelocityX(-200);
     downpipes.setVelocityX(-200);
  // pointer1=this.input.activePointer;    
     scoreText.setText('score:'+score);
@@ -143,7 +160,8 @@ function update ()
 }
 function birdDie(b,p){
    // b.active = false
-   score++ 
+   score++;
+
    // b.disableBody(true, true)
 }
 
@@ -153,7 +171,12 @@ function flyHigh()
          console.log("bird up");
     }
 
-
+    function flyDown()
+    {
+        bird.setVelocityY(50);
+         console.log("bird up");
+    }
+    
 /*function birdfly(pointer)
         {
 
