@@ -49,6 +49,7 @@
         });
         var exenum=0,score=0;
         var scoretext,flyb;
+        var dino;
         let game = new Phaser.Game(config);
 
         function preload() {
@@ -148,7 +149,7 @@
         }
         function flyHigh()
        {
-        //dino.setVelocityY(-500);
+         dino.setVelocityY(-500);
          console.log("bird up");
        }
         function dinoDie(d, p) {
