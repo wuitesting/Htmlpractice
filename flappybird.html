@@ -172,9 +172,9 @@ function update ()
     bird.anims.play('fly', true);
 }
 function birdDie(b,p){
-   // b.active = false
+   p.active = false;
    score++;
-
+   p.disableBody(true, true)
    // b.disableBody(true, true)
 }
 
