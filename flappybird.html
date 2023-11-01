@@ -61,7 +61,10 @@ function create()
 //  Input Events
 //cursors = this.InputEvent// this.input.keyboard.createCursorKeys();
 exenum=0; 
-  ar=game.console.innerWidth/game.config.height;      
+  ar=game.console.innerWidth/game.config.height;
+   scalex=ar;
+   scaley=1/ar;     
+        
 //this.inputEnabled=true;
 flyb = this.add.text(0, game.config.height-40, 'Fly Higher', { fill: '#0f0' });
 scoreText = this.add.text(0, 20, 'score ', { fill: '#0f0' });
@@ -139,7 +142,7 @@ function update ()
          //up.refreshBody();
          dp=downpipes.create(exenum+496, game.config.height-100,'pipedown');
          dp.setTint(0x0000ff);
-         dp.setScale(3,3);
+         dp.setScale(scalex,scaley);
          dp.refreshBody();
          dp.setVisible(true);
          
