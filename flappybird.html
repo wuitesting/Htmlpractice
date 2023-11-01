@@ -66,10 +66,10 @@ exenum=0;
    scaley=1.5/ar;     
         
 //this.inputEnabled=true;
-flyb = this.add.text(0, game.config.height-40, 'Fly Higher', { fill: '#0f0' });
+//flyb = this.add.text(0, game.config.height-40, 'Fly Higher', { fill: '#0f0' });
 scoreText = this.add.text(0, 20, 'score ', { fill: '#0f0' });
 //flyb.setStyle({backgroundColor :0xffffff});
- flyb.setInteractive({ useHandCursor: true });
+// flyb.setInteractive({ useHandCursor: true });
  //flyb.on('pointerdown', flyHigh);
 //pointer1=this.input.activePointer;    
 upabtns = this.physics.add.staticGroup();
@@ -114,7 +114,7 @@ bird = this.physics.add.sprite(100,game.config.height/2,'bird',0);
         frameRate: 15, 
         repeat : -1
     });
-    flyb.on('pointerdown', flyHigh);
+   // flyb.on('pointerdown', flyHigh);
     upabtn.on('pointerdown', flyHigh);
     downabtn.on('pointerdown', flyDown);
     bird.setTint(0xff0000);
@@ -135,7 +135,21 @@ function update ()
     scaley=2.5/ar;
     if(exenum%9 == 0)
     {
-        if(exenum%6 == 0)
+        
+        if(exenum%6==0){
+        // uppipes.create(game.config.width, 140-exenum, 100);
+         //downpipes.create(game.config.width, game.config.height-140, 100).scale(2,3);
+         //console.log(exenum);
+          up=uppipes.create(exenum+500, 10,'pipeup');
+         up.setTint(0x0000ff);
+         up.setScale(scalex,scaley);
+         up.refreshBody();
+
+         //up.setActive(true);
+         up.setVisible(true);
+                 }
+
+        if(exenum%5 == 0)
         {
          //var up=uppipes.create(exenum+100, 90,'pipeup');
          //up.setScale(3,3);
@@ -151,18 +165,6 @@ function update ()
          //score++;
          console.log(exenum);
         }
-        if(exenum%7==0){
-        // uppipes.create(game.config.width, 140-exenum, 100);
-         //downpipes.create(game.config.width, game.config.height-140, 100).scale(2,3);
-         //console.log(exenum);
-          up=uppipes.create(exenum+500, 0,'pipeup');
-         up.setTint(0x0000ff);
-         up.setScale(3,3);
-         up.refreshBody();
-
-         //up.setActive(true);
-         up.setVisible(true);
-                 }
     }
     exenum=exenum+100;
     uppipes.setVelocityX(-200);
