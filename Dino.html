@@ -55,6 +55,8 @@
         function preload() {
             this.load.image("captus1", "dino-master/assets/captus1.png");
             this.load.image("captus5", "dino-master/assets/captus5.png");
+            this.load.image('upa', 'flappy-Bird-master/assets/uparrow.png'); 
+           // this.load.image('downa', 'flappy-Bird-master/assets/downarrow.png');
             this.load.spritesheet('dino', "dino-master/assets/playerRunSprite.png", {
                 frameWidth: 86, frameHight: 86
             });
@@ -62,6 +64,9 @@
         }
 
         function create() {
+                 ar=game.config.width/game.config.height;
+                 scalex=ar;
+                 scaley=1.5/ar; 
             this.cursors = this.input.keyboard.createCursorKeys();
             this.captus1 = this.physics.add.group({
                 classType: captus1Class,
@@ -88,22 +93,32 @@
                 frameRate: 15,
                 repeat: -1
             })
-            flyb = this.add.text(0, game.config.height-80, 'Fly Higher', { fill: '#0f0' });
+            //flyb = this.add.text(0, game.config.height-80, 'Fly Higher', { fill: '#0f0' });
             scoreText = this.add.text(0, 40, 'score ', { fill: '#0f0' });
-            flyb.setStyle({bg:0xffffff});
-            flyb.setInteractive({ useHandCursor: true });
-            flyb.on('pointerdown', ()=>
+            //flyb.setStyle({bg:0xffffff});
+            //flyb.setInteractive({ useHandCursor: true });
+            /*flyb.on('pointerdown', ()=>
        {
         this.dino.setVelocityY(-500);
          console.log("bird up");
-       });
+       });*/
             this.dino.setTint(0xff0000)
-            this.platform = this.add.tileSprite(40, game.config.height-25, 1200, 30, "platform");
+            this.platform = this.add.tileSprite(40, game.config.height-25, game.config.width, 30, "platform");
             this.physics.add.existing(this.platform, true);
             this.platform.body.collideWorldBounds = true;
             this.platform.body.immovable = true;
             this.platform.body.allowGravity = false;
-
+            upabtns = this.physics.add.staticGroup();
+//downabtns= this.physics.add.staticGroup();
+upabtn=upabtns.create(game.config.width/2,game.config.height-10,'upa');
+//downabtn=downabtns.create(game.config.width*3/4,game.config.height-10,'downa');
+upabtn.setInteractive({ useHandCursor: true });
+upabtn.setScale(scalex,scaley);
+ //upabtn.on('pointerdown', flyHigh);
+// downabtn.setInteractive({ useHandCursor: true });
+ //downabtn.setScale(scalex,scaley);
+ upabtn.on('pointerdown', flyHigh);
+   // downabtn.on('pointerdown', flyDown);
 
             this.physics.add.collider(this.dino, this.captus1, dinoDie);
             this.physics.add.collider(this.dino, this.captus5, dinoDie);
@@ -150,7 +165,7 @@
         function flyHigh()
        {
          dino.setVelocityY(-500);
-         console.log("bird up");
+         console.log("dino up");
        }
         function dinoDie(d, p) {
             p.active = false
