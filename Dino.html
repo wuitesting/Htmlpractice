@@ -19,7 +19,7 @@
             type: Phaser.AUTO,
             scale: {
                 width: innerWidth - 15,
-                height: innerHeight - 15,
+                height: innerHeight - 25,
             },
             backgroundColor: '#000000',
             physics: {
@@ -37,14 +37,14 @@
         var captus1Class = new Phaser.Class({
             Extends: Phaser.GameObjects.Image,
             initialize: function captus1Class(scene) {
-                Phaser.GameObjects.Image.call(this, scene, 0, 0, 'captus1');
+                Phaser.GameObjects.Image.call(this, scene, 0, 10, 'captus1');
             }
         });
 
         var captus2Class = new Phaser.Class({
             Extends: Phaser.GameObjects.Image,
             initialize: function captus2Class(scene) {
-                Phaser.GameObjects.Image.call(this, scene, 0, 0, 'captus5');
+                Phaser.GameObjects.Image.call(this, scene, 0, 10, 'captus5');
             }
         });
         var exenum=0,score=0;
@@ -98,7 +98,7 @@
          console.log("bird up");
        });
             this.dino.setTint(0xff0000)
-            this.platform = this.add.tileSprite(640, game.config.height-25, 1200, 30, "platform");
+            this.platform = this.add.tileSprite(40, game.config.height-25, 1200, 30, "platform");
             this.physics.add.existing(this.platform, true);
             this.platform.body.collideWorldBounds = true;
             this.platform.body.immovable = true;
@@ -153,9 +153,9 @@
          console.log("bird up");
        }
         function dinoDie(d, p) {
-            //d.active = false
+            p.active = false
             score++;
-            //d.disableBody(true, true)
+            p.disableBody(true, true)
         }
 
     </script>
