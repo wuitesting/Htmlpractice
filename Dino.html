@@ -117,7 +117,7 @@ upabtn.setScale(scalex,scaley);
  //upabtn.on('pointerdown', flyHigh);
 // downabtn.setInteractive({ useHandCursor: true });
  //downabtn.setScale(scalex,scaley);
- upabtn.on('pointerdown', flyHigh(this.dino));
+ upabtn.on('pointerdown', flyHigh);
    // downabtn.on('pointerdown', flyDown);
 
             this.physics.add.collider(this.dino, this.captus1, dinoDie);
@@ -164,7 +164,7 @@ upabtn.setScale(scalex,scaley);
         }
         function flyHigh(d)
        {
-         d.setVelocityY(-500);
+         this.dino.setVelocityY(-500);
          console.log("dino up");
        }
         function dinoDie(d, p) {
