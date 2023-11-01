@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Match the Cards Game</title>
+  <style>
+    .card {
+      width: 100px;
+      height: 100px;
+      background-color: #eee;
+      margin: 10px;
+      text-align: center;
+      font-size: 24px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div id="game-board"></div>
+  <button id="restart-button">Restart</button>
+  <script>
+    const cards = ['A', 'A', 'B', 'B', 'C', 'C', 'D', 'D', 'E', 'E'];
+    let flippedCards = [];
+    let matchedPairs = 0;
+
+    function createGameBoard() {
+      const gameBoard = document.getElementById('game-board');
+      gameBoard.innerHTML = '';
+      for (let i = 0; i < cards.length; i++) {
+        const card = document.createElement('div');
+        card.classList.add('card');
+        card.dataset.cardValue = cards[i];
+        card.dataset.cardId = i;
+        card.addEventListener('click', flipCard);
+        gameBoard.appendChild(card);
+      }
+    }
+
+    function shuffleCards() {
+      for (let i = cards.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [cards[i], cards[j]] = [cards[j], cards[i]];
+      }
+    }
+
+    function flipCard() {
+      if (flippedCards.length < 2 && !this.classList.contains('matched') && !this.classList.contains('flipped')) {
+        this.classList.add('flipped');
+        flippedCards.push(this);
+
+        if (flippedCards.length === 2) {
+          setTimeout(checkForMatch, 500);
+        }
+      }
+    }
+
+    function checkForMatch() {
+      const [card1, card2] = flippedCards;
+
+      if (card1.dataset.cardValue === card2.dataset.cardValue) {
+        card1.classList.add('matched');
+        card2.classList.add('matched');
+        matchedPairs++;
+      } else {
+        card1.classList.remove('flipped');
+        card2.classList.remove('flipped');
+      }
+
+      flippedCards = [];
+
+      if (matchedPairs === cards.length / 2) {
+        alert('Congratulations! You have matched all pairs!');
+      }
+    }
+
+    function restartGame() {
+      shuffledCards = [];
+      matchedPairs = 0;
+      createGameBoard();
+      shuffleCards();
+    }
+
+    document.getElementById('restart-button').addEventListener('click', restartGame);
+
+    createGameBoard();
+    shuffleCards();
+  </script>
+</body>
+</html>
