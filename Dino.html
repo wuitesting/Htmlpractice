@@ -103,7 +103,9 @@
          console.log("bird up");
        });*/
             this.dino.setTint(0xff0000)
-            this.platform = this.add.tileSprite(40, game.config.height-25, game.config.width, 30, "platform");
+            this.dino = this.physics.add.sprite(100, game.config.height / 2, 'dino', 0).setScale(0.8, 0.8);
+            this.dino = this.physics.add.sprite(100, game.config.height / 2, 'dino', 0).setScale(0.8, 0.8);
+            this.platform = this.add.tileSprite(40, game.config.height-25, game.config.width, 30, "platform").setScale(2,1);
             this.physics.add.existing(this.platform, true);
             this.platform.body.collideWorldBounds = true;
             this.platform.body.immovable = true;
