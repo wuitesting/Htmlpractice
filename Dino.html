@@ -117,7 +117,7 @@ upabtn.setScale(scalex,scaley);
  //upabtn.on('pointerdown', flyHigh);
 // downabtn.setInteractive({ useHandCursor: true });
  //downabtn.setScale(scalex,scaley);
- upabtn.on('pointerdown', flyHigh);
+ upabtn.on('pointerdown', flyHigh(this.dino));
    // downabtn.on('pointerdown', flyDown);
 
             this.physics.add.collider(this.dino, this.captus1, dinoDie);
@@ -162,9 +162,9 @@ upabtn.setScale(scalex,scaley);
             this.dino.anims.play('run', true);
             this.platform.tilePositionX += 5;
         }
-        function flyHigh()
+        function flyHigh(d)
        {
-         dino.setVelocityY(-500);
+         d.setVelocityY(-500);
          console.log("dino up");
        }
         function dinoDie(d, p) {
