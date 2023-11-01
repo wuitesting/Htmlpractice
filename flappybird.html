@@ -71,7 +71,7 @@ scoreText = this.add.text(0, 20, 'score ', { fill: '#0f0' });
 upabtns = this.physics.add.staticGroup();
 downabtns= this.physics.add.staticGroup();
 upabtn=upabtns.create(game.config.width/4,game.config.height-10,'upa');
-downabtn=downbtns.create(game.config.width*3/4,game.config.height-10,'downa');
+downabtn=downabtns.create(game.config.width*3/4,game.config.height-10,'downa');
 upabtn.setInteractive({ useHandCursor: true });
  upabtn.on('pointerdown', flyHigh);
  downabtn.setInteractive({ useHandCursor: true });
