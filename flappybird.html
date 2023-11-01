@@ -64,14 +64,14 @@ exenum=0;
 //this.inputEnabled=true;
 flyb = this.add.text(0, game.config.height-40, 'Fly Higher', { fill: '#0f0' });
 scoreText = this.add.text(0, 20, 'score ', { fill: '#0f0' });
-flyb.setStyle({backgroundColor :0xffffff});
+//flyb.setStyle({backgroundColor :0xffffff});
  flyb.setInteractive({ useHandCursor: true });
  flyb.on('pointerdown', flyHigh);
 //pointer1=this.input.activePointer;    
 upabtns = this.physics.add.staticGroup();
 downabtns= this.physics.add.staticGroup();
-upabtn=create(game.config.width/4,game.config.height-10,'upa');
-downabtn=create(game.config.width*3/4,game.config.height-10,'downa');
+upabtn=upabtns.create(game.config.width/4,game.config.height-10,'upa');
+downabtn=downbtns.create(game.config.width*3/4,game.config.height-10,'downa');
 upabtn.setInteractive({ useHandCursor: true });
  upabtn.on('pointerdown', flyHigh);
  downabtn.setInteractive({ useHandCursor: true });
@@ -167,7 +167,7 @@ function birdDie(b,p){
 
 function flyHigh()
     {
-        bird.setVelocityY(-50);
+        this.bird.setVelocityY(-50);
          console.log("bird up");
     }
 
