@@ -16,8 +16,8 @@
     var config = {
     type: Phaser.AUTO,
     scale: {
-              width: innerWidth-15 /*,
-              height: innerHeight-5*/
+              width: innerWidth-15 ,
+              height: innerHeight-5
             },
     backgroundColor: '#000000',
     physics: {
@@ -34,7 +34,7 @@
     }
 };
 
-var bird,flyb;
+var bird,flyb,ar;
 var uppipes;
 var downpipes;
 var cursors,exenum;
@@ -60,7 +60,8 @@ function create()
 {
 //  Input Events
 //cursors = this.InputEvent// this.input.keyboard.createCursorKeys();
-exenum=0;         
+exenum=0; 
+  ar=game.console.innerWidth/game.config.height;      
 //this.inputEnabled=true;
 flyb = this.add.text(0, game.config.height-40, 'Fly Higher', { fill: '#0f0' });
 scoreText = this.add.text(0, 20, 'score ', { fill: '#0f0' });
@@ -73,9 +74,11 @@ downabtns= this.physics.add.staticGroup();
 upabtn=upabtns.create(game.config.width/4,game.config.height-10,'upa');
 downabtn=downabtns.create(game.config.width*3/4,game.config.height-10,'downa');
 upabtn.setInteractive({ useHandCursor: true });
- upabtn.on('pointerdown', flyHigh);
+upabtn.setScale(scalex,scaley);
+ //upabtn.on('pointerdown', flyHigh);
  downabtn.setInteractive({ useHandCursor: true });
- downabtn.on('pointerdown', flyDown);
+ downabtn.setScale(scalex,scaley);
+
 //const 
 //    pointer1=this.input.activepointer; p smallcase
 //  Some stars to collect, 3 in total, evenly spaced 100 pixels apart along the x axis
@@ -109,7 +112,8 @@ bird = this.physics.add.sprite(100,game.config.height/2,'bird',0);
         repeat : -1
     });
     flyb.on('pointerdown', flyHigh);
-
+    upabtn.on('pointerdown', flyHigh);
+    downabtn.on('pointerdown', flyDown);
     bird.setTint(0xff0000);
 //bird aand pipe collision
  bird.setCollideWorldBounds(true);
@@ -122,6 +126,8 @@ bird = this.physics.add.sprite(100,game.config.height/2,'bird',0);
 
 function update ()
 {
+    scalex=ar;
+    scaley=1/ar;
     if(exenum%9 == 0)
     {
         if(exenum%6 == 0)
@@ -132,7 +138,7 @@ function update ()
          //up.setVisible(true);
          //up.refreshBody();
          dp=downpipes.create(exenum+496, game.config.height-100,'pipedown');
-            dp.setTint(0x0000ff);
+         dp.setTint(0x0000ff);
          dp.setScale(3,3);
          dp.refreshBody();
          dp.setVisible(true);
