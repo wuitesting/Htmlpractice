@@ -117,12 +117,16 @@ upabtn.setScale(scalex,scaley);
  //upabtn.on('pointerdown', flyHigh);
 // downabtn.setInteractive({ useHandCursor: true });
  //downabtn.setScale(scalex,scaley);
- upabtn.on('pointerdown', flyHigh);
+ upabtn.on('pointerdown', ()=>
+       {
+        this.dino.setVelocityY(-500);
+         console.log("bird up");
+       });
    // downabtn.on('pointerdown', flyDown);
 
             this.physics.add.collider(this.dino, this.captus1, dinoDie);
             this.physics.add.collider(this.dino, this.captus5, dinoDie);
-            this.physics.add.collider(this.dino, this.captus6, dinoDie);
+          //  this.physics.add.collider(this.dino, this.captus6, dinoDie);
             this.physics.add.collider(this.dino, this.platform)
         }
         var posX = 2000;
