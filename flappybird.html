@@ -132,7 +132,7 @@ function update ()
         
         
     scalex=ar*2.5;
-    scaley=2.5/ar;
+    scaley=3/ar;
     if(exenum%9 == 0)
     {
         
@@ -140,7 +140,7 @@ function update ()
         // uppipes.create(game.config.width, 140-exenum, 100);
          //downpipes.create(game.config.width, game.config.height-140, 100).scale(2,3);
          //console.log(exenum);
-          up=uppipes.create(exenum+500, 50,'pipeup');
+          up=uppipes.create(exenum+500, 150,'pipeup');
          up.setTint(0x0000ff);
          up.setScale(scalex,scaley);
          up.refreshBody();
