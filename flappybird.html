@@ -63,7 +63,7 @@ function create()
 exenum=0; 
   ar=game.config.width/game.config.height;
    scalex=ar;
-   scaley=1/ar;     
+   scaley=1.5/ar;     
         
 //this.inputEnabled=true;
 flyb = this.add.text(0, game.config.height-40, 'Fly Higher', { fill: '#0f0' });
@@ -129,8 +129,10 @@ bird = this.physics.add.sprite(100,game.config.height/2,'bird',0);
 
 function update ()
 {
-    scalex=ar;
-    scaley=1/ar;
+        
+        
+    scalex=ar*2.5;
+    scaley=2.5/ar;
     if(exenum%9 == 0)
     {
         if(exenum%6 == 0)
@@ -149,11 +151,11 @@ function update ()
          //score++;
          console.log(exenum);
         }
-        else{
+        if(exenum%7==0){
         // uppipes.create(game.config.width, 140-exenum, 100);
          //downpipes.create(game.config.width, game.config.height-140, 100).scale(2,3);
          //console.log(exenum);
-         var up=uppipes.create(exenum+500, 0,'pipeup');
+          up=uppipes.create(exenum+500, 0,'pipeup');
          up.setTint(0x0000ff);
          up.setScale(3,3);
          up.refreshBody();
@@ -178,7 +180,7 @@ function birdDie(b,p){
 
 function flyHigh()
     {
-        this.bird.setVelocityY(-50);
+        bird.setVelocityY(-50);
          console.log("bird up");
     }
 
