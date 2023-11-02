@@ -62,7 +62,7 @@ function create()
           
   this.inputEnabled=true;
   exenum=1200;
-  pointer1=this.input.activePointer;    
+  //pointer1=this.input.activePointer;    
     
     //const 
     //    pointer1=this.input.activepointer; p smallcase
@@ -139,7 +139,7 @@ function update ()
     bird.anims.play('fly', true);
 }
 function birdDie(b,p){
-    b.setPosition(pointer1.position.x,pointer1.position.y);
+    b.setPosition(p.position.x,p.position.y);
        console.log("bird up");
     p.active = false ;
     //p.setVisible(false);
