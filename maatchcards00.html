@@ -47,9 +47,9 @@
       if (flippedCards.length < 2 && !this.classList.contains('matched') && !this.classList.contains('flipped')) {
         this.classList.add('flipped');
         flippedCards.push(this);
-
+             console.log(flippedCards.length)
         if (flippedCards.length === 2) {
-          setTimeout(checkForMatch, 500);
+          setTimeout(checkForMatch, 2000);
         }
       }
     }
