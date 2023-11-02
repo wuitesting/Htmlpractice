@@ -173,10 +173,11 @@ upabtn.setScale(scalex,scaley);
        }
         function dinoDie(d, p) {
             p.active = false;
+            p.setVisible(false);
             score++;
             //p.body.disableBody(true, true);
            // p.destroy();
-           disable(p);
+          // disable(p);
         }
 
     </script>
