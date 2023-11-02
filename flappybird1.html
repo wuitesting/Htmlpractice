@@ -114,6 +114,7 @@ function update ()
           fruit.setScale(2,2);
           fruit.refreshBody();
           fruit.setInteractive();
+          fruit.on('pointerdown',birdDie)
         // downpipes.create(exenum+100, game.config.height-200).setScale(3).refreshBody();
         // console.log(exenum);
         }
