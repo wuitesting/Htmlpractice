@@ -174,7 +174,8 @@ upabtn.setScale(scalex,scaley);
         function dinoDie(d, p) {
             p.active = false;
             score++;
-            p.disableBody(true, true);
+            p.body.disableBody(true, true);
+           // p.destroy();
         }
 
     </script>
