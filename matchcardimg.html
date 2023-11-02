@@ -35,13 +35,15 @@
             const card = document.createElement('div');
             card.classList.add('card');
             card.style.backgroundImage = `url(${imageUrl})`;
-            card.addEventListener('click', () => {
+            card.addEventListener('click', () => 
+            {
                 if (!firstCard) {
                     firstCard = card;
                     card.style.transform = 'rotateY(180deg)';
-                } else if (!secondCard && firstCard !== card) {
+                } else if (!secondCard && firstCard !== card)
+                 {
                     secondCard = card;
-                    card.style.transform = 'rotateY(180deg');}
+                    card.style.transform = 'rotateY(180deg');
 
                     if (firstCard.style.backgroundImage === secondCard.style.backgroundImage) {
                         setTimeout(() => {
@@ -58,7 +60,7 @@
                             secondCard = null;
                         }, 1000);
                     }
-                }
+                 }
             });
             return card;
         }
