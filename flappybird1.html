@@ -140,8 +140,9 @@ function update ()
 }
 function birdDie(b,p){
     p.active = false ;
+    p.setVisible(false);
     //p.disableBody(true, true);
-    p.destroy();
+    //p.destroy();
     bird.setX(50);
     bird.setY(50);
 }
