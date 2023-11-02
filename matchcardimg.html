@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Match Card Game</title>
+    <style>
+        .card {
+            width: 100px;
+            height: 150px;
+            background-color: #999;
+            display: inline-block;
+            margin: 10px;
+            text-align: center;
+            cursor: pointer;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Match Card Game</h1>
+    <div id="game-board"></div>
+    <script>
+        const images = [
+            "black-image.jpg",
+            "white-image.jpg",
+            "black-image.jpg",
+            "white-image.jpg"
+        ];
+
+        let shuffledImages = shuffle(images);
+        let firstCard = null;
+        let secondCard = null;
+
+        function createCard(imageUrl) {
+            const card = document.createElement('div');
+            card.classList.add('card');
+            card.style.backgroundImage = `url(${imageUrl})`;
+            card.addEventListener('click', () => {
+                if (!firstCard) {
+                    firstCard = card;
+                    card.style.transform = 'rotateY(180deg)';
+                } else if (!secondCard && firstCard !== card) {
+                    secondCard = card;
+                    card.style.transform = 'rotateY(180deg');
+
+                    if (firstCard.style.backgroundImage === secondCard.style.backgroundImage) {
+                        setTimeout(() => {
+                            firstCard.style.visibility = 'hidden';
+                            secondCard.style.visibility = 'hidden';
+                            firstCard = null;
+                            secondCard = null;
+                        }, 1000);
+                    } else {
+                        setTimeout(() => {
+                            firstCard.style.transform = 'none';
+                            secondCard.style.transform = 'none';
+                            firstCard = null;
+                            secondCard = null;
+                        }, 1000);
+                    }
+                }
+            });
+            return card;
+        }
+
+        function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        function initializeGame() {
+            const gameBoard = document.getElementById('game-board');
+            shuffledImages.forEach((image) => {
+                const card = createCard(image);
+                gameBoard.appendChild(card);
+            });
+        }
+
+        initializeGame();
+    </script>
+</body>
+</html>
