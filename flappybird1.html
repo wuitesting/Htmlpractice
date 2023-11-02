@@ -142,11 +142,12 @@ function update ()
     bird.anims.play('fly', true);
 }
 function birdDie(b,p){
-    b.setPosition(p.x,p.y);
+    b.setX=p.x;
+    b.setY=p.y;
        console.log("bird up");
     p.active = false ;
     //p.setVisible(false);
-    p.disableBody(true, true)
+    p.disableBody(true, true);
     //p.destroy();
    // bird.setX(50);
    // bird.setY(50);
