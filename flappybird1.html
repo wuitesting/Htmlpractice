@@ -130,21 +130,23 @@ function update ()
    //  downpipes.setVelocityX(-200);
    //pointer1=this.input.activePointer;  
     //fruits.setVelocityX(-200);
-    if((pointer1.isDown != 0))
-    {
+   // if((pointer1.isDown != 0))
+   // {
        // bird.setVelocityY(-10);
-       bird.setPosition(pointer1.position.x,pointer1.position.y);
-       console.log("bird up");
-    }
+    //   bird.setPosition(pointer1.position.x,pointer1.position.y);
+     //  console.log("bird up");
+   // }
     bird.anims.play('fly', true);
 }
 function birdDie(b,p){
+    b.setPosition(pointer1.position.x,pointer1.position.y);
+       console.log("bird up");
     p.active = false ;
     p.setVisible(false);
     //p.disableBody(true, true);
     //p.destroy();
-    bird.setX(50);
-    bird.setY(50);
+   // bird.setX(50);
+   // bird.setY(50);
 }
 
 /*function birdfly(pointer)
