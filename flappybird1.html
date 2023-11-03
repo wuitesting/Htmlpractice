@@ -142,15 +142,15 @@ function update ()
     bird.anims.play('fly', true);
 }
 function birdDie(b,p){
-    b.setX(p.x);
-    b.setY(p.y);
+    //b.setX(p.x);
+    //b.setY(p.y);
        console.log(p.x);
     p.active = false ;
     p.visible=false;
    // p.disableBody(true, true);
     //p.destroy();
-   // bird.setX(50);
-   // bird.setY(50);
+    bird.setX(50);
+    bird.setY(50);
 }
 
 /*function birdfly(pointer)
