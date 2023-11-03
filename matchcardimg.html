@@ -74,9 +74,21 @@
         }
 
         function initializeGame() {
+            var i=0;
             const gameBoard = document.getElementById('game-board');
             shuffledImages.forEach((image) => {
                 const card = createCard(image);
+                if(i%2==0)
+                {
+                    card.style.backgroundColor="#00ff00";
+                    i++;
+                }
+                else
+                {
+                    card.style.backgroundColor="#0000ff";
+                    i=1;
+                }
+
                 gameBoard.appendChild(card);
             });
         }
