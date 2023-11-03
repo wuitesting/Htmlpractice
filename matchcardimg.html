@@ -79,20 +79,24 @@
 
         function initializeGame() {
             var i=0;
+            var indiv;
             const gameBoard = document.getElementById('game-board');
             shuffledImages.forEach((image) => {
                 const card = createCard(image);
+                indiv= document.createElement('div');
+                indiv.classList.add('card');
                 if(i%2==0)
                 {
-                    card.style.backgroundColor="#00ff00";
+                    indiv.style.backgroundColor="#00ff00";
                     
                 }
                 else
                 {
-                    card.style.backgroundColor="#0000ff";
+                    indiv.style.backgroundColor="#0000ff";
                     //i=1;
                 }
                 i++;
+                card.appendChild(indiv);
                 gameBoard.appendChild(card);
             });
         }
