@@ -140,7 +140,7 @@ function update ()
         // uppipes.create(game.config.width, 140-exenum, 100);
          //downpipes.create(game.config.width, game.config.height-140, 100).scale(2,3);
          //console.log(exenum);
-          up=uppipes.create(1350, 200,'pipeup');
+          up=uppipes.create(exenum+1350, 200,'pipeup');
          up.setTint(0x0000ff);
          up.setScale(scalex,scaley);
          up.refreshBody();
@@ -156,7 +156,7 @@ function update ()
          //up.setActive(true);
          //up.setVisible(true);
          //up.refreshBody();
-         dp=downpipes.create(1674, game.config.height-100,'pipedown');
+         dp=downpipes.create(exenum+1674, game.config.height-100,'pipedown');
          dp.setTint(0x0000ff);
          dp.setScale(scalex,scaley);
          dp.refreshBody();
