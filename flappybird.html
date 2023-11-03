@@ -140,7 +140,7 @@ function update ()
         // uppipes.create(game.config.width, 140-exenum, 100);
          //downpipes.create(game.config.width, game.config.height-140, 100).scale(2,3);
          //console.log(exenum);
-          up=uppipes.create(exenum+250, 200,'pipeup');
+          up=uppipes.create(1350, 200,'pipeup');
          up.setTint(0x0000ff);
          up.setScale(scalex,scaley);
          up.refreshBody();
@@ -156,7 +156,7 @@ function update ()
          //up.setActive(true);
          //up.setVisible(true);
          //up.refreshBody();
-         dp=downpipes.create(exenum+634, game.config.height-100,'pipedown');
+         dp=downpipes.create(1674, game.config.height-100,'pipedown');
          dp.setTint(0x0000ff);
          dp.setScale(scalex,scaley);
          dp.refreshBody();
@@ -167,8 +167,8 @@ function update ()
         }
     }
     exenum=exenum+100;
-    uppipes.setVelocityX(-200);
-    downpipes.setVelocityX(-200);
+    uppipes.setVelocityX(-100);
+    downpipes.setVelocityX(-100);
  // pointer1=this.input.activePointer;    
     scoreText.setText('score:'+score);
     bird.anims.play('fly', true);
@@ -182,13 +182,13 @@ function birdDie(b,p){
 
 function flyHigh()
     {
-        bird.setVelocityY(-50);
+        bird.setVelocityY(-70);
          console.log("bird up");
     }
 
     function flyDown()
     {
-        bird.setVelocityY(50);
+        bird.setVelocityY(70);
          console.log("bird up");
     }
     
