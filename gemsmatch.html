@@ -52,7 +52,7 @@ Jemstone match
           cell.className = 'cell';//`cell ${randomJewel}`;
           cell.dataset.row = row;
           cell.dataset.col = col;
-          cell.TEXT_NODE='${randomJewel}';
+          cell.nodeValue='${randomJewel}';
           cell.onclick = () => selectJewel(cell);
           gameBoard.appendChild(cell);
         }
