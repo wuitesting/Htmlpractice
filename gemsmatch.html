@@ -24,6 +24,7 @@ Jemstone match
       justify-content: center;
       align-items: center;
       font-size: 20px;
+      color:aquamarine;
     }
 .page{
     background-color: rgb(0, 0, 0);
@@ -51,7 +52,7 @@ Jemstone match
           cell.className = 'cell';//`cell ${randomJewel}`;
           cell.dataset.row = row;
           cell.dataset.col = col;
-          cell.nodeValue='${randomJewel}';
+          cell.TEXT_NODE='${randomJewel}';
           cell.onclick = () => selectJewel(cell);
           gameBoard.appendChild(cell);
         }
