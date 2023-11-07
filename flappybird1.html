@@ -114,7 +114,7 @@ function update ()
           fruit.setScale(2,2);
           fruit.refreshBody();
           fruit.setInteractive();
-          fruit.on('pointerdown',
+          this.input.on('pointerdown',
     (pointer)=>{
       birdDie(bird,fruit,pointer);
     });

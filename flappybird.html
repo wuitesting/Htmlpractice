@@ -120,7 +120,7 @@ bird = this.physics.add.sprite(100,game.config.height/2,'bird',0);
     bird.setTint(0xff0000);
 //bird aand pipe collision
  bird.setCollideWorldBounds(true);
-    this.physics.add.collider(bird, downpipes,birdDie);
+    this.physics.add.overlap(bird, downpipes,birdDie);
     this.physics.add.collider(bird, uppipes,birdDie);
 
    // this.input.on('pointerdown', birdfly(pointer1), this);
