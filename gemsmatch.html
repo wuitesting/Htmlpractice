@@ -127,7 +127,8 @@ function checkMatches() {
 
   // Remove matching jewels
   matchingGroups.forEach((jewel) => {
-    jewel.className = 'cell';
+   // jewel.className = 'cell';
+   jewel.nodeValue = " ";
   });
 
   // Implement replacing removed jewels with new ones and scoring logic
