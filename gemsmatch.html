@@ -55,6 +55,7 @@ Jemstone match
           cell.dataset.row = row;
           cell.dataset.col = col;
           cell.innerHTML=" "+randomJewel;
+          //cell.innerHTML="<img src= assets/"+randomJewel+".png";
           cell.onclick = () => selectJewel(cell);
           gameBoard.appendChild(cell);
         }
@@ -134,6 +135,7 @@ function checkMatches() {
   matchingGroups.forEach((jewel) => {
    // jewel.className = 'cell';
    jewel.nodeValue = " ";
+   jewel.innerHTML = " ";
   });
 
   // Implement replacing removed jewels with new ones and scoring logic
