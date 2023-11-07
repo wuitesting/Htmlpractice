@@ -60,7 +60,7 @@ function create()
     //  Input Events
     //cursors = this.InputEvent// this.input.keyboard.createCursorKeys();
           
-  this.inputEnabled=true;
+  //this.inputEnabled=true;
   exenum=1200;
   //pointer1=this.input.activePointer;    
     
@@ -107,7 +107,7 @@ function update ()
 {
     if(exenum%9 == 0)
     {
-        if(exenum%6 == 0)
+        if(exenum%17 == 0)
         {
          fruit=fruits.create(Phaser.Math.Between(20, game.config.width-100), Phaser.Math.Between(200, 800),'fruit');
         // fruit=fruits.create(exenum+100, Phaser.Math.Between(200, 800),'fruit');
@@ -144,7 +144,7 @@ function update ()
 function birdDie(b,p,p1){
     //b.setX(p.x);
     //b.setY(p.y);
-       console.log(p.x);
+       console.log(p.x+"from birdDie");
     p.active = false ;
     p.visible=false;
     p.disableBody(true, true);
