@@ -82,7 +82,10 @@ Jemstone match
      // cell2.className = tempClass;
      const tempClass = cell1.innerHTML;
       cell1.innerHTML = cell2.innerHTML;
+      cell1.nodeValue = cell2.nodeValue;
       cell2.innerHTML = tempClass;
+      cell2.nodeValue = tempClass;
+
       selectedJewel = null;
       checkMatches();
     }
