@@ -111,7 +111,7 @@ function update ()
         {
          fruit=fruits.create(Phaser.Math.Between(20, game.config.width-100), Phaser.Math.Between(200, 800),'fruit');
         // fruit=fruits.create(exenum+100, Phaser.Math.Between(200, 800),'fruit');
-          fruit.setScale(2,2);
+          fruit.setScale(0.9,0.9);
           fruit.refreshBody();
           fruit.setInteractive();
           this.input.on('pointerdown',
