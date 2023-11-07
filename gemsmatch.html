@@ -107,7 +107,7 @@ function checkMatches() {
       const jewel3 = cells[row * 6 + col + 2];
 
       //if (jewel1.classList[1] === jewel2.classList[1] && jewel2.classList[1] === jewel3.classList[1]) {
-        if (jewel1.nodeValue === jewel2.nodeValue && jewel2.nodeValue === jewel3.nodeValue) {
+        if (jewel1.innerHTML === jewel2.innerHTML && jewel2.innerHTML === jewel3.innerHTML) {
         matchingGroups.add(jewel1);
         matchingGroups.add(jewel2);
         matchingGroups.add(jewel3);
@@ -123,7 +123,7 @@ function checkMatches() {
       const jewel3 = cells[(row + 2) * 6 + col];
 
       //if (jewel1.classList[1] === jewel2.classList[1] && jewel2.classList[1] === jewel3.classList[1]) {
-        if (jewel1.nodeValue === jewel2.nodeValue && jewel2.nodeValue === jewel3.nodeValue) {
+        if (jewel1.innerHTML === jewel2.innerHTML && jewel2.innerHTML === jewel3.innerHTML) {
         matchingGroups.add(jewel1);
         matchingGroups.add(jewel2);
         matchingGroups.add(jewel3);
