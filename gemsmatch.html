@@ -41,22 +41,47 @@ Jemstone match
     // Define the types of jewels
     //const jewelTypes = ['diamond', 'emerald', 'ruby', 'sapphire', 'amethyst', 'topaz', 'opal', 'pearl', 'jade', 'garnet', 'peridot', 'aquamarine'];
     const jewelTypes = ['diamo', 'emera', 'ruby', 'sapph', 'ameth', 'topaz', 'opal', 'pearl', 'jade', 'garn', 'peri', 'aquam'];
-
+    colorInput1="#0000ff";
+    colorInput2="#ff0000";
     // Create a 6x6 game board filled with random jewels
     const gameBoard = document.getElementById('gameBoard');
     function createGameBoard() {
       gameBoard.innerHTML = '';
+
       for (let row = 0; row < 6; row++) {
         for (let col = 0; col < 6; col++) {
           const randomJewel = jewelTypes[Math.floor(Math.random()*jewelTypes.length)];
+          imageUrl="assets/"+randomJewel+".png";
           const cell = document.createElement('div');
           cell.className = 'cell';
+          cell.style.backgroundImage = `url(${imageUrl})`;
           cell.nodeValue= randomJewel;
           cell.dataset.row = row;
           cell.dataset.col = col;
           cell.innerHTML=" "+randomJewel;
           //cell.innerHTML="<img src= assets/"+randomJewel+".png";
           cell.onclick = () => selectJewel(cell);
+          indiv= document.createElement('div');
+                //indiv.classList.add('card');
+                indiv.style.position="relative";
+                indiv.style.margin=0;
+                indiv.style.opacity= 0.8;
+                if(i%2==0)
+                {
+                   // indiv.style.backgroundColor="#0000ff";
+                    indiv.style.backgroundColor=colorInput1;
+                    indiv.style.color=colorInput1;
+                    
+                }
+                else
+                {
+                    //indiv.style.backgroundColor="#ff0000";
+                    indiv.style.backgroundColor=colorInput2;
+                    indiv.style.color=colorInput2;
+                    //i=1;
+                }
+                i++;
+                card.appendChild(indiv);
           gameBoard.appendChild(cell);
         }
       }
