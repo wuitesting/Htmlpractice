@@ -47,7 +47,7 @@ Jemstone match
     const gameBoard = document.getElementById('gameBoard');
     function createGameBoard() {
       gameBoard.innerHTML = '';
-
+       
       for (let row = 0; row < 6; row++) {
         for (let col = 0; col < 6; col++) {
           const randomJewel = jewelTypes[Math.floor(Math.random()*jewelTypes.length)];
@@ -55,10 +55,11 @@ Jemstone match
           const cell = document.createElement('div');
           cell.className = 'cell';
           cell.style.backgroundImage = `url(${imageUrl})`;
-          cell.nodeValue= randomJewel;
+          //cell.innerText= randomJewel;
           cell.dataset.row = row;
           cell.dataset.col = col;
-          cell.innerHTML=" "+randomJewel;
+          cell.dataset.innerText=randomJewel;
+          //cell.innerHTML=" "+randomJewel;
           //cell.innerHTML="<img src= assets/"+randomJewel+".png";
           cell.onclick = () => selectJewel(cell);
           indiv= document.createElement('div');
@@ -81,7 +82,7 @@ Jemstone match
                     //i=1;
                 }
                 i++;
-                card.appendChild(indiv);
+                cell.appendChild(indiv);
           gameBoard.appendChild(cell);
         }
       }
