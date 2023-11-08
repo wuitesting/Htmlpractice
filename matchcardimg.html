@@ -21,8 +21,50 @@
         }
     </style>
 </head>
-<body>
+<body background-color="#000000">
     <h1>Match Card Game</h1>
+    <input type="button" value="restart" onclick="initializeGame()">
+    <!-- Button to show the pop-up -->
+    <button onclick="showColorPicker()">Open Color Picker</button>
+    
+    <!-- Pop-up box for color input -->
+    <div id="colorPickerContainer">
+        <h2>Select Two Colors</h2>
+        <label for="color1">Color 1:</label>
+        <input type="color" id="color1" value="#000000">
+        
+        <label for="color2">Color 2:</label>
+        <input type="color" id="color2" value="#ff0000">
+        
+        <button onclick="submitColors()">Submit</button>
+    </div>
+    
+    <!-- JavaScript code to show and hide the pop-up -->
+    <script>
+        const colorPickerContainer = document.getElementById("colorPickerContainer");
+        const colorInput1 = document.getElementById("color1");
+        const colorInput2 = document.getElementById("color2");
+        
+        function showColorPicker() {
+            colorPickerContainer.style.display = "block";
+        }
+        
+        function hideColorPicker() {
+            colorPickerContainer.style.display = "none";
+        }
+        
+        function submitColors() {
+            const selectedColor1 = colorInput1.value;
+            const selectedColor2 = colorInput2.value;
+            
+            // You can use selectedColor1 and selectedColor2 for your logic
+            console.log("Color 1:", selectedColor1);
+            console.log("Color 2:", selectedColor2);
+            
+            // Hide the pop-up after submission
+            hideColorPicker();
+        }
+    </script>
     <div id="game-board" class="board"></div>
     <script>
         const images = [
@@ -95,12 +137,14 @@
                 indiv.style.opacity= 0.8;
                 if(i%2==0)
                 {
-                    indiv.style.backgroundColor="#0000ff";
+                   // indiv.style.backgroundColor="#0000ff";
+                    indiv.style.backgroundColor=colorInput1;
                     
                 }
                 else
                 {
-                    indiv.style.backgroundColor="#ff0000";
+                    //indiv.style.backgroundColor="#ff0000";
+                    indiv.style.backgroundColor=colorInput2;
                     //i=1;
                 }
                 i++;
