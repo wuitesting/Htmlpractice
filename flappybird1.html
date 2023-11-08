@@ -142,15 +142,21 @@ function update ()
     bird.anims.play('fly', true);
 }
 function birdDie(b,p,p1){
-    //b.setX(p.x);
-    //b.setY(p.y);
-       console.log(p.x+"from birdDie");
-    p.active = false ;
-    p.visible=false;
-    p.disableBody(true, true);
-    //p.destroy();
     bird.setX(p1.x);
     bird.setY(p1.y);
+    
+       console.log(p.x+"from birdDie");
+       if(Phaser.Geom.Intersects.RectangleToRectangle(b.getBounds(), p.getBounds()))
+       {
+
+        p.active = false ;
+        p.visible=false;
+        p.disableBody(true, true);
+        //p.destroy();
+
+       }
+    
+    
 }
 
 /*function birdfly(pointer)
