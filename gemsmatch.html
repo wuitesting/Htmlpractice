@@ -135,7 +135,7 @@ function checkMatches() {
       const jewel3 = cells[row * 6 + col + 2];
 
       //if (jewel1.classList[1] === jewel2.classList[1] && jewel2.classList[1] === jewel3.classList[1]) {
-        if (jewel1.innerHTML === jewel2.innerHTML && jewel2.innerHTML === jewel3.innerHTML) {
+        if (jewel1.innerText === jewel2.innerText && jewel2.innerText === jewel3.innerText) {
         matchingGroups.add(jewel1);
         matchingGroups.add(jewel2);
         matchingGroups.add(jewel3);
