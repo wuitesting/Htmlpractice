@@ -56,12 +56,12 @@ Jemstone match
           const cell = document.createElement('div');
           cell.className = 'cell';
          // cell.style.backgroundImage = `url(${imageUrl})`;
-          //cell.innerText= randomJewel;
-          cell.style.color=colorInput1;
+         cell.innerText= randomJewel;
+         // cell.style.color=colorInput1;
           cell.dataset.row = row;
           cell.dataset.col = col;
          // cell.dataset.innerText=randomJewel;
-          cell.innerHTML=" "+randomJewel;
+          //cell.innerHTML=" "+randomJewel;
           //cell.innerHTML="<img src= assets/"+randomJewel+".png";
           cell.onclick = () => selectJewel(cell);
           indiv= document.createElement('div');
