@@ -77,10 +77,10 @@ downabtns= this.physics.add.staticGroup();
 upabtn=upabtns.create(game.config.width/4,game.config.height-10,'upa');
 downabtn=downabtns.create(game.config.width*3/4,game.config.height-10,'downa');
 upabtn.setInteractive({ useHandCursor: true });
-upabtn.setScale(scalex,scaley);
+upabtn.setScale(2,2);
  //upabtn.on('pointerdown', flyHigh);
  downabtn.setInteractive({ useHandCursor: true });
- downabtn.setScale(scalex,scaley);
+ downabtn.setScale(2,2);
 
 //const 
 //    pointer1=this.input.activepointer; p smallcase
@@ -131,8 +131,8 @@ function update ()
 {
         
         
-    scalex=ar*1.1;
-    scaley=3/ar;
+    scalex=ar*1.5;
+    scaley=5/ar;
     if(exenum%9 == 0)
     {
         
@@ -156,19 +156,19 @@ function update ()
          //up.setActive(true);
          //up.setVisible(true);
          //up.refreshBody();
-         dp=downpipes.create(exenum+1700, game.config.height-100,'pipedown');
-         dp.setTint(0x0000ff);
-         dp.setScale(scalex,scaley);
-         dp.refreshBody();
-         dp.setVisible(true);
+        // dp=downpipes.create(exenum+1700, game.config.height-100,'pipedown');
+         //dp.setTint(0x0000ff);
+        // dp.setScale(scalex,scaley);
+        // dp.refreshBody();
+        // dp.setVisible(true);
          
          //score++;
          console.log(exenum);
         }
     }
     exenum=exenum+100;
-    uppipes.setVelocityX(-100);
-    downpipes.setVelocityX(-100);
+    uppipes.setVelocityX(-70);
+    //downpipes.setVelocityX(-70);
  // pointer1=this.input.activePointer;    
     scoreText.setText('score:'+score);
     bird.anims.play('fly', true);
