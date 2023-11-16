@@ -74,14 +74,15 @@ scoreText = this.add.text(0, 20, 'HITS ', { fill: '#0f0' });
 //pointer1=this.input.activePointer;    
 upabtns = this.physics.add.staticGroup();
 downabtns= this.physics.add.staticGroup();
-upabtn=upabtns.create(game.config.width/4,game.config.height-10,'upa');
-downabtn=downabtns.create(game.config.width*3/4,game.config.height-10,'downa');
+upabtn=upabtns.create(game.config.width*6/8,game.config.height-300,'upa');
+downabtn=downabtns.create(game.config.width*6/8,game.config.height-250,'downa');
 upabtn.setInteractive({ useHandCursor: true });
 upabtn.setScale(2,2);
+upabtn.depth=100;
  //upabtn.on('pointerdown', flyHigh);
- downabtn.setInteractive({ useHandCursor: true });
- downabtn.setScale(2,2);
-
+downabtn.setInteractive({ useHandCursor: true });
+downabtn.setScale(2,2);
+downabtn.depth=100;
 //const 
 //    pointer1=this.input.activepointer; p smallcase
 //  Some stars to collect, 3 in total, evenly spaced 100 pixels apart along the x axis
