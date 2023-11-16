@@ -77,7 +77,7 @@
             "handsaveplant.png"
         ];
 
-        let shuffledImages = shuffle(images);
+        let shuffledImages = images;//shuffle(images);
         let firstCard = null;
         let secondCard = null;
 
@@ -128,7 +128,10 @@
             var indiv;
             const gameBoard = document.getElementById('game-board');
             gameBoard.innerHtml='';
-            shuffledImages.forEach((image) => {
+            //shuffledImages.forEach((image) => {
+            for(j=0;j<=shuffledImages.length;j++){
+                if(shuffledImages[j]!='')
+                    image=shuffledImages[j];
                 const card = createCard(image);
                 indiv= document.createElement('div');
                 indiv.classList.add('card');
