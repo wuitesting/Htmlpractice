@@ -110,15 +110,15 @@ Jemstone match
 
     // Swap two jewels
     function swapJewels(cell1, cell2) {
-     const tempClass = cell1.parentNode.className;
+     const tempClass = cell1.parentElement.className;
      const tempHtml = cell1.innerHTML;
      const tempNode = cell1.nodeValue;
      const tempurl = cell1.backgroundImage;
-     cell1.parentNode.className = cell2.parentNode.className;
+     cell1.parentElement.className = cell2.parentElement.className;
       cell1.innerHTML = cell2.innerHTML;
       cell1.nodeValue = cell2.nodeValue;
       cell1.backgroundImage=cell2.backgroundImage;
-      cell2.parentNode.className = tempClass;
+      cell2.parentElement.className = tempClass;
       cell2.innerHTML = tempHtml;
       cell2.nodeValue = tempNode;
       cell2.backgroundImage=tempurl;
