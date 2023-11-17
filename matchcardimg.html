@@ -125,13 +125,16 @@
 
         function initializeGame() {
             var i=0;
+            var j;
             var indiv;
             const gameBoard = document.getElementById('game-board');
             gameBoard.innerHtml='';
             //shuffledImages.forEach((image) => {
-            for(j=0;j<=shuffledImages.length;j++){
+            for(j=0;j<shuffledImages.length;j++){
                 if(shuffledImages[j]!='')
                     image=shuffledImages[j];
+                else
+                    break;
                 const card = createCard(image);
                 indiv= document.createElement('div');
                 indiv.classList.add('card');
