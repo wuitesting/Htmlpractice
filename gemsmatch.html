@@ -68,10 +68,10 @@ Jemstone match
           //cell.innerHTML="<img src= assets/"+randomJewel+".png";
           cell.onclick = () => selectJewel(cell);
           indiv= document.createElement('div');
-                //indiv.classList.add('card');
+                indiv.classList.add('cell');
                 indiv.style.position="relative";
                 indiv.style.margin=0;
-                indiv.style.opacity= 0.5;
+                indiv.style.opacity= 0.8;
                 if(i%2==0)
                 {
                    // indiv.style.backgroundColor="#0000ff";
@@ -168,6 +168,7 @@ function checkMatches() {
    // jewel.className = 'cell';
    jewel.nodeValue = " ";
    jewel.innerHTML = " ";
+   jewel.backgroundImage=" ";
   });
 
   // Implement replacing removed jewels with new ones and scoring logic
