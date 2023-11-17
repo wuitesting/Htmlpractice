@@ -125,16 +125,24 @@
 
         function initializeGame() {
             var i=0;
+            var ival=' ';
             var j;
             var indiv;
             const gameBoard = document.getElementById('game-board');
             gameBoard.innerHtml='';
             //shuffledImages.forEach((image) => {
             for(j=0;j<shuffledImages.length;j++){
-                if(shuffledImages[j]!='')
-                    image=shuffledImages[j];
-                else
-                    break;
+                i=Math.floor(Math.random() * j);
+                while(ival.includes(i.toString))
+                {
+                    
+                    i=Math.floor(Math.random() * j);
+                    
+                }
+                
+                image=shuffledImages[i];
+                ival=ival+i;
+                    shuffledImages[i]='';
                 const card = createCard(image);
                 indiv= document.createElement('div');
                 indiv.classList.add('card');
