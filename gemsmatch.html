@@ -125,7 +125,7 @@ Jemstone match
       cell2.innerHTML = tempHtml;
       cell2.nodeValue = tempNode;
       //cell2.parentElement.style.backgroundImage=tempurl;
-alert((cell1.parentElement.style.backgroundImage).tostring()+" "+cell1.innerText);
+alert((cell1.parentElement.style.backgroundImage).toString()+" "+cell1.innerText);
       selectedJewel = null;
       checkMatches();
     }
@@ -174,7 +174,7 @@ function checkMatches() {
    // jewel.className = 'cell';
    jewel.nodeValue = " ";
    jewel.innerHTML = " ";
-   jewel.style.backgroundImage=" ";
+   jewel.style.backgroundImage =" ";
   });
 
   // Implement replacing removed jewels with new ones and scoring logic
