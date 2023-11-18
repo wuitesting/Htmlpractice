@@ -113,19 +113,19 @@ Jemstone match
      //const tempClass = cell1.parentElement.className;
      const tempHtml = cell1.innerHTML;
      const tempNode = cell1.nodeValue;
-      const tempurl = cell1.parentElement.backgroundImage;
+      const tempurl = cell1.parentElement.style.backgroundImage;
      //cell1.parentElement.className = cell2.parentElement.className;
-     cell1.parentElement.backgroundImage=cell2.parentElement.backgroundImage;
+     cell1.parentElement.style.backgroundImage=cell2.parentElement.style.backgroundImage;
      
       cell1.innerHTML = cell2.innerHTML;
       cell1.nodeValue = cell2.nodeValue;
      // cell2.parentElement.className = tempClass;
       
-      cell2.parentElement.backgroundImage=tempurl;
+      cell2.parentElement.style.backgroundImage=tempurl;
       cell2.innerHTML = tempHtml;
       cell2.nodeValue = tempNode;
       cell2.parentElement.backgroundImage=tempurl;
-alert((cell1.innerHtml)+" "+cell1.innerText);
+alert((cell1.parentElement.style.backgroundImage)+" "+cell1.innerText);
       selectedJewel = null;
       checkMatches();
     }
