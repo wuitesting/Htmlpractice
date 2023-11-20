@@ -25,6 +25,7 @@ Jemstone match
       justify-content: center;
       align-items: center;
       font-size: 20px;
+      opacity: 0.5;
       color:#ffffff;
     }
 
@@ -168,7 +169,7 @@ Jemstone match
          // imageUrl="assets/"+randomJewel+".png";
           //i=Math.floor(Math.random()*jewelTypes.length);
           const cell = document.createElement('div');
-          cell.className = '.'+ randomJewel;
+          cell.className = randomJewel;
         // cell.style.backgroundImage = `url(${imageUrl})`;
          //cell.innerText= randomJewel;
          // cell.style.color=colorInput1;
@@ -179,7 +180,7 @@ Jemstone match
           //cell.innerHTML="<img src= assets/"+randomJewel+".png";
           cell.onclick = () => selectJewel(cell);
           indiv= document.createElement('div');
-                indiv.classList.add('cell');
+                indiv.className= 'cell';
                 indiv.style.position="relative";
                 indiv.style.margin=0;
                 indiv.style.opacity= 0.8;
