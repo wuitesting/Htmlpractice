@@ -288,7 +288,8 @@ function checkMatches() {
    jewel.nodeValue = " ";
    jewel.innerHTML = " ";
    jewel.style.visibility ="hidden";
-   // jewel.parentElement.style.visibility = "hidden";
+   jewel.parentElement.style.visibility = "hidden";
+    alert((jewel.parentElement.className).toString()+" "+jewel.parentElement.innerText);
   });
 
   // Implement replacing removed jewels with new ones and scoring logic
