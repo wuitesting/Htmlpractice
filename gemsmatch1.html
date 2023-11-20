@@ -221,7 +221,7 @@ Jemstone match
 
     // Swap two jewels
     function swapJewels(cell1, cell2) {
-     const tempClass = cell1.parentElement.className;
+     const tempClass = cell1.className;
      const tempHtml = cell1.innerHTML;
      const tempNode = cell1.nodeValue;
     //  const tempurl = (cell1.parentElement).style.backgroundImage;
@@ -230,14 +230,14 @@ Jemstone match
      
       cell1.innerHTML = cell2.innerHTML;
       cell1.nodeValue = cell2.nodeValue;
-      cell1.parentElement.className = cell2.parentElement.className;
-      cell2.parentElement.className = tempClass;
+      cell1.className = cell2.className;
+      cell2.className = tempClass;
       
      // (cell2.parentElement).style.backgroundImage=tempurl;
       cell2.innerHTML = tempHtml;
       cell2.nodeValue = tempNode;
       //cell2.parentElement.style.backgroundImage=tempurl;
-alert((cell2.parentElement.className).toString()+" "+cell1.innerText);
+alert((cell2.className).toString()+" "+cell1.innerText);
       selectedJewel = null;
       checkMatches();
     }
@@ -287,7 +287,7 @@ function checkMatches() {
    jewel.nodeValue = " ";
    jewel.innerHTML = " ";
    jewel.style.visibility ="hidden";
-    jewel.parentElement.style.visibility = "hidden";
+   // jewel.parentElement.style.visibility = "hidden";
   });
 
   // Implement replacing removed jewels with new ones and scoring logic
