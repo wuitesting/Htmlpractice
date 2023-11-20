@@ -41,7 +41,7 @@ var cursors,exenum;
 var score = 0;
 var snack = 0;
 var gameOver = false;
-var scoreHit,scoreSnack;
+var scoreHits,scoreSnack;
 var pointer1;
 
 const game = new Phaser.Game(config);
@@ -195,7 +195,7 @@ function update ()
 function birdDie(b,p){
    p.active = false;
   if(p.key=='berry')
-      snacks++;
+      snack++;
   else
     score++;
    p.disableBody(true, true)
