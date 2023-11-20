@@ -39,6 +39,7 @@ var uppipes;
 var downpipes;
 var cursors,exenum;
 var score = 0;
+var score = 0;
 var gameOver = false;
 var scoreText;
 var pointer1;
@@ -172,7 +173,7 @@ function update ()
         // dp.setScale(scalex,scaley);
         // dp.refreshBody();
         // dp.setVisible(true);
-            ber=berry.create(exenum+1700, game.config.height-100,'pipedown');
+            ber=berry.create(exenum+1700, game.config.height-100,'berry');
          ber.setTint(0x0000ff);
          //ber.setScale(scalex,scaley);
         // dp.refreshBody();
@@ -188,12 +189,15 @@ function update ()
     //downpipes.setVelocityX(-70);
     // pointer1=this.input.activePointer;    
     scoreHits.setText('Hits:'+score);
-    //scoreSnack.setText('snack'+snack);
+    scoreSnack.setText('Snacks'+snack);
     bird.anims.play('fly', true);
 }
 function birdDie(b,p){
    p.active = false;
-   score++;
+  if(p.key=='berry')
+      snacks++;
+  else
+    score++;
    p.disableBody(true, true)
    // b.disableBody(true, true)
 }
