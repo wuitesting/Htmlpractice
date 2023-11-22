@@ -1,0 +1,86 @@
+
+
+
+In the above code the puzzle pieces should be outside the puzzle container, 
+Pieces should be draggable and droppable on to the puzzle container to solve the puzzle 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Draggable Jigsaw Puzzle</title>
+  <style>
+    #puzzle-container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 5px;
+      position: relative;
+      width: 400px; /* Adjust the size as needed */
+      height: 400px; /* Adjust the size as needed */
+    }
+
+    .puzzle-piece {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      user-drag: none;
+      user-select: none;
+      touch-action: none;
+    }
+  </style>
+</head>
+<body>
+
+<div id="puzzle-container" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+
+<script>
+  function allowDrop(event) {
+    event.preventDefault();
+  }
+
+  function drag(event) {
+    event.dataTransfer.setData("text", event.target.id);
+  }
+
+  function drop(event) {
+    event.preventDefault();
+    const data = event.dataTransfer.getData("text");
+    const draggedPiece = document.getElementById(data);
+    const puzzleContainer = document.getElementById('puzzle-container');
+    const puzzleContainerRect = puzzleContainer.getBoundingClientRect();
+
+    const offsetX = event.clientX - puzzleContainerRect.left;
+    const offsetY = event.clientY - puzzleContainerRect.top;
+
+    draggedPiece.style.left = `${offsetX - draggedPiece.width / 2}px`;
+    draggedPiece.style.top = `${offsetY - draggedPiece.height / 2}px`;
+
+    puzzleContainer.appendChild(draggedPiece);
+  }
+
+  function createJigsawPuzzle(imageUrl) {
+    const puzzleContainer = document.getElementById('puzzle-container');
+
+    for (let i = 0; i < 4; i++) {
+      for (let j = 0; j < 4; j++) {
+        const piece = document.createElement('img');
+        piece.classList.add('puzzle-piece');
+        piece.src = imageUrl;
+        piece.style.objectPosition = `-${j * 25}% -${i * 25}%`; // Adjust as needed
+        piece.id = `piece-${i}-${j}`;
+        piece.draggable = true;
+        piece.addEventListener('dragstart', drag);
+        puzzleContainer.appendChild(piece);
+      }
+    }
+  }
+
+  // Example usage
+  const imageUrl = 'handsaveplant.png';
+  createJigsawPuzzle(imageUrl);
+</script>
+
+</body>
+</html>
