@@ -75,11 +75,11 @@
     draggedPiece.style.left = `${offsetX - draggedPiece.width / 2}px`;
     draggedPiece.style.top = `${offsetY - draggedPiece.height / 2}px`;
 
-    puzzleContainer.appendChild(draggedPiece);
+   // puzzleContainer.appendChild(draggedPiece);
   }
 
   function createJigsawPuzzle(imageUrl) {
-    const puzzleContainer = document.getElementById('piece-container');
+    const pieceContainer = document.getElementById('piece-container');
   const imageContainert = document.getElementById('image-container');
         imageContainert.style.backgroundImage= imageUrl;
     for (let i = 0; i < 4; i++) {
@@ -88,13 +88,19 @@
         piece.classList.add('puzzle-piece');
         piece.src = imageUrl;
         pw=piece.width;
-        piece.style.objectPosition = `-${j * 0.25*pw} -${i * 25}%`; // Adjust as needed
+        piece.style.objectPosition = `-${j * 0.25*pw}px -${i * 25}%`; // Adjust as needed
         piece.id = `piece-${i}-${j}`;
         piece.draggable = true;
         piece.addEventListener('dragstart', drag);
-        puzzleContainer.appendChild(piece);
+        pieceContainer.appendChild(piece);
       }
     }
+  }
+
+  function createPuzzleContainer()
+  {
+
+    
   }
 
   // Example usage
