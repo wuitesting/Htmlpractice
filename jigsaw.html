@@ -11,14 +11,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Draggable Jigsaw Puzzle</title>
   <style>
-    #puzzle-container {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 5px;
+    #image-container {
+      //display: grid;
+      //grid-template-columns: repeat(4, 1fr);
+      //gap: 5px;
       position: absolute;
-      opacity: 0.5;
+      //opacity: 0.5;
       width: 400px; /* Adjust the size as needed */
       height: 400px; /* Adjust the size as needed */
+    }
+    .puzzle-container {
+      position: relative;
+      opacity: 0.5;
+      width: 100px; /* Adjust the size as needed */
+      height: 100px; /* Adjust the size as needed */
     }
 
     .puzzle-piece {
