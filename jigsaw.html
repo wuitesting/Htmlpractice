@@ -15,7 +15,7 @@
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 5px;
-      position: relative;
+      position: absolute;
       width: 400px; /* Adjust the size as needed */
       height: 400px; /* Adjust the size as needed */
     }
@@ -66,7 +66,8 @@
 
   function createJigsawPuzzle(imageUrl) {
     const puzzleContainer = document.getElementById('piece-container');
-
+  const imageContainert = document.getElementById('image-container');
+        imageContainert.style.backgroundImage= imageUrl;
     for (let i = 0; i < 4; i++) {
       for (let j = 0; j < 4; j++) {
         const piece = document.createElement('img');
@@ -84,8 +85,8 @@
 
   // Example usage
   const imageUrl = 'handsaveplant.png';
-  const imageContainert = document.getElementById('image-container');
-  imageContainert.style.backgroundImage= imageUrl;
+
+
   
   createJigsawPuzzle(imageUrl);
 </script>
