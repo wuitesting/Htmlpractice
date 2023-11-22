@@ -100,7 +100,7 @@
     }
   }
 
-  function createPuzzleContainer()
+  function createPuzzleContainer(imageUrl)
   {
     const imageContainert = document.getElementById('image-container');
         imageContainert.style.backgroundImage= imageUrl;
@@ -123,7 +123,7 @@ for (let i = 0; i < 4; i++) {
   // Example usage
   const imageUrl = 'https://www.w3schools.com/html/pic_trulli.jpg';
 
-
+  createPuzzleContainer(imageUrl);
   
   createJigsawPuzzle(imageUrl);
 </script>
