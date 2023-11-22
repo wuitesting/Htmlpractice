@@ -33,7 +33,11 @@
 </head>
 <body>
 <div id="image-container">
-<div id="puzzle-container" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+<div id="puzzle-container" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+</div>
+</div>
+  <div id="piece-container">
 </div>
 <script>
   function allowDrop(event) {
@@ -48,7 +52,7 @@
     event.preventDefault();
     const data = event.dataTransfer.getData("text");
     const draggedPiece = document.getElementById(data);
-    const puzzleContainer = document.getElementById('puzzle-container');
+    const puzzleContainer = document.getElementById('piece-container');
     const puzzleContainerRect = puzzleContainer.getBoundingClientRect();
 
     const offsetX = event.clientX - puzzleContainerRect.left;
@@ -79,6 +83,8 @@
 
   // Example usage
   const imageUrl = 'handsaveplant.png';
+      const imageContainer = document.getElementById('image-container');
+  
   createJigsawPuzzle(imageUrl);
 </script>
 
