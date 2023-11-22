@@ -52,7 +52,7 @@
     event.preventDefault();
     const data = event.dataTransfer.getData("text");
     const draggedPiece = document.getElementById(data);
-    const puzzleContainer = document.getElementById('piece-container');
+    const puzzleContainer = document.getElementById('puzzle-container');
     const puzzleContainerRect = puzzleContainer.getBoundingClientRect();
 
     const offsetX = event.clientX - puzzleContainerRect.left;
@@ -65,7 +65,7 @@
   }
 
   function createJigsawPuzzle(imageUrl) {
-    const puzzleContainer = document.getElementById('puzzle-container');
+    const puzzleContainer = document.getElementById('piece-container');
 
     for (let i = 0; i < 4; i++) {
       for (let j = 0; j < 4; j++) {
@@ -83,7 +83,8 @@
 
   // Example usage
   const imageUrl = 'handsaveplant.png';
-      const imageContainer = document.getElementById('image-container');
+  const imageContainert = document.getElementById('image-container');
+  imageContainert.style.backgroundImage= imageUrl;
   
   createJigsawPuzzle(imageUrl);
 </script>
