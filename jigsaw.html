@@ -21,8 +21,8 @@
     }
 
     .puzzle-piece {
-      width: 100%;
-      height: 100%;
+      width: 25%;
+      height: 25%;
       object-fit: cover;
       position: absolute;
       user-drag: none;
@@ -72,7 +72,8 @@
         const piece = document.createElement('img');
         piece.classList.add('puzzle-piece');
         piece.src = imageUrl;
-        piece.style.objectPosition = `-${j * 25}% -${i * 25}%`; // Adjust as needed
+        pw=piece.width;
+        piece.style.objectPosition = `-${j * 0.25*pw} -${i * 25}%`; // Adjust as needed
         piece.id = `piece-${i}-${j}`;
         piece.draggable = true;
         piece.addEventListener('dragstart', drag);
