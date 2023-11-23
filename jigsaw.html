@@ -16,6 +16,7 @@
       //grid-template-columns: repeat(4, 1fr);
       //gap: 5px;*/
       position: absolute;
+      background-image:url'https://www.w3schools.com/html/pic_trulli.jpg';
       /*opacity: 0.5;*/
       width: 400px; /* Adjust the size as needed */
       height: 400px; /* Adjust the size as needed */
@@ -37,8 +38,8 @@
       touch-action: none;
     }
     .piece-container {
-      width: 100px;
-      height: 100px;
+      width: 25%;
+      height: 25%;
       position: relative;
       opacity: 0.5;
     }
@@ -91,7 +92,7 @@
         piece.classList.add('puzzle-piece');
         piece.src = imageUrl;
         pw=piece.width;
-        piece.style.objectPosition = `-${j * 0.25*pw}px -${i * 25}%`; // Adjust as needed
+        piece.style.objectPosition = `${j * 0.25*pw}px ${i * 25}%`; // Adjust as needed
         piece.id = `piece-${i}-${j}`;
         piece.draggable = true;
         piece.addEventListener('dragstart', drag);
@@ -121,7 +122,7 @@ for (let i = 0; i < 4; i++) {
   }
 
   // Example usage
-  const imageUrl = 'https://www.w3schools.com/html/pic_trulli.jpg';
+  const imageUrl = url'https://www.w3schools.com/html/pic_trulli.jpg';
 
   createPuzzleContainer(imageUrl);
   
