@@ -93,7 +93,7 @@
         piece.classList.add('puzzle-piece');
         piece.src = imageUrl;
         pw=piece.width;
-        piece.style.objectPosition = `${j * 0.25*pw}px ${i * 25}%`; // Adjust as needed
+        piece.style.objectPosition = `${j * 25}% ${i * 25}%`; // Adjust as needed
         piece.id = `piece-${i}-${j}`;
         piece.draggable = true;
         piece.addEventListener('dragstart', drag);
