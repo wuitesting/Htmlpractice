@@ -16,7 +16,7 @@
       //grid-template-columns: repeat(4, 1fr);
       //gap: 5px;*/
       position: absolute;
-      background-image:url("assets/pic_trulli.jpg");
+      background-image: url("assets/pic_trulli.jpg");
       /*opacity: 0.5;*/
       /*width: 100%;400px;  Adjust the size as needed */
       /*height: 100%;400px;  Adjust the size as needed */
@@ -41,8 +41,8 @@
       /*width: 25%;
       height: 25%;*/
       position: relative;
-      object-fit: none;
-      /*opacity: 0.5;*/
+      /*object-fit: none;
+      opacity: 0.5;*/
     }
   </style>
 </head>
@@ -89,13 +89,14 @@
         const picdiv = document.createElement('div');              
         picdiv.id = `picdivpiece-${i}-${j}`;
         picdiv.style.overflow="hidden";
+        picdiv.style.position="relative";
         const inpicdiv = document.createElement('div');
            inpicdiv.style.backgroundColor="#0000ff";
            inpicdiv.style.opacity=0.5;  
            inpicdiv.style.position="absolute"; 
         picdiv.id = `picdivpiece-${i}-${j}`;
         const piece = document.createElement('img');
-        piece.classList.add('puzzle-piece');
+        //piece.classList.add('puzzle-piece');
         piece.src = imageUrl;
         pw=piece.width;
         ph=piece.height;
@@ -104,8 +105,10 @@
         //piece.style.objectPosition = `${(-j+1) * 25}% -${(-i+1) * 25}%`; // Adjust as needed
         piece.style.margin=""+-1*(i*ph/4)+" 0 0 "+-1*(j*pw/4)+"";
         piece.id = `piece-${i}-${j}`;
-        piece.draggable = true;
-        piece.addEventListener('dragstart', drag);
+        picdiv.draggable = true;
+        picdiv.addEventListener('dragstart', drag);
+        //piece.draggable = true;
+        //piece.addEventListener('dragstart', drag);
         picdiv.appendChild(piece);
         picdiv.appendChild(inpicdiv);
         pieceContainer.appendChild(picdiv);
