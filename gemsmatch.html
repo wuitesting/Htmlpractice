@@ -1,3 +1,4 @@
+// gemsmatch1
 Jemstone match
 
 
@@ -9,22 +10,133 @@ Jemstone match
     /* Add your CSS styles for the game board here */
     .board {
       display: grid;
-      grid-template-columns: repeat(6, 50px);
-      grid-template-rows: repeat(6, 50px);
+      grid-template-columns: repeat(6, 100px);
+      grid-template-rows: repeat(6, 100px);
       gap: 5px;
-      width: 300px;
-      height: 300px;
+      width: 600px;
+      height: 600px;
     }
 
     .cell {
-      width: 50px;
-      height: 50px;
+      width: 100px;
+      height: 100px;
       border: 1px solid #000;
       display: flex;
       justify-content: center;
       align-items: center;
       font-size: 20px;
+      opacity: 0.5;
       color:#ffffff;
+    }
+
+    .diamo {
+      width: 100px;
+      height: 100px;
+      border: 1px solid #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      background-image: url("assets/diamo.png");
+    }
+    .emera {
+      width: 100px;
+      height: 100px;
+      border: 1px solid #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      background-image: url("assets/emera.png");
+    
+    }
+    .ruby {
+      width: 100px;
+      height: 100px;
+      border: 1px solid #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      background-image: url("assets/ruby.png");
+    
+    }
+    .sapph {
+      width: 100px;
+      height: 100px;
+      border: 1px solid #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      background-image: url("assets/sapph.png");
+    
+    }
+    .ameth {
+      width: 100px;
+      height: 100px;
+      border: 1px solid #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      background-image: url("assets/ameth.png");
+    
+    }
+    .topaz {
+      width: 100px;
+      height: 100px;
+      border: 1px solid #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      background-image: url("assets/topaz.png");
+    
+    }
+    .pearl {
+      width: 100px;
+      height: 100px;
+      border: 1px solid #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      background-image: url("assets/pearl.png");
+    
+    }
+    .jade {
+      width: 100px;
+      height: 100px;
+      border: 1px solid #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      background-image: url("assets/jade.png");
+    
+    }
+    .garn {
+      width: 100px;
+      height: 100px;
+      border: 1px solid #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      background-image: url("assets/garn.png");
+    
+    }
+    .aquam {
+     width: 100px;
+      height: 100px;
+      border: 1px solid #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      background-image: url("assets/aquam.png");
+    
     }
 .page{
     background-color: rgb(0, 0, 0);
@@ -54,11 +166,11 @@ Jemstone match
 
           i=Math.floor(Math.random()*jewelTypes.length);
           const randomJewel = jewelTypes[i];
-          imageUrl="assets/"+randomJewel+".png";
+         // imageUrl="assets/"+randomJewel+".png";
           //i=Math.floor(Math.random()*jewelTypes.length);
           const cell = document.createElement('div');
-          cell.className = 'cell';
-         cell.style.backgroundImage = `url(${imageUrl})`;
+          cell.className = randomJewel;
+        // cell.style.backgroundImage = `url(${imageUrl})`;
          //cell.innerText= randomJewel;
          // cell.style.color=colorInput1;
           cell.dataset.row = row;
@@ -68,7 +180,7 @@ Jemstone match
           //cell.innerHTML="<img src= assets/"+randomJewel+".png";
           cell.onclick = () => selectJewel(cell);
           indiv= document.createElement('div');
-                indiv.classList.add('cell');
+                indiv.className= 'cell';
                 indiv.style.position="relative";
                 indiv.style.margin=0;
                 indiv.style.opacity= 0.8;
@@ -110,22 +222,23 @@ Jemstone match
 
     // Swap two jewels
     function swapJewels(cell1, cell2) {
-     //const tempClass = cell1.parentElement.className;
+     const tempClass = cell1.className;
      const tempHtml = cell1.innerHTML;
      const tempNode = cell1.nodeValue;
-      const tempurl = (cell1.parentElement).style.backgroundImage;
+    //  const tempurl = (cell1.parentElement).style.backgroundImage;
      //cell1.parentElement.className = cell2.parentElement.className;
-     (cell1.parentElement).style.backgroundImage=(cell2.parentElement).style.backgroundImage;
+     //(cell1.parentElement).style.backgroundImage=(cell2.parentElement).style.backgroundImage;
      
       cell1.innerHTML = cell2.innerHTML;
       cell1.nodeValue = cell2.nodeValue;
-     // cell2.parentElement.className = tempClass;
+      cell1.className = cell2.className;
+      cell2.className = tempClass;
       
-      (cell2.parentElement).style.backgroundImage=tempurl;
+     // (cell2.parentElement).style.backgroundImage=tempurl;
       cell2.innerHTML = tempHtml;
       cell2.nodeValue = tempNode;
       //cell2.parentElement.style.backgroundImage=tempurl;
-alert(((cell2.parentElement).style.backgroundImage).toString()+" "+cell1.innerText);
+//alert((cell2.className).toString()+" "+cell1.innerText);
       selectedJewel = null;
       checkMatches();
     }
@@ -145,7 +258,7 @@ function checkMatches() {
       const jewel3 = cells[row * 6 + col + 2];
 
       //if (jewel1.classList[1] === jewel2.classList[1] && jewel2.classList[1] === jewel3.classList[1]) {
-        if (jewel1.innerText === jewel2.innerText && jewel2.innerText === jewel3.innerText) {
+      if (jewel1.innerText === jewel2.innerText && jewel2.innerText === jewel3.innerText) {
         matchingGroups.add(jewel1);
         matchingGroups.add(jewel2);
         matchingGroups.add(jewel3);
@@ -174,7 +287,9 @@ function checkMatches() {
    // jewel.className = 'cell';
    jewel.nodeValue = " ";
    jewel.innerHTML = " ";
-   jewel.style.backgroundImage =" ";
+   jewel.style.visibility ="hidden";
+   jewel.parentElement.style.visibility = "hidden";
+   // alert((jewel.parentElement.className).toString()+" "+jewel.parentElement.innerText);
   });
 
   // Implement replacing removed jewels with new ones and scoring logic
@@ -188,5 +303,4 @@ function checkMatches() {
   </script>
 </body>
 </html>
-
 
