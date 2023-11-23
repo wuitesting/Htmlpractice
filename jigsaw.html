@@ -103,7 +103,7 @@
         picdiv.style.width=pw/4+"px";
         picdiv.style.height=ph/4+"px";
         //piece.style.objectPosition = `${(-j+1) * 25}% -${(-i+1) * 25}%`; // Adjust as needed
-        piece.style.margin=" "+-1*(i*ph/4)+" 0 0 "+-1*(j*pw/4)+" ";
+        piece.style.margin=" "+-1*(i*ph/4)+"px 0px 0px "+-1*(j*pw/4)+"px ";
         piece.id = `piece-${i}-${j}`;
         picdiv.draggable = true;
         picdiv.addEventListener('dragstart', drag);
