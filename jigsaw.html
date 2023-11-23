@@ -86,15 +86,29 @@
  
     for (let i = 0; i < 4; i++) {
       for (let j = 0; j < 4; j++) {
+        const picdiv = document.createElement('div');              
+        picdiv.id = `picdivpiece-${i}-${j}`;
+        picdiv.style.overflow="hidden";
+        const inpicdiv = document.createElement('div');
+           inpicdiv.style.backgroundColor="#0000ff";
+           inpicdiv.style.opacity=0.5;  
+           inpic.style.position="absolute"; 
+        picdiv.id = `picdivpiece-${i}-${j}`;
         const piece = document.createElement('img');
         piece.classList.add('puzzle-piece');
         piece.src = imageUrl;
         pw=piece.width;
-        piece.style.objectPosition = `${(-j+1) * 25}% -${(-i+1) * 25}%`; // Adjust as needed
+        ph=piece.height;
+        picdiv.style.width=pw/4+"px";
+        picdiv.style.height=ph/4+"px";
+        //piece.style.objectPosition = `${(-j+1) * 25}% -${(-i+1) * 25}%`; // Adjust as needed
+        piece.style.margin=""+-1*(i*ph/4)+" 0 0 "+-1*(j*pw/4)+"";
         piece.id = `piece-${i}-${j}`;
         piece.draggable = true;
         piece.addEventListener('dragstart', drag);
-        pieceContainer.appendChild(piece);
+        picdiv.appendChild(piece);
+        picdiv.appendChild(inpicdiv);
+        pieceContainer.appendChild(picdiv);
       }
     }
   }
