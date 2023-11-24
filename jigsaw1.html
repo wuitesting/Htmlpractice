@@ -103,7 +103,8 @@
         picdiv.style.width=pw/4+"px";
         picdiv.style.height=ph/4+"px";
         //piece.style.objectPosition = `${(-j+1) * 25}% -${(-i+1) * 25}%`; // Adjust as needed
-        piece.style.margin=" "+-1*(i*ph/4)+"px 0px 0px "+-1*(j*pw/4)+"px ";
+        piece.clipPath=" "+1*(i*ph/4)+"px "+(3-j)*pw/4+"px "+(3-i)*ph/4+"px "+1*(j*pw/4)+"px ";
+       // piece.style.margin=" "+-1*(i*ph/4)+"px 0px 0px "+-1*(j*pw/4)+"px ";
         piece.id = `piece-${i}-${j}`;
        inpicdiv.draggable = true;
         piece.draggable = true;
