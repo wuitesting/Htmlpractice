@@ -52,7 +52,7 @@
 <body>
   <div>b4 image con</div> 
 <div id="image-container"  class="image-container"> 
-  <img src="assets/pic_trulli.jpg" ondragover="allowDrop(event)">
+  <img id="img1" src="assets/pic_trulli.jpg" ondragover="allowDrop(event)">
 </div>
   <div>after image con</div>
   <div id="piece-container">
@@ -124,8 +124,9 @@
 
   function createPuzzleContainer(imageUrl)
   {
-    const imageContainert = document.getElementById('image-container');
-       imageContainert.addEventListener('ondragover', allowDrop);
+    const imageContainer = document.getElementById('image-container');
+       imageContainer.addEventListener('ondragover', allowDrop);
+    const imageContainert = document.getElementById('img1');
 
 for (let i = 0; i < 4; i++) {
       for (let j = 0; j < 4; j++) {
