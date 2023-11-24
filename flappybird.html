@@ -71,9 +71,11 @@ exenum=4;
 //flyb = this.add.text(0, game.config.height-40, 'Fly Higher', { fill: '#0f0' });
 scoreHits = this.add.text(game.config.width*7/8, 20, 'HITS ', { fill: '#0f0' });
 scoreSnack = this.add.text(game.config.width*7/8, 40, 'SNACKS ', { fill: '#0f0' });
+scoreHits.depth=100;
+scoreSnack.depth=100;
 //flyb.setStyle({backgroundColor :0xffffff});
 // flyb.setInteractive({ useHandCursor: true });
- //flyb.on('pointerdown', flyHigh);
+//flyb.on('pointerdown', flyHigh);
 //pointer1=this.input.activePointer;    
 upabtns = this.physics.add.staticGroup();
 downabtns= this.physics.add.staticGroup();
@@ -154,7 +156,7 @@ function update ()
          //console.log(exenum);
           up=uppipes.create(exenum+1500, 90,'pipeup');
          up.setTint(0x0000ff);
-         up.setScale(scalex,scaley);
+         up.setScale(scalex,4);
          up.refreshBody();
 
          //up.setActive(true);
