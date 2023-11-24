@@ -134,7 +134,11 @@ for (let i = 0; i < 4; i++) {
         
         piz.id = `pizpiece-${i}-${j}`;
         piz.width= imageContainert.width/4;
+        ph=piz.width;
         piz.height= imageContainert.height/4;
+        ph=piz.height;
+        piz.style.top=" "(i*ph/4)+"px";
+        piz.style.left=" "(j*pw/4)+"px";
         piz.innerText= piz.id;
         piz.addEventListener('ondrop', drop);
         piz.addEventListener('ondragover', allowDrop);
