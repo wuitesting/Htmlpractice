@@ -136,7 +136,8 @@
   function createPuzzleContainer(imageUrl)
   {
     const imageContainer = document.getElementById('image-container');
-      // imageContainer.addEventListener('ondragover', allowDrop);
+       imageContainer.addEventListener('ondragover', allowDrop);
+       imageContainer.addEventListener('ondrop', drop);
     const imageContainert = document.getElementById('img1');
 
 for (let i = 0; i < 4; i++) {
