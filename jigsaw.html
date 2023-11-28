@@ -87,7 +87,8 @@
 
   function createJigsawPuzzle(imageUrl) {
     const pieceContainer = document.getElementById('piece-container');
- 
+    var pw,ph;
+    
     for (let i = 0; i < 4; i++) {
       for (let j = 0; j < 4; j++) {
         const picdiv = document.createElement('div');              
@@ -95,7 +96,7 @@
         picdiv.style.overflow="hidden";
         picdiv.style.position="relative";
         const inpicdiv = document.createElement('div');
-           inpicdiv.style.backgroundColor="#0000ff";
+           inpicdiv.style.backgroundColor= "#0000ff";
            inpicdiv.style.opacity=0.5;  
            inpicdiv.style.position="absolute"; 
         picdiv.id = `picdivpiece-${i}-${j}`;
@@ -106,10 +107,13 @@
         ph=piece.height;
         picdiv.style.width=pw/4+"px";
         picdiv.style.height=ph/4+"px";
+        inpicdiv.style.width = picdiv.style.width;
+        inpicdiv.style.height =  picdiv.style.height;
         //piece.style.objectPosition = `${(-j+1) * 25}% -${(-i+1) * 25}%`; // Adjust as needed
         //piece.clipPath=" "+(i*ph/4)+"px "+((3-j)*pw/4)+"px "+((3-i)*ph/4)+"px "+(j*pw/4)+"px ";
        piece.style.margin=" "+-1*(i*ph/4)+"px 0px 0px "+-1*(j*pw/4)+"px ";
         piece.id = `piece-${i}-${j}`;
+       
        inpicdiv.draggable = true;
         piece.draggable = true;
         //piece.addEventListener('dragstart', drag);
@@ -120,6 +124,8 @@
         picdiv.addEventListener('dragstart', drag);
         pieceContainer.appendChild(picdiv);
       }
+      pieceContainer.style.width = pw+"px";
+      pieceContainer.style.height=ph+"px";
     }
   }
 
