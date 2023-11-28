@@ -63,15 +63,17 @@
 <script>
   function allowDrop(event) {
     event.preventDefault();
+    event.dataTransfer.dropEffect = "move";
   }
 
   function drag(event) {
-    event.dataTransfer.setData("text", event.target.id);
+    event.dataTransfer.setData("text/plain", event.target.id);\
+    event.dataTransfer.effectAllowed = "move";
   }
 
   function drop(event) {
     event.preventDefault();
-    const data = event.dataTransfer.getData("text");
+    const data = event.dataTransfer.getData("text/plain");
     const draggedPiece = document.getElementById(data);
     /*const puzzleContainer = document.getElementById('puzzle-container');
     const puzzleContainerRect = puzzleContainer.getBoundingClientRect();
