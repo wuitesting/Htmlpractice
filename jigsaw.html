@@ -74,7 +74,7 @@
   function drop(event) {
     event.preventDefault();
     const data = event.dataTransfer.getData("text/plain");
-    const draggedPiece = document.getElementById(data);
+     const draggedPiece = document.getElementById(data);
     /*const puzzleContainer = document.getElementById('puzzle-container');
     const puzzleContainerRect = puzzleContainer.getBoundingClientRect();
 
@@ -86,6 +86,14 @@
     */
    // puzzleContainer.appendChild(draggedPiece);
    alert(data);
+   tdiv=event.target.id+" ";
+   if(tdiv.includes(data))
+   {
+      ttdiv=document.getElementById(event.target.id);
+      ttdiv.style.backgroundColor=none;
+      ttdiv.innerText="";
+
+   }
   }
 
   function createJigsawPuzzle(imageUrl) {
@@ -102,7 +110,7 @@
            inpicdiv.style.backgroundColor= "#0000ff";
            inpicdiv.style.opacity=0.5;  
            inpicdiv.style.position="absolute"; 
-        picdiv.id = `picdivpiece-${i}-${j}`;
+        inpicdiv.id = `piece-${i}-${j}`;
         const piece = document.createElement('img');
         //piece.classList.add('puzzle-piece');
         piece.src = imageUrl;
@@ -118,7 +126,7 @@
         //piece.style.objectPosition = `${(-j+1) * 25}% -${(-i+1) * 25}%`; // Adjust as needed
         //piece.clipPath=" "+(i*ph/4)+"px "+((3-j)*pw/4)+"px "+((3-i)*ph/4)+"px "+(j*pw/4)+"px ";
        piece.style.margin=" "+-1*(i*ph/4)+"px 0px 0px "+-1*(j*pw/4)+"px ";
-        piece.id = `piece-${i}-${j}`;
+        piece.id = `imgpiece-${i}-${j}`;
        
        inpicdiv.draggable = true;
         piece.draggable = true;
