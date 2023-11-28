@@ -44,10 +44,10 @@
       border-color: #000000;
     }
     .piece-container {
-      background-color: #ff0000;
+      /*background-color: #ff0000;
       border-color: #000000;
      
-      opacity: 0.5;
+      opacity: 0.5;*/
     }
   </style>
 </head>
@@ -154,6 +154,7 @@ for (let i = 0; i < 4; i++) {
         piz.style.backgroundColor="#ff0000";
         piz.style.borderColor="#000000";
         piz.style.opacity="0.6";
+        piz.style.position="absolute";
         piz.innerText= piz.id;
 
         piz.addEventListener('ondragover', allowDrop);
