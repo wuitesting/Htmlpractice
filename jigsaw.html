@@ -138,9 +138,11 @@
         picdiv.addEventListener('dragstart', drag);
         pieceContainer.appendChild(picdiv);
       }
-      pieceContainer.style.width = pw+"px";
-      pieceContainer.style.height=ph+"px";
+
+
     }
+          pieceContainer.style.height=(ph+50)+"px";
+          pieceContainer.style.width = (pw+50)+"px";
   }
 
   function createPuzzleContainer(imageUrl)
