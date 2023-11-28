@@ -148,7 +148,10 @@
     const imageContainer = document.getElementById('image-container');
        imageContainer.addEventListener('ondragover', allowDrop);
        imageContainer.addEventListener('ondrop', drop);
+       
     const imageContainert = document.getElementById('img1');
+    imageContainer.style.width=imageContainert.style.width;
+    imageContainer.style.height=imageContainert.style.height;
 
 for (let i = 0; i < 4; i++) {
       for (let j = 0; j < 4; j++) {
