@@ -46,7 +46,7 @@
     .piece-container {
       background-color: #ff0000;
       border-color: #000000;
-      position: absolute;
+     
       opacity: 0.5;
     }
   </style>
@@ -145,13 +145,17 @@ for (let i = 0; i < 4; i++) {
         piz.classList.add('piece-container');
         
         piz.id = `pizpiece-${i}-${j}`;
-        piz.width= imageContainert.width/4;
+        piz.style.width= imageContainert.width/4+"px";
         pw=piz.width;
-        piz.height= imageContainert.height/4;
+        piz.style.height= imageContainert.height/4+"px";
         ph=piz.height;
         piz.style.top=" "+(i*ph)+"px";
         piz.style.left=" "+(j*pw)+"px";
+        piz.style.backgroundColor="#ff0000";
+        piz.style.borderColor="#000000";
+        piz.style.opacity="0.6";
         piz.innerText= piz.id;
+
         piz.addEventListener('ondragover', allowDrop);
         piz.addEventListener('ondrop', drop);
 
