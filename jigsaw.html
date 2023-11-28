@@ -155,8 +155,8 @@ for (let i = 0; i < 4; i++) {
         piz.style.opacity="0.6";
         piz.style.position="absolute";
         piz.innerText= piz.id;
-        piz.addEventListener("ondragover", allowDrop);
-        piz.addEventListener("ondrop", drop);
+        piz.addEventListener('ondragover', allowDrop);
+        piz.addEventListener('ondrop', drop);
         //ondrop="drop(event)" ondragover="allowDrop(event)"
         imageContainer.appendChild(piz);
       }
