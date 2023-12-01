@@ -101,6 +101,7 @@
               pieceContainer.style.height= (document.getElementById('img1').height)+"px";
               pieceContainer.style.width = ( document.getElementById('img1').width)+"px";
     var pw,ph;
+    var arrpicdiv=[];
     
     for (let i = 0; i < 4; i++) {
       for (let j = 0; j < 4; j++) {
@@ -139,14 +140,28 @@
         picdiv.draggable = true;
         
         picdiv.addEventListener('dragstart', drag);
-        pieceContainer.appendChild(picdiv);
+        //pieceContainer.appendChild(picdiv);
+        arrpicdiv[i+j]=picdiv;
       }
-
-
+      
     }
 
+    suffledarr=shuffle(arrpicdiv);
+    for (let i = array.length - 1; i > 0; i--) {
+        
+      pieceContainer.appendChild( array[i]);
+               
+            }
 
   }
+
+  function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
 
   function createPuzzleContainer(imageUrl)
   {
