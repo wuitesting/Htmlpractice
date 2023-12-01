@@ -102,7 +102,8 @@
               pieceContainer.style.width = ( document.getElementById('img1').width)+"px";
     var pw,ph;
     var arrpicdiv=[];
-    
+    var suffledarr=[];
+    pieceContainer.innerHtml=" ";
     for (let i = 0; i < 4; i++) {
       for (let j = 0; j < 4; j++) {
         const picdiv = document.createElement('div');              
@@ -141,17 +142,15 @@
         
         picdiv.addEventListener('dragstart', drag);
         //pieceContainer.appendChild(picdiv);
-        arrpicdiv[(i+1)*(j+1)]=picdiv;
+        arrpicdiv[(j)]=picdiv;
       }
-      
-    }
-    pieceContainer.innerHtml=" ";
-   const suffledarr=shuffle(arrpicdiv);
-    for (let i = suffledarr.length - 1; i > 0; i--) {
+       suffledarr=shuffle(arrpicdiv);
+       for (let k = suffledarr.length - 1; k > 0; k--) {
         
-      pieceContainer.innerHtml+=suffledarr[i];
-               
-            }
+        pieceContainer.innerHtml+=suffledarr[k];
+                 
+              }
+    }
 
   }
 
