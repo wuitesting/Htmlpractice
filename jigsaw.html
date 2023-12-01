@@ -145,11 +145,11 @@
         arrpicdiv[j]=picdiv;
       }
        suffledarr=shuffle(arrpicdiv);
-       for (let k = suffledarr.length - 1; k > 0; k--) {
+      // for (let k = suffledarr.length - 1; k > 0; k--) {
         
         //pieceContainer.innerHtml+=suffledarr[k];
-        pieceContainer.appendChild((Node)suffledarr[k]);       
-       }
+        suffledarr.forEach((ele)=> pieceContainer.appendChild(ele));       
+       //}
     }
 
   }
