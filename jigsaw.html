@@ -33,15 +33,16 @@
     }
 
     .puzzle-piece {
-      width: 25%;
+      /*width: 25%;
       height: 25%;
-      object-fit: none;
+      object-fit: none;*/
       position: relative;
-     user-drag: none;
+     /*user-drag: none;*/
       user-select: none;
       touch-action: none;
       background-color: #0000ff;
       border-color: #000000;
+      border-width:5px;
     }
     .piece-container {
       /*background-color: #ff0000;
@@ -117,7 +118,7 @@
            inpicdiv.style.position="absolute"; 
         inpicdiv.id = `piece-${i}-${j}`;
         const piece = document.createElement('img');
-        //piece.classList.add('puzzle-piece');
+        piece.classList.add('puzzle-piece');
         piece.src = imageUrl;
         pw=piece.width;
         ph=piece.height;
