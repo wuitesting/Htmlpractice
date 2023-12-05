@@ -182,8 +182,8 @@ Jemstone match
     function createGameBoard() {
       gameBoard.innerHTML = '';
        
-      for (let row = 0; row < 9; row++) {
-        for (let col = 0; col < 9; col++) {
+      for (let row = 0; row < 8; row++) {
+        for (let col = 0; col < 8; col++) {
 
           i=Math.floor(Math.random()*jewelTypes.length);
           const randomJewel = jewelTypes[i];
@@ -273,11 +273,11 @@ function checkMatches() {
   const matchingGroups = new Set();
 
   // Check horizontally
-  for (let row = 0; row < 9; row++) {
-    for (let col = 0; col < 7; col++) {
-      const jewel1 = cells[row * 9 + col];
-      const jewel2 = cells[row * 9 + col + 1];
-      const jewel3 = cells[row * 9 + col + 2];
+  for (let row = 0; row < 8; row++) {
+    for (let col = 0; col < 6; col++) {
+      const jewel1 = cells[row * 8 + col];
+      const jewel2 = cells[row * 8 + col + 1];
+      const jewel3 = cells[row * 8 + col + 2];
 
       //if (jewel1.classList[1] === jewel2.classList[1] && jewel2.classList[1] === jewel3.classList[1]) {
       if (jewel1.innerHtml === jewel2.innerHtml && jewel2.innerHtml === jewel3.innerHtml) {
@@ -289,11 +289,11 @@ function checkMatches() {
   }
 
   // Check vertically
-  for (let col = 0; col < 9; col++) {
+  for (let col = 0; col < 8; col++) {
     for (let row = 0; row < 7; row++) {
-      const jewel1 = cells[row * 9 + col];
-      const jewel2 = cells[(row + 1) * 9 + col];
-      const jewel3 = cells[(row + 2) * 9 + col];
+      const jewel1 = cells[row * 8 + col];
+      const jewel2 = cells[(row + 1) * 8 + col];
+      const jewel3 = cells[(row + 2) * 8 + col];
 
       //if (jewel1.classList[1] === jewel2.classList[1] && jewel2.classList[1] === jewel3.classList[1]) {
         if (jewel1.innerHTML === jewel2.innerHTML && jewel2.innerHTML === jewel3.innerHTML) {
