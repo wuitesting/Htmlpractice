@@ -182,8 +182,8 @@ Jemstone match
     function createGameBoard() {
       gameBoard.innerHTML = '';
        
-      for (let row = 0; row < 6; row++) {
-        for (let col = 0; col < 6; col++) {
+      for (let row = 0; row < 9; row++) {
+        for (let col = 0; col < 9; col++) {
 
           i=Math.floor(Math.random()*jewelTypes.length);
           const randomJewel = jewelTypes[i];
@@ -205,6 +205,7 @@ Jemstone match
                 indiv.style.position="relative";
                 indiv.style.margin=0;
                 indiv.style.opacity= 0.8;
+                indiv.innerText=randomJewel;
                 if(i%2==0)
                 {
                    // indiv.style.backgroundColor="#0000ff";
@@ -220,8 +221,8 @@ Jemstone match
                     //i=1;
                 }
                // i++;
-             indiv.innerText=randomJewel;
-                cell.appendChild(indiv);
+
+            cell.appendChild(indiv);
           gameBoard.appendChild(cell);
         }
       }
@@ -272,14 +273,14 @@ function checkMatches() {
   const matchingGroups = new Set();
 
   // Check horizontally
-  for (let row = 0; row < 6; row++) {
-    for (let col = 0; col < 4; col++) {
-      const jewel1 = cells[row * 6 + col];
-      const jewel2 = cells[row * 6 + col + 1];
-      const jewel3 = cells[row * 6 + col + 2];
+  for (let row = 0; row < 9; row++) {
+    for (let col = 0; col < 7; col++) {
+      const jewel1 = cells[row * 9 + col];
+      const jewel2 = cells[row * 9 + col + 1];
+      const jewel3 = cells[row * 9 + col + 2];
 
       //if (jewel1.classList[1] === jewel2.classList[1] && jewel2.classList[1] === jewel3.classList[1]) {
-      if (jewel1.innerText === jewel2.innerText && jewel2.innerText === jewel3.innerText) {
+      if (jewel1.innerHtml === jewel2.innerHtml && jewel2.innerHtml === jewel3.innerHtml) {
         matchingGroups.add(jewel1);
         matchingGroups.add(jewel2);
         matchingGroups.add(jewel3);
@@ -288,11 +289,11 @@ function checkMatches() {
   }
 
   // Check vertically
-  for (let col = 0; col < 6; col++) {
-    for (let row = 0; row < 4; row++) {
-      const jewel1 = cells[row * 6 + col];
-      const jewel2 = cells[(row + 1) * 6 + col];
-      const jewel3 = cells[(row + 2) * 6 + col];
+  for (let col = 0; col < 9; col++) {
+    for (let row = 0; row < 7; row++) {
+      const jewel1 = cells[row * 9 + col];
+      const jewel2 = cells[(row + 1) * 9 + col];
+      const jewel3 = cells[(row + 2) * 9 + col];
 
       //if (jewel1.classList[1] === jewel2.classList[1] && jewel2.classList[1] === jewel3.classList[1]) {
         if (jewel1.innerHTML === jewel2.innerHTML && jewel2.innerHTML === jewel3.innerHTML) {
