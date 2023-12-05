@@ -17,11 +17,11 @@
 
         .board{
 
-            background-color: #37353a;
+            background-color: #37353A;
         }
     </style>
 </head>
-<body background-color="#000000">
+<body style="background-color: #000000;">
     <h1>Match Card Game</h1>
     <input type="button" value="restart" onclick="initializeGame()">
     <!-- Button to show the pop-up -->
@@ -121,6 +121,12 @@
                 [array[i], array[j]] = [array[j], array[i]];
             }
             return array;
+        }
+        function removeChild(eid)
+        {
+            eid.foreach((eid.childNode)=>
+            {  eid.removeChildNode();}
+            
         }
 
         function initializeGame() {
