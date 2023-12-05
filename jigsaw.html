@@ -125,6 +125,7 @@
         const piece = document.createElement('img');
         piece.classList.add('puzzle-piece');
         piece.src = imageUrl;
+        piece.style.aspectRatio= pieceContainer.style.width/pieceContainer.style.height;
         pw=piece.width;
         ph=piece.height;
         picdiv.style.width=pw/4+"px";
@@ -189,11 +190,13 @@ for (let i = 0; i < 4; i++) {
         ph=imageContainert.height/4;
         piz.style.top=" "+(i*ph)+"px";
         piz.style.left=" "+(j*pw)+"px";
+        piz.style.borderWidth="thin";
         piz.style.backgroundColor="#ff0000";
         piz.style.borderColor="#000000";
         piz.style.opacity="0.6";
         piz.style.position="absolute";
         piz.innerText= piz.id;
+        piz.style.color="#ff0000";
         piz.addEventListener('ondragover', allowDrop);
         piz.addEventListener('ondrop', drop);
         //ondrop="drop(event)" ondragover="allowDrop(event)"
