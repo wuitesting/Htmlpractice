@@ -126,12 +126,14 @@
         piece.classList.add('puzzle-piece');
         piece.src = imageUrl;
         piece.style.aspectRatio= pieceContainer.style.width/pieceContainer.style.height;
-        ar= pieceContainer.style.width/pieceContainer.style.height;
+
         pw=piece.width;
         ph=piece.height;
-        picdiv.style.width=pw/4+"px";
-        picdiv.style.aspectRatio=ar;
-        picdiv.style.height= ph/4+"px";
+        arw= pieceContainer.style.width/pw;
+        arh= pieceContainer.style.height/ph;
+        picdiv.style.width=(arw*pw)/4+"px";
+        //picdiv.style.aspectRatio=ar;
+        picdiv.style.height= (arh*ph)/4+"px";
         inpicdiv.style.width = picdiv.style.width;
         inpicdiv.style.height =  picdiv.style.height;
         inpicdiv.innerText= picdiv.id;
