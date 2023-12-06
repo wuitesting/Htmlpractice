@@ -104,6 +104,7 @@
               pieceContainer.style.width = ( document.getElementById('img1').width)+"px";
     var pw,ph;
     var arrpicdiv=[];
+    var jarrpicdiv=[];
     var suffledarr=[];
     pieceContainer.innerHtml=" ";
     for (let i = 0; i < 4; i++) {
@@ -156,8 +157,9 @@
         
         picdiv.addEventListener('dragstart', drag);
         //pieceContainer.appendChild(picdiv);
-        arrpicdiv[i][j]=picdiv;
+        jarrpicdiv[j]=picdiv;
        }
+       arrpicdiv[i]=jarrpicdiv[j];
       }
        suffledarr=shuffle([arrpicdiv[0],arrpicdiv[1],arrpicdiv[2],arrpicdiv[3]]);
       // for (let k = suffledarr.length - 1; k > 0; k--) {
