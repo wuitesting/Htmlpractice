@@ -124,8 +124,11 @@
         }
         function removeChild(eid)
         {
-            eid.foreach((eid.childNode)=>
-            {  eid.removeChildNode();}
+            let i=0;
+            eid.childNode.foreach((chnode)=>
+            {  eid.childNode[i].removeChildNode();
+                i++;
+            }
             
         }
 
