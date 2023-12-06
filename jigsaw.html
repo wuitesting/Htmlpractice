@@ -130,7 +130,7 @@
 
         pw=parseFloat(piece.style.width);
         ph=parseFloat(piece.style.height);
-        alert(" P"+piece.width+"PC"+ pieceContainer.style.width);
+       // alert(" P"+piece.width+"PC"+ pieceContainer.style.width);
         arw=1; pieceContainer.style.width/pw;
         arh=1; pieceContainer.style.height/ph;
         picdiv.style.width=(arw*pw)/4+"px";
@@ -142,8 +142,8 @@
         inpicdiv.style.top="0px";
         inpicdiv.style.left="0px";
         //piece.style.objectPosition = `${(-j+1) * 25}% -${(-i+1) * 25}%`; // Adjust as needed
-        piece.clipPath=" "+(1*i*ph/4)+"px "+((j+1)*pw/4)+"px "+((i+1)*ph/4)+"px "+(j*pw/4)+"px ";
-       //piece.style.margin=" "+-1*(i*ph/4)+"px 0px 0px "+-1*(j*pw/4)+"px ";
+        piece.style.clipPath="inset("+(1*i*ph/4)+"px "+((j+1)*pw/4)+"px "+((i+1)*ph/4)+"px "+(j*pw/4)+"px);";
+       //piece.style.margin=" "+-1*(i*ph/4)+"px 0px 0px "+-1*(j*pw/4)+"px ";//works
         piece.id = `imgpiece-${i}-${j}`;
        
        inpicdiv.draggable = true;
