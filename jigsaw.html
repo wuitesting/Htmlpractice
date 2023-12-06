@@ -108,6 +108,7 @@
     var suffledarr=[];
     pieceContainer.innerHtml=" ";
     for ( i = 0; i < 4; i++) {
+      arrpicdiv[i]=[];
       for ( j = 0; j < 4; j++) {
         const picdiv = document.createElement('div');              
            picdiv.id = `picdivpiece-${i}-${j}`;
@@ -158,9 +159,10 @@
         picdiv.addEventListener('dragstart', drag);
         //pieceContainer.appendChild(picdiv);
         jarrpicdiv[j]=picdiv;
+        arrpicdiv[i][j]=picdiv;
         if(j==3)
-        {arrpicdiv[i]=[];
-          arrpicdiv[i]=jarrpicdiv;//[0].concat(jarrpicdiv[1],jarrpicdiv[2],jarrpicdiv[3]);}
+        {//arrpicdiv[i]=[];
+          //arrpicdiv[i]=jarrpicdiv;//[0].concat(jarrpicdiv[1],jarrpicdiv[2],jarrpicdiv[3]);}
        }}
        //arrpicdiv[i]=jarrpicdiv;
       }
