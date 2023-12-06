@@ -102,13 +102,13 @@
     const pieceContainer = document.getElementById('piece-container');
               pieceContainer.style.height= (document.getElementById('img1').height)+"px";
               pieceContainer.style.width = ( document.getElementById('img1').width)+"px";
-    var pw,ph;
+    var pw,ph,i,j;
     var arrpicdiv=[];
     var jarrpicdiv=[];
     var suffledarr=[];
     pieceContainer.innerHtml=" ";
-    for (let i = 0; i < 4; i++) {
-      for (let j = 0; j < 4; j++) {
+    for ( i = 0; i < 4; i++) {
+      for ( j = 0; j < 4; j++) {
         const picdiv = document.createElement('div');              
            picdiv.id = `picdivpiece-${i}-${j}`;
            picdiv.style.overflow="hidden";
