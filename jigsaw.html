@@ -113,10 +113,11 @@
            picdiv.style.overflow="hidden";
            picdiv.style.position="relative";
            picdiv.style.display="inline-block";
-        const inpicdiv = document.createElement('div');
+           picdiv.style.border="thick solid #000000";
+           const inpicdiv = document.createElement('div');
            inpicdiv.classList.add('puzzle-piece');  
            inpicdiv.style.backgroundColor= "#0000ff";
-           inpicdiv.style.borderWidth="thin";
+           inpicdiv.style.border="thick solid #000000";//Width="thin";
            inpicdiv.style.color="#0000ff";
            inpicdiv.style.opacity=0.5;  
            inpicdiv.style.position="absolute"; 
@@ -196,8 +197,8 @@ for (let i = 0; i < 4; i++) {
         ph=imageContainert.height/4;
         piz.style.top=" "+(i*ph)+"px";
         piz.style.left=" "+(j*pw)+"px";
-        piz.style.borderColor="#000000";
-        piz.style.borderWidth="thick";
+        piz.style.border="thick solid #000000";//Color="#000000";
+        //piz.style.borderWidth="thick";
         piz.style.backgroundColor="#ff0000";
 
         piz.style.opacity="0.6";
