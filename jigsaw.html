@@ -127,10 +127,11 @@
            inpicdiv.id = `piece-${i}-${j}`;
         const piece = document.createElement('img');
         piece.classList.add('puzzle-piece');
+                piece.src = imageUrl;
         piece.style.width=pieceContainer.style.width;
         piece.style.height=pieceContainer.style.height;
       //  piece.style.aspectRatio= pieceContainer.style.width/pieceContainer.style.height;
-        piece.src = imageUrl;
+
         pw=piece.width;
         ph=piece.height;
         alert(" P"+piece.width+"PC"+ pieceContainer.style.width);
