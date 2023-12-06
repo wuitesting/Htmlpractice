@@ -113,20 +113,23 @@
     for (let i = 0; i < 4; i++) {
       for (let j = 0; j < 4; j++) {
         const picdiv = document.createElement('div');              
-        picdiv.id = `picdivpiece-${i}-${j}`;
-        picdiv.style.overflow="hidden";
-        picdiv.style.position="relative";
-        picdiv.style.display="inline-block";
+           picdiv.id = `picdivpiece-${i}-${j}`;
+           picdiv.style.overflow="hidden";
+           picdiv.style.position="relative";
+           picdiv.style.display="inline-block";
         const inpicdiv = document.createElement('div');
+           inpicdiv.classList.add('puzzle-piece');  
            inpicdiv.style.backgroundColor= "#0000ff";
+           inpicdiv.style.borderWidth="thin";
+           inpicdiv.style.color="#0000ff";
            inpicdiv.style.opacity=0.5;  
            inpicdiv.style.position="absolute"; 
-        inpicdiv.id = `piece-${i}-${j}`;
+           inpicdiv.id = `piece-${i}-${j}`;
         const piece = document.createElement('img');
         piece.classList.add('puzzle-piece');
-        piece.src = imageUrl;
-        piece.style.aspectRatio= pieceContainer.style.width/pieceContainer.style.height;
 
+        piece.style.aspectRatio= pieceContainer.style.width/pieceContainer.style.height;
+        piece.src = imageUrl;
         pw=piece.width;
         ph=piece.height;
         arw=1;// pieceContainer.style.width/pw;
