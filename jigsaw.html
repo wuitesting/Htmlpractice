@@ -103,7 +103,7 @@
               pieceContainer.style.height= (document.getElementById('img1').height)+"px";
               pieceContainer.style.width = ( document.getElementById('img1').width)+"px";
     var pw,ph;
-    var arrpicdiv=[];
+    var arrpicdiv=[][];
     var suffledarr=[];
     pieceContainer.innerHtml=" ";
     for (let i = 0; i < 4; i++) {
@@ -113,7 +113,7 @@
            picdiv.style.overflow="hidden";
            picdiv.style.position="relative";
            picdiv.style.display="inline-block";
-           picdiv.style.border="thick solid #000000";
+           //picdiv.style.border="thick solid #000000";
            const inpicdiv = document.createElement('div');
            inpicdiv.classList.add('puzzle-piece');  
            inpicdiv.style.backgroundColor= "#0000ff";
@@ -156,9 +156,10 @@
         
         picdiv.addEventListener('dragstart', drag);
         //pieceContainer.appendChild(picdiv);
-        arrpicdiv[j]=picdiv;
+        arrpicdiv[i][j]=picdiv;
        }
-       suffledarr=shuffle(arrpicdiv);
+      }
+       suffledarr=shuffle([arrpicdiv[0],arrpicdiv[1],arrpicdiv[2],arrpicdiv[3]]);
       // for (let k = suffledarr.length - 1; k > 0; k--) {
         
         //pieceContainer.innerHtml+=suffledarr[k];
