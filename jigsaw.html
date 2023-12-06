@@ -128,11 +128,11 @@
         piece.style.height=pieceContainer.style.height;
       //  piece.style.aspectRatio= pieceContainer.style.width/pieceContainer.style.height;
 
-        pw=piece.style.width;
-        ph=piece.style.height;
+        pw=parseFloat(piece.style.width);
+        ph=parseFloat(piece.style.height);
         alert(" P"+piece.width+"PC"+ pieceContainer.style.width);
-        arw= pieceContainer.style.width/pw;
-        arh= pieceContainer.style.height/ph;
+        arw=1; pieceContainer.style.width/pw;
+        arh=1; pieceContainer.style.height/ph;
         picdiv.style.width=(arw*pw)/4+"px";
         //picdiv.style.aspectRatio=ar;
         picdiv.style.height= (arh*ph)/4+"px";
