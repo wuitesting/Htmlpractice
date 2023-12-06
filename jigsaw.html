@@ -127,8 +127,9 @@
            inpicdiv.id = `piece-${i}-${j}`;
         const piece = document.createElement('img');
         piece.classList.add('puzzle-piece');
-
-        piece.style.aspectRatio= pieceContainer.style.width/pieceContainer.style.height;
+        piece.style.width=pieceContainer.style.width;
+        piece.style.height=pieceContainer.style.height;
+      //  piece.style.aspectRatio= pieceContainer.style.width/pieceContainer.style.height;
         piece.src = imageUrl;
         pw=piece.width;
         ph=piece.height;
@@ -157,7 +158,7 @@
         picdiv.addEventListener('dragstart', drag);
         //pieceContainer.appendChild(picdiv);
         arrpicdiv[j]=picdiv;
-      }
+       }
        suffledarr=shuffle(arrpicdiv);
       // for (let k = suffledarr.length - 1; k > 0; k--) {
         
