@@ -158,8 +158,10 @@
         picdiv.addEventListener('dragstart', drag);
         //pieceContainer.appendChild(picdiv);
         jarrpicdiv[j]=picdiv;
+        if(j==3)
+        {arrpicdiv[i]=jarrpicdiv;}
        }
-       arrpicdiv[i]=jarrpicdiv;
+       //arrpicdiv[i]=jarrpicdiv;
       }
        suffledarr=shuffle(arrpicdiv[0].concat(arrpicdiv[1],arrpicdiv[2],arrpicdiv[3]));
       // for (let k = suffledarr.length - 1; k > 0; k--) {
