@@ -14,7 +14,7 @@
       z-index: -1;
     }
     #img1 {
-      width: 49%;
+      width: 50%;
       height: auto;
     }
     .image-container {
@@ -128,12 +128,14 @@
         const piece = document.createElement('img');
         piece.classList.add('puzzle-piece');
                 piece.src = imageUrl;
-        piece.style.width=pieceContainer.style.width;
-        piece.style.height=pieceContainer.style.height;
+        pw=parseFloat(pieceContainer.style.width)-1;
+        ph=parseFloat(pieceContainer.style.height);
+        piece.style.width=pw+"px";//pieceContainer.style.width;
+        piece.style.height=ph+"px";//pieceContainer.style.height;
       //  piece.style.aspectRatio= pieceContainer.style.width/pieceContainer.style.height;
 
-        pw=parseFloat(piece.style.width);
-        ph=parseFloat(piece.style.height);
+
+
        // alert(" P"+piece.width+"PC"+ pieceContainer.style.width);
         arw=1; // pieceContainer.style.width/pw;
         arh=1; // pieceContainer.style.height/ph;
