@@ -60,7 +60,7 @@
   <img id="img1" src="assets/pic_trulli.jpg" ondrop="drop(event)" ondragover="allowDrop(event)">
 </div>
   <div>after image con</div>
-  <div id="piece-container" style="display:inline-block;">
+  <div id="piece-container" style="display:inline-grid;">
 </div> 
 <div>END</div>
 <script>
@@ -102,7 +102,7 @@
   function createJigsawPuzzle(imageUrl) {
     const pieceContainer = document.getElementById('piece-container');
               pieceContainer.style.height= (document.getElementById('img1').height)+"px";
-              pieceContainer.style.width = ( document.getElementById('img1').width)+"px";
+              pieceContainer.style.width = ( document.getElementById('img1').width+1)+"px";
     var pw,ph,i,j;
     var arrpicdiv=[];
     var jarrpicdiv=[];
