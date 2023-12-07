@@ -281,7 +281,7 @@ function checkMatches() {
 
       //if (jewel1.classList[1] === jewel2.classList[1] && jewel2.classList[1] === jewel3.classList[1]) {
      // if (jewel1.innerHtml === jewel2.innerHtml && jewel2.innerHtml === jewel3.innerHtml) {
-            if (jewel1.style.visibility !="hidden" && jewel2.style.visibility !="hidden" && jewel3.style.visibility !="hidden") {
+     if (jewel1.style.visibility !="hidden" && jewel2.style.visibility !="hidden" && jewel3.style.visibility !="hidden") {
       if (jewel1.parentElement.className === jewel2.parentElement.className && jewel2.parentElement.className === jewel3.parentElement.className) {
         matchingGroups.add(jewel1);
         matchingGroups.add(jewel2);
@@ -296,13 +296,14 @@ function checkMatches() {
       const jewel1 = cells[row * 8 + col];
       const jewel2 = cells[(row + 1) * 8 + col];
       const jewel3 = cells[(row + 2) * 8 + col];
+     if (jewel1.style.visibility !="hidden" && jewel2.style.visibility !="hidden" && jewel3.style.visibility !="hidden") {
       if (jewel1.parentElement.className === jewel2.parentElement.className && jewel2.parentElement.className === jewel3.parentElement.className) {
       //if (jewel1.classList[1] === jewel2.classList[1] && jewel2.classList[1] === jewel3.classList[1]) {
        // if (jewel1.innerHTML === jewel2.innerHTML && jewel2.innerHTML === jewel3.innerHTML) {
         matchingGroups.add(jewel1);
         matchingGroups.add(jewel2);
         matchingGroups.add(jewel3);
-      }
+      }}
     }
   }
 
