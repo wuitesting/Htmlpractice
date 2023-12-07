@@ -62,7 +62,7 @@
   <!--div>after image con</div-->
   <div id="piece-container" style="display:inline-block;">
 </div> 
-<div>END</div>
+<!--div>END</div-->
 <script>
   function allowDrop(event) {
     event.preventDefault();
@@ -102,7 +102,7 @@
   function createJigsawPuzzle(imageUrl) {
     const pieceContainer = document.getElementById('piece-container');
               pieceContainer.style.height= (document.getElementById('img1').height)+"px";
-              pieceContainer.style.width = ( document.getElementById('img1').width+1)+"px";
+              pieceContainer.style.width = ( document.getElementById('img1').width+4)+"px";
     var pw,ph,i,j;
     var arrpicdiv=[];
     var jarrpicdiv=[];
@@ -127,8 +127,8 @@
            inpicdiv.id = `piece-${i}-${j}`;
         const piece = document.createElement('img');
         piece.classList.add('puzzle-piece');
-                piece.src = imageUrl;
-        pw=parseFloat(pieceContainer.style.width)-1;
+        piece.src = imageUrl;
+        pw=parseFloat(pieceContainer.style.width)-4;
         ph=parseFloat(pieceContainer.style.height);
         piece.style.width=pw+"px";//pieceContainer.style.width;
         piece.style.height=ph+"px";//pieceContainer.style.height;
