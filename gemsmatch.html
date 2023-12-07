@@ -280,7 +280,8 @@ function checkMatches() {
       const jewel3 = cells[row * 8 + col + 2];
 
       //if (jewel1.classList[1] === jewel2.classList[1] && jewel2.classList[1] === jewel3.classList[1]) {
-      if (jewel1.innerHtml === jewel2.innerHtml && jewel2.innerHtml === jewel3.innerHtml) {
+     // if (jewel1.innerHtml === jewel2.innerHtml && jewel2.innerHtml === jewel3.innerHtml) {
+      if (jewel1.parentElement.className === jewel2.parentElement.className && jewel2.parentElement.className === jewel3.parentElement.className) {
         matchingGroups.add(jewel1);
         matchingGroups.add(jewel2);
         matchingGroups.add(jewel3);
