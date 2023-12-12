@@ -162,7 +162,7 @@
         //piece.style.touchAction="none";
         //piece.style.pointerEvents="none";
         piece.addEventListener("contextmenu", e => e.preventDefault());
-        //inpicdiv.addEventListener("contextmenu", e => e.preventDefault());
+        inpicdiv.addEventListener("contextmenu", e => e.preventDefault());
        inpicdiv.draggable = true;
        inpicdiv.addEventListener('dragstart', drag);
 
@@ -216,7 +216,7 @@ for (let i = 0; i < 4; i++) {
         const piz = document.createElement('div');
        // piz.classList.add('piece-container');        
         piz.id = `pizpiece-${i}-${j}`;
-        pw=(imageContainert.width/4)-1;
+        pw=(imageContainert.width/4);
         piz.style.width= pw+"px";
         ph=imageContainert.height/4;
         piz.style.height= ph+"px";
