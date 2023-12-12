@@ -73,6 +73,7 @@
   }
 
   function drag(event) {
+    event.preventDefault();
     event.dataTransfer.setData("text/plain", event.target.id);
     event.dataTransfer.effectAllowed = "move";
   }
@@ -97,8 +98,8 @@
    {
       ttdiv=document.getElementById(event.target.id);
       ttdiv.style.backgroundColor="#000000";
-     // ttdiv.innerText="";
-
+      // ttdiv.innerText="";
+      draggedPiece.style.backgroundColor="#000000";
    }
   }
 
@@ -157,7 +158,7 @@
         piece.addEventListener("contextmenu", e => e.preventDefault());
         inpicdiv.addEventListener("contextmenu", e => e.preventDefault());
        inpicdiv.draggable = true;
-        piece.draggable = true;
+       piece.draggable = true;
         //piece.addEventListener('dragstart', drag);
        
         picdiv.appendChild(piece);
