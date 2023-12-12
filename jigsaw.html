@@ -130,7 +130,7 @@
            inpicdiv.style.position="absolute"; 
            inpicdiv.id = `piece-${i}-${j}`;
         const piece = document.createElement('img');
-        piece.classList.add('puzzle-piece');
+        //piece.classList.add('puzzle-piece');
         piece.src = imageUrl;
         pw=parseFloat(pieceContainer.style.width)-18;
         ph=parseFloat(pieceContainer.style.height);
@@ -153,6 +153,7 @@
         //piece.style.clipPath="inset("+(1*i*ph/4)+"px "+((j+1)*pw/4)+"px "+((i+1)*ph/4)+"px "+(j*pw/4)+"px);";
        piece.style.margin=" "+-1*(i*ph/4)+"px 0px 0px "+-1*(j*pw/4)+"px ";//works
         piece.id = `imgpiece-${i}-${j}`;
+        piece.classList.add('puzzle-piece');
         piece.style.zIndex="-1";
         inpicdiv.style.zIndex="1";
         //piece.style.userSelect="none";
