@@ -11,7 +11,7 @@
       user-select: none;
       touch-action: none;
       filter: grayscale(100%);
-      z-index: -1;
+      z-index:-1;
     }
     #img1 {
       width: 100%;
@@ -152,12 +152,13 @@
         //piece.style.clipPath="inset("+(1*i*ph/4)+"px "+((j+1)*pw/4)+"px "+((i+1)*ph/4)+"px "+(j*pw/4)+"px);";
        piece.style.margin=" "+-1*(i*ph/4)+"px 0px 0px "+-1*(j*pw/4)+"px ";//works
         piece.id = `imgpiece-${i}-${j}`;
-       
+        piece.style.zIndex="-1";
+        piece.addEventListener("contextmenu", e => e.preventDefault());
+        inpicdiv.addEventListener("contextmenu", e => e.preventDefault());
        inpicdiv.draggable = true;
         piece.draggable = true;
         //piece.addEventListener('dragstart', drag);
-        piece.addEventListener("contextmenu", e => e.preventDefault());
-        inpicdiv.addEventListener("contextmenu", e => e.preventDefault());
+       
         picdiv.appendChild(piece);
         picdiv.appendChild(inpicdiv);
         picdiv.draggable = true;
