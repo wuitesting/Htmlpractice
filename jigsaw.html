@@ -31,6 +31,8 @@
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 10px;
+      user-select: none;
+      touch-action: none;
      /* position: relative;
       opacity: 0.5;
       width: 100px; /* Adjust the size as needed */
@@ -163,7 +165,7 @@
         //inpicdiv.addEventListener("contextmenu", e => e.preventDefault());
        inpicdiv.draggable = true;
        inpicdiv.addEventListener('dragstart', drag);
-       
+
        piece.draggable = true;
         piece.addEventListener('dragstart', drag);
        
