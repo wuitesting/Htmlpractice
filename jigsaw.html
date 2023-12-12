@@ -130,7 +130,7 @@
            inpicdiv.style.position="absolute"; 
            inpicdiv.id = `piece-${i}-${j}`;
         const piece = document.createElement('img');
-        //piece.classList.add('puzzle-piece');
+        piece.classList.add('puzzle-piece');
         piece.src = imageUrl;
         pw=parseFloat(pieceContainer.style.width)-18;
         ph=parseFloat(pieceContainer.style.height);
@@ -155,13 +155,13 @@
         piece.id = `imgpiece-${i}-${j}`;
         piece.style.zIndex="-1";
         inpicdiv.style.zIndex="1";
-        piece.style.userSelect="none";
+        //piece.style.userSelect="none";
         //piece.style.touchAction="none";
         //piece.style.pointerEvents="none";
         piece.addEventListener("contextmenu", e => e.preventDefault());
         //inpicdiv.addEventListener("contextmenu", e => e.preventDefault());
        inpicdiv.draggable = true;
-       piece.draggable = true;
+       //piece.draggable = true;
         piece.addEventListener('dragstart', drag);
        
         picdiv.appendChild(piece);
