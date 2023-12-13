@@ -220,9 +220,9 @@ for (let i = 0; i < 4; i++) {
         const piz = document.createElement('div');
        // piz.classList.add('piece-container');        
         piz.id = `pizpiece-${i}-${j}`;
-        pw=(imageContainert.width/4);
+        pw=parseFloat(imageContainert.style.width)/4;
         piz.style.width= pw+"px";
-        ph=imageContainert.height/4;
+        ph=parseFloat(imageContainert.style.height)/4;
         piz.style.height= ph+"px";
         piz.style.top=" "+(i*ph)+"px";
         piz.style.left=" "+(j*pw)+"px";
