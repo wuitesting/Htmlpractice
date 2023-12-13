@@ -161,11 +161,13 @@
         //piece.style.userSelect="none";
         //piece.style.touchAction="none";
         //piece.style.pointerEvents="none";
-        inpicdiv.addEventListener("contextmenu", e => e.preventDefault());
+
         piece.addEventListener("contextmenu", e => e.preventDefault());
-        inpicdiv.addEventListener("touchstart",drag);
-       inpicdiv.draggable = true;
-        
+
+
+         inpicdiv.addEventListener("contextmenu", e => e.preventDefault());    
+          inpicdiv.draggable = true;  
+         inpicdiv.addEventListener("touchstart",drag);       
        inpicdiv.addEventListener('dragstart', drag);
 
        //piece.draggable = true;
