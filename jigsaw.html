@@ -163,8 +163,9 @@
         //piece.style.pointerEvents="none";
         inpicdiv.addEventListener("contextmenu", e => e.preventDefault());
         piece.addEventListener("contextmenu", e => e.preventDefault());
-
+        inpicdiv.addEventListener("touchstart",drag);
        inpicdiv.draggable = true;
+        
        inpicdiv.addEventListener('dragstart', drag);
 
        //piece.draggable = true;
