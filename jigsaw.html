@@ -212,17 +212,17 @@
        imageContainer.addEventListener('ondrop', drop);
        
     const imageContainert = document.getElementById('img1');
-    imageContainer.style.width=imageContainert.style.width;
-    imageContainer.style.height=imageContainert.style.height;
+    imageContainer.style.width=imageContainert.width;
+    imageContainer.style.height=imageContainert.height;
 
 for (let i = 0; i < 4; i++) {
       for (let j = 0; j < 4; j++) {
         const piz = document.createElement('div');
        // piz.classList.add('piece-container');        
         piz.id = `pizpiece-${i}-${j}`;
-        pw=parseFloat(imageContainert.style.width)/4;
+        pw=parseFloat(imageContainert.width)/4;
         piz.style.width= pw+"px";
-        ph=parseFloat(imageContainert.style.height)/4;
+        ph=parseFloat(imageContainert.height)/4;
         piz.style.height= ph+"px";
         piz.style.top=" "+(i*ph)+"px";
         piz.style.left=" "+(j*pw)+"px";
