@@ -162,11 +162,12 @@
         piece.style.userSelect="none";
         piece.style.touchAction="none";
         //piece.style.pointerEvents="none";
-       inpicdiv.addEventListener("contextmenu", e => e.preventDefault());    
-       inpicdiv.draggable = true;  
-       inpicdiv.addEventListener("touchstart",drag);       
-       inpicdiv.addEventListener('dragstart', drag);
 
+       inpicdiv.draggable = true;  
+       inpicdiv.addEventListener("touchstart",drag); 
+       inpicdiv.addEventListener("touchmove",drag);       
+       inpicdiv.addEventListener('dragstart', drag);
+       inpicdiv.addEventListener("contextmenu", e => e.preventDefault());    
        //piece.draggable = true;
        // piece.addEventListener('dragstart', drag);
        
