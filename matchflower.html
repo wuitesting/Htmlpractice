@@ -79,10 +79,11 @@
 
         function createimages()
           { 
+              int j;
           /*    for (int i=0;i<2;i++)
             {
               images[i]=[];*/
-              for (int j=0;j<30;j++)
+              for (j=0;j<30;j++)
               images[j]="assets/"+(j+1)+".png";
 
           //  }
@@ -153,6 +154,7 @@
             const gameBoard = document.getElementById('game-board');
           removeChild(gameBoard);
            // gameBoard.innerHtml=' ';
+            createimages();
           for(j=0;j<2;j++)
             {
             shuffledImages= shuffle(images);
