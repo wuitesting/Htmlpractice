@@ -152,7 +152,8 @@
             //shuffledImages = images;
           
             const gameBoard = document.getElementById('game-board');
-          removeChild(gameBoard);
+            if(gameBoard.hasChildNodes() )
+               removeChild(gameBoard);
            // gameBoard.innerHtml=' ';
             createimages();
           for(j=0;j<2;j++)
