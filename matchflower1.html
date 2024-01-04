@@ -166,9 +166,14 @@ alert("Color 1:", selectedColor1);
             //shuffledImages = images;
           
             const gameBoard; //= document.getElementById('game-board');
-            if(gameBoard.hasChildNodes() )
-               removeChild(gameBoard);
+            const gameBoard1= document.getElementById('game-board1');   
+            const gameBoard2= document.getElementById('game-board2');                        
+            if(gameBoard1.hasChildNodes() )
+               removeChild(gameBoard1);
            // gameBoard.innerHtml=' ';
+          if(gameBoard2.hasChildNodes() )
+               removeChild(gameBoard2); 
+            
             createimages();
           for(j=0;j<2;j++)
             {
