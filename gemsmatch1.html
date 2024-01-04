@@ -1,0 +1,330 @@
+// gemsmatch1
+Jemstone match
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Jewel Matching Game</title>
+  <style>
+    /* Add your CSS styles for the game board here */
+    .board {
+      display: grid;
+      grid-template-columns: repeat(8, 100px);
+      grid-template-rows: repeat(8, 100px);
+      gap: 5px;
+      width: 840px;
+      height: 840px;
+    }
+
+    .cell {
+      width: 100px;
+      height: 100px;
+      border: 1px solid #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      opacity: 0.5;
+      /*color:#ffffff;*/
+    }
+
+    .diamo {
+      width: 100px;
+      height: 100px;
+      border: 1px solid #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      background-image: url("assets/diamo.png");
+      background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+    }
+    .emera {
+      width: 100px;
+      height: 100px;
+      border: 1px solid #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      background-image: url("assets/emera.png");
+      background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+    }
+    .ruby {
+      width: 100px;
+      height: 100px;
+      border: 1px solid #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      background-image: url("assets/ruby.png");
+      background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+    }
+    .sapph {
+      width: 100px;
+      height: 100px;
+      border: 1px solid #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      background-image: url("assets/sapph.png");
+      background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+    }
+    .ameth {
+      width: 100px;
+      height: 100px;
+      border: 1px solid #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      background-image: url("assets/ameth.png");
+      background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+    }
+    .topaz {
+      width: 100px;
+      height: 100px;
+      border: 1px solid #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      background-image: url("assets/topaz.png");
+      background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+    }
+    .pearl {
+      width: 100px;
+      height: 100px;
+      border: 1px solid #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      background-image: url("assets/pearl.png");
+      background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+    }
+    .jade {
+      width: 100px;
+      height: 100px;
+      border: 1px solid #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      background-image: url("assets/jade.png");
+      background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+    }
+    .garn {
+      width: 100px;
+      height: 100px;
+      border: 1px solid #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      background-image: url("assets/garn.png");
+      background-position: center;
+      background-repeat: no-repeat;
+    background-size: cover;
+    }
+    .aquam {
+     width: 100px;
+      height: 100px;
+      border: 1px solid #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      background-image: url("assets/aquam.png");
+      background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+    }
+.page{
+    background-color: rgb(0, 0, 0);
+}
+  </style>
+</head>
+<body class="page">
+  <h1>Jewel Matching Game</h1>
+  <button onclick="shuffleBoard()">Shuffle Board</button>
+
+  <div class="board" id="gameBoard"></div>
+
+  <script>
+    // Define the types of jewels
+    //const jewelTypes = ['diamond', 'emerald', 'ruby', 'sapphire', 'amethyst', 'topaz', 'opal', 'pearl', 'jade', 'garnet', 'peridot', 'aquamarine'];
+    //const jewelTypes = ['diamo', 'emera', 'ruby', 'sapph', 'ameth', 'topaz', 'opal', 'pearl', 'jade', 'garn', 'peri', 'aquam'];
+    const jewelTypes = ['diamo', 'emera', 'ruby', 'sapph', 'ameth', 'topaz', 'pearl', 'jade', 'garn', 'aquam'];
+    colorInput1="#0000ff";
+    colorInput2="#ff0000";
+    // Create a 6x6 game board filled with random jewels
+    const gameBoard = document.getElementById('gameBoard');
+    function createGameBoard() {
+      gameBoard.innerHTML = '';
+       
+      for (let row = 0; row < 8; row++) {
+        for (let col = 0; col < 8; col++) {
+
+          i=Math.floor(Math.random()*jewelTypes.length);
+          const randomJewel = jewelTypes[i];
+         // imageUrl="assets/"+randomJewel+".png";
+          //i=Math.floor(Math.random()*jewelTypes.length);
+          const cell = document.createElement('div');
+          cell.className = randomJewel;
+        // cell.style.backgroundImage = `url(${imageUrl})`;
+         //cell.innerText= randomJewel;
+         // cell.style.color=colorInput1;
+          cell.dataset.row = row;
+          cell.dataset.col = col;
+         // cell.dataset.innerText=randomJewel;
+          //cell.innerHTML=" "+randomJewel;
+          //cell.innerHTML="<img src= assets/"+randomJewel+".png";
+          cell.onclick = () => selectJewel(cell);
+          indiv= document.createElement('div');
+                indiv.className= 'cell';
+                indiv.style.position="relative";
+                indiv.style.margin=0;
+                indiv.style.opacity= 0.8;
+                indiv.innerText=randomJewel;
+                if(i%2==0)
+                {
+                   // indiv.style.backgroundColor="#0000ff";
+                    indiv.style.backgroundColor=colorInput1;
+                    indiv.style.color=colorInput1;
+                    
+                }
+                else
+                {
+                    //indiv.style.backgroundColor="#ff0000";
+                    indiv.style.backgroundColor=colorInput2;
+                    indiv.style.color=colorInput2;
+                    //i=1;
+                }
+               // i++;
+
+            cell.appendChild(indiv);
+          gameBoard.appendChild(cell);
+        }
+      }
+    }
+    createGameBoard();
+
+    // Select a jewel
+    let selectedJewel = null;
+    function selectJewel(cell) {
+      if (selectedJewel) {
+        if (cell !== selectedJewel) {
+          swapJewels(cell, selectedJewel);
+          selectedJewel = null;
+        }
+      } else {
+        selectedJewel = cell;
+      }
+    }
+
+    // Swap two jewels
+    function swapJewels(cell1, cell2) {
+     const tempClass = cell1.className;
+     const tempHtml = cell1.innerHTML;
+     const tempNode = cell1.nodeValue;
+    //  const tempurl = (cell1.parentElement).style.backgroundImage;
+     //cell1.parentElement.className = cell2.parentElement.className;
+     //(cell1.parentElement).style.backgroundImage=(cell2.parentElement).style.backgroundImage;
+     
+      cell1.innerHTML = cell2.innerHTML;
+      cell1.nodeValue = cell2.nodeValue;
+      cell1.className = cell2.className;
+      cell2.className = tempClass;
+      
+     // (cell2.parentElement).style.backgroundImage=tempurl;
+      cell2.innerHTML = tempHtml;
+      cell2.nodeValue = tempNode;
+      //cell2.parentElement.style.backgroundImage=tempurl;
+//alert((cell2.className).toString()+" "+cell1.innerText);
+      selectedJewel = null;
+      checkMatches();
+    }
+
+   //Check matches
+
+// Check for matching groups
+function checkMatches() {
+  const cells = document.querySelectorAll('.cell');
+  const matchingGroups = new Set();
+
+  // Check horizontally
+  for (let row = 0; row < 8; row++) {
+    for (let col = 0; col < 6; col++) {
+      const jewel1 = cells[row * 8 + col];
+      const jewel2 = cells[row * 8 + col + 1];
+      const jewel3 = cells[row * 8 + col + 2];
+
+      //if (jewel1.classList[1] === jewel2.classList[1] && jewel2.classList[1] === jewel3.classList[1]) {
+     // if (jewel1.innerHtml === jewel2.innerHtml && jewel2.innerHtml === jewel3.innerHtml) {
+     if (jewel1.style.visibility !="hidden" && jewel2.style.visibility !="hidden" && jewel3.style.visibility !="hidden") {
+      if (jewel1.parentElement.className === jewel2.parentElement.className && jewel2.parentElement.className === jewel3.parentElement.className) {
+        matchingGroups.add(jewel1);
+        matchingGroups.add(jewel2);
+        matchingGroups.add(jewel3);
+      }}
+    }
+  }
+
+  // Check vertically
+  for (let col = 0; col < 8; col++) {
+    for (let row = 0; row < 6; row++) {
+      const jewel1 = cells[row * 8 + col];
+      const jewel2 = cells[(row + 1) * 8 + col];
+      const jewel3 = cells[(row + 2) * 8 + col];
+     if (jewel1.style.visibility !="hidden" && jewel2.style.visibility !="hidden" && jewel3.style.visibility !="hidden") {
+      if (jewel1.parentElement.className === jewel2.parentElement.className && jewel2.parentElement.className === jewel3.parentElement.className) {
+      //if (jewel1.classList[1] === jewel2.classList[1] && jewel2.classList[1] === jewel3.classList[1]) {
+       // if (jewel1.innerHTML === jewel2.innerHTML && jewel2.innerHTML === jewel3.innerHTML) {
+        matchingGroups.add(jewel1);
+        matchingGroups.add(jewel2);
+        matchingGroups.add(jewel3);
+      }}
+    }
+  }
+
+  // Remove matching jewels
+  matchingGroups.forEach((jewel) => {
+   // jewel.className = 'cell';
+   //jewel.nodeValue = " ";
+   jewel.innerHTML = " ";
+   jewel.style.visibility ="hidden";
+  jewel.parentElement.style.visibility = "hidden";
+   alert((jewel.parentElement.className).toString()+":: "+jewel.innerText);
+  });
+
+  // Implement replacing removed jewels with new ones and scoring logic
+}
+
+
+    // Shuffle the game board
+    function shuffleBoard() {
+      createGameBoard();
+    }
+  </script>
+</body>
+</html>
