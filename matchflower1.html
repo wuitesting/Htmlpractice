@@ -172,7 +172,10 @@ alert("Color 1:", selectedColor1);
             createimages();
           for(j=0;j<2;j++)
             {
-            gameBoard = document.getElementById("game-board"+(j+1));
+                if(j==0)
+            gameBoard = document.getElementById('game-board1');
+                else
+            gameBoard = document.getElementById('game-board2');
             shuffledImages= shuffle(images);
             shuffledImages.forEach((image) => {
            /* for(j=0;j<shuffledImages.length;j++){
