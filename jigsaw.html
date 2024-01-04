@@ -18,8 +18,8 @@
       height: auto;
     }
     .image-container {
-      /*display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      display: inline-grid;
+      /*grid-template-columns: repeat(2, 1fr);
       //gap: 5px;*/
       position: relative;
       /*background-image: url("assets/pic_trulli.jpg");
@@ -30,7 +30,8 @@
     .container {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
+      gap: 1
+        px;
       user-select: none;
       touch-action: none;
      /* position: relative;
@@ -156,7 +157,7 @@
        piece.style.margin=" "+-1*(i*ph/4)+"px 0px 0px "+-1*(j*pw/4)+"px ";//works
         piece.id = `imgpiece-${i}-${j}`;
         piece.classList.add('puzzle-piece');
-        piece.addEventListener("contextmenu", e => e.preventDefault());
+   //     piece.addEventListener("contextmenu", e => e.preventDefault());
         piece.style.zIndex="-1";
         inpicdiv.style.zIndex="0";
         piece.style.userSelect="none";
@@ -170,7 +171,7 @@
        inpicdiv.addEventListener("contextmenu", e => e.preventDefault());    
        //piece.draggable = true;
        piece.addEventListener('touchstart', e => e.preventDefault());
-       
+        piece.addEventListener("contextmenu", e => e.preventDefault());       
         picdiv.appendChild(piece);
         picdiv.appendChild(inpicdiv);
         //picdiv.draggable = true;
@@ -210,17 +211,17 @@
        imageContainer.addEventListener('ondrop', drop);
        
     const imageContainert = document.getElementById('img1');
-    imageContainer.style.width=imageContainert.width;
-    imageContainer.style.height=imageContainert.height;
+    imageContainer.style.width=imageContainert.clientWidth;
+    imageContainer.style.height=imageContainert.clientHeight;
 
 for (let i = 0; i < 4; i++) {
       for (let j = 0; j < 4; j++) {
         const piz = document.createElement('div');
        // piz.classList.add('piece-container');        
         piz.id = `pizpiece-${i}-${j}`;
-        pw=parseFloat(imageContainert.clientWidth)/4;
+        pw=parseFloat(imageContainert.clientWidth)/4-2;
         piz.style.width= pw+"px";
-        ph=parseFloat(imageContainert.clientHeight)/4;
+        ph=parseFloat(imageContainert.clientHeight)/4-2;
         piz.style.height= ph+"px";
         piz.style.top=" "+(i*ph)+"px";
         piz.style.left=" "+(j*pw)+"px";
