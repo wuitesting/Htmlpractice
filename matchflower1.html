@@ -17,9 +17,18 @@
 
         .board{
             display : grid;
-            grid-template-columns: auto auto auto auto auto auto auto auto auto auto;
+            margin : 0;
+            grid-template-columns: auto auto ;
+            /*auto auto auto auto auto auto auto auto;*/
             height : 99vh;
-            background-color: #37353A;
+            background-color: #999898;
+        }
+        .inboard{
+            display : grid;
+            grid-template-columns: auto auto auto auto auto ;/*auto auto auto auto auto;*/
+          /*  height : 99vh;*/
+            margin : 0;
+            background-color: #999800;
         }
     </style>
 </head>
@@ -156,13 +165,14 @@ alert("Color 1:", selectedColor1);
             var indiv;
             //shuffledImages = images;
           
-            const gameBoard = document.getElementById('game-board');
+            const gameBoard; //= document.getElementById('game-board');
             if(gameBoard.hasChildNodes() )
                removeChild(gameBoard);
            // gameBoard.innerHtml=' ';
             createimages();
           for(j=0;j<2;j++)
             {
+            gameBoard = document.getElementById("game-board"+(j+1));
             shuffledImages= shuffle(images);
             shuffledImages.forEach((image) => {
            /* for(j=0;j<shuffledImages.length;j++){
@@ -176,7 +186,7 @@ alert("Color 1:", selectedColor1);
                 
                 image=shuffledImages[i];
                 ival=ival+i;
-                    shuffledImages[i]='';*/
+                shuffledImages[i]='';*/
                 const card = createCard(image);
                 indiv= document.createElement('div');
                 indiv.classList.add('card');
@@ -206,6 +216,9 @@ alert("Color 1:", selectedColor1);
       //  initializeGame();
     </script>
 
-<div id="game-board" class="board"></div>
+<div id="game-boardx" class="board">
+    <div id="game-board1" class="inboard"></div>
+    <div id="game-board2" class="inboard"></div>
+</div>
 </body>
 </html>
