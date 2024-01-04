@@ -76,6 +76,7 @@
 
   function drag(event) {
     //event.preventDefault();
+    event.stopPropagation();
     event.dataTransfer.setData("text/plain", event.target.id);
     event.dataTransfer.effectAllowed = "move";
   }
@@ -164,10 +165,10 @@
         //piece.style.pointerEvents="none";
 
        inpicdiv.draggable = true;  
-       inpicdiv.addEventListener("touchstart",drag); 
-       inpicdiv.addEventListener("touchmove",drag);       
+       inpicdiv.addEventListener('touchstart',drag); 
+       inpicdiv.addEventListener('touchmove',drag);       
        inpicdiv.addEventListener('dragstart', drag);
-       inpicdiv.addEventListener("contextmenu", (e) =>
+       inpicdiv.addEventListener('contextmenu', (e) =>
          {
            e.stopPropagation()
            e.preventDefault()
@@ -175,7 +176,7 @@
       );    
        //piece.draggable = true;
        piece.addEventListener('touchstart', e => e.preventDefault());
-        piece.addEventListener("contextmenu", e => e.preventDefault());       
+        piece.addEventListener('contextmenu', e => e.preventDefault());       
         picdiv.appendChild(piece);
         picdiv.appendChild(inpicdiv);
         //picdiv.draggable = true;
