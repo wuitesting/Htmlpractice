@@ -1,0 +1,259 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Draggable Jigsaw Puzzle</title>
+  <style>
+    img{
+      user-select: none;
+      touch-action: none;
+      filter: grayscale(100%);
+      z-index:-1;
+    }
+    #img1 {
+      width: 100%;
+      height: auto;
+    }
+    .image-container {
+      display: inline-grid;
+      /*grid-template-columns: repeat(2, 1fr);
+      //gap: 5px;*/
+      position: relative;
+      /*background-image: url("assets/pic_trulli.jpg");
+      /*opacity: 0.5;*/
+      width: 100%;/*400px;  Adjust the size as needed */
+      height: auto;/*400px;  Adjust the size as needed */
+    }
+    .container {
+      display: grid;
+      grid-template-rows: repeat(2, 1fr);
+      gap: 1px;
+      user-select: none;
+      touch-action: none;
+     /* position: relative;
+      opacity: 0.5;
+      width: 100px; /* Adjust the size as needed */
+   /*   height: 100px; /* Adjust the size as needed */
+    }
+
+    .puzzle-piece {
+      /*width: 25%;
+      height: 25%;
+      object-fit: none;*/
+      /*position: relative;*/
+     /*user-drag: none;*/
+      user-select: none;
+     /* touch-action: none;
+      /*background-color: #0000ff;
+      border-color: #000000;
+      border-width: thin;*/
+    }
+    .piece-container {
+    /*  background-color: #ff0000;
+      border-color: #000000;
+     
+      opacity: 0.5;*/
+     display: inline-grid;
+    }
+  </style>
+</head>
+<body class="container">
+  <!--div>b4 image con</div--> 
+<div id="image-container"  class="image-container" ondrop="drop(event)" ondragover="allowDrop(event)"> 
+  <img id="img1" src="assets/pic_trulli.jpg" ondrop="drop(event)" ondragover="allowDrop(event)">
+</div>
+  <!--div>after image con</div-->
+  <div id="piece-container" style="display:inline-block;">
+</div> 
+<!--div>END</div-->
+<script>
+  function allowDrop(event) {
+    event.preventDefault();
+    event.dataTransfer.dropEffect = "move";
+  }
+
+  function drag(event) {
+    //event.preventDefault();
+    event.stopPropagation();
+    event.dataTransfer.setData("text/plain", event.target.id);
+    event.dataTransfer.effectAllowed = "move";
+  }
+
+  function drop(event) {
+    event.preventDefault();
+    const data = event.dataTransfer.getData("text/plain");
+     const draggedPiece = document.getElementById(data);
+    /*const puzzleContainer = document.getElementById('puzzle-container');
+    const puzzleContainerRect = puzzleContainer.getBoundingClientRect();
+
+    const offsetX = event.clientX - puzzleContainerRect.left;
+    const offsetY = event.clientY - puzzleContainerRect.top;
+
+    draggedPiece.style.left = `${offsetX - draggedPiece.width / 2}px`;
+    draggedPiece.style.top = `${offsetY - draggedPiece.height / 2}px`;
+    */
+   // puzzleContainer.appendChild(draggedPiece);
+ //  alert(data);
+   tdiv=event.target.id+" ";
+   if(tdiv.includes(data))
+   {
+      ttdiv=document.getElementById(event.target.id);
+      ttdiv.style.backgroundColor="#000000";
+      // ttdiv.innerText="";
+      draggedPiece.style.backgroundColor="#000000";
+   }
+  }
+
+  function createJigsawPuzzle(imageUrl) {
+    const pieceContainer = document.getElementById('piece-container');
+              pieceContainer.style.height= (document.getElementById('img1').height)+"px";
+              pieceContainer.style.width = ( document.getElementById('img1').width+16)+"px";
+    var pw,ph,i,j;
+    var arrpicdiv=[];
+    var jarrpicdiv=[];
+    var suffledarr=[];
+    pieceContainer.innerHtml=" ";
+    for ( i = 0; i < 4; i++) {
+      arrpicdiv[i]=[];
+      for ( j = 0; j < 4; j++) {
+        const picdiv = document.createElement('div');              
+           picdiv.id = `picdivpiece-${i}-${j}`;
+           picdiv.style.overflow="hidden";
+           picdiv.style.position="relative";
+           picdiv.style.display="inline-block";
+           picdiv.style.border="thin solid #000000";
+           const inpicdiv = document.createElement('div');
+           inpicdiv.classList.add('puzzle-piece');  
+           inpicdiv.style.backgroundColor= "#0000ff";
+           //inpicdiv.style.border="thin solid #000000";//Width="thin";
+           inpicdiv.style.color="#0000ff";
+           inpicdiv.style.opacity=0.5;  
+           inpicdiv.style.position="absolute"; 
+           inpicdiv.id = `piece-${i}-${j}`;
+        const piece = document.createElement('img');
+        //piece.classList.add('puzzle-piece');
+        piece.src = imageUrl;
+        pw=parseFloat(pieceContainer.style.width)-18;
+        ph=parseFloat(pieceContainer.style.height);
+        piece.style.width=pw+"px";//pieceContainer.style.width;
+        piece.style.height=ph+"px";//pieceContainer.style.height;
+      //  piece.style.aspectRatio= pieceContainer.style.width/pieceContainer.style.height;
+
+       // alert(" P"+piece.width+"PC"+ pieceContainer.style.width);
+        arw=1; // pieceContainer.style.width/pw;
+        arh=1; // pieceContainer.style.height/ph;
+        picdiv.style.width=(arw*pw)/4+"px";
+        //picdiv.style.aspectRatio=ar;
+        picdiv.style.height= (arh*ph)/4+"px";
+        inpicdiv.style.width = picdiv.style.width;
+        inpicdiv.style.height =  picdiv.style.height;
+        //inpicdiv.innerText= picdiv.id;
+        inpicdiv.style.top="0px";
+        inpicdiv.style.left="0px";
+        //piece.style.objectPosition = `${(-j+1) * 25}% -${(-i+1) * 25}%`; // Adjust as needed
+        //piece.style.clipPath="inset("+(1*i*ph/4)+"px "+((j+1)*pw/4)+"px "+((i+1)*ph/4)+"px "+(j*pw/4)+"px);";
+       piece.style.margin=" "+-1*(i*ph/4)+"px 0px 0px "+-1*(j*pw/4)+"px ";//works
+        piece.id = `imgpiece-${i}-${j}`;
+        piece.classList.add('puzzle-piece');
+   //     piece.addEventListener("contextmenu", e => e.preventDefault());
+        piece.style.zIndex="-1";
+        inpicdiv.style.zIndex="0";
+        piece.style.userSelect="none";
+        //piece.style.touchAction="none";
+        //piece.style.pointerEvents="none";
+
+       inpicdiv.draggable = true;  
+       inpicdiv.addEventListener('touchstart',drag); 
+       inpicdiv.addEventListener('touchmove',drag);       
+       inpicdiv.addEventListener('dragstart', drag);
+       inpicdiv.addEventListener('contextmenu', (e) =>
+         {
+           e.stopPropagation()
+           e.preventDefault()
+         } 
+      );    
+       //piece.draggable = true;
+       piece.addEventListener('touchstart', e => e.preventDefault());
+        piece.addEventListener('contextmenu', e => e.preventDefault());       
+        picdiv.appendChild(piece);
+        picdiv.appendChild(inpicdiv);
+        //picdiv.draggable = true;
+        
+       // picdiv.addEventListener('dragstart', drag);
+        //pieceContainer.appendChild(picdiv);
+        //jarrpicdiv[j]=picdiv;
+        arrpicdiv[i][j]=picdiv;
+        if(j==3)
+        {//arrpicdiv[i]=[];
+          //arrpicdiv[i]=jarrpicdiv;//[0].concat(jarrpicdiv[1],jarrpicdiv[2],jarrpicdiv[3]);}
+       }}
+       //arrpicdiv[i]=jarrpicdiv;
+      }
+       suffledarr=shuffle(arrpicdiv[0].concat(arrpicdiv[1],arrpicdiv[2],arrpicdiv[3]));
+      // for (let k = suffledarr.length - 1; k > 0; k--) {
+        
+        //pieceContainer.innerHtml+=suffledarr[k];
+        suffledarr.forEach((ele)=> pieceContainer.appendChild(ele));       
+       //}
+   // }
+
+  }
+
+  function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+  function createPuzzleContainer(imageUrl)
+  {
+    const imageContainer = document.getElementById('image-container');
+       imageContainer.addEventListener('ondragover', allowDrop);
+       imageContainer.addEventListener('ondrop', drop);
+       
+    const imageContainert = document.getElementById('img1');
+    imageContainer.style.width=imageContainert.clientWidth;
+    imageContainer.style.height=imageContainert.clientHeight;
+
+for (let i = 0; i < 4; i++) {
+      for (let j = 0; j < 4; j++) {
+        const piz = document.createElement('div');
+       // piz.classList.add('piece-container');        
+        piz.id = `pizpiece-${i}-${j}`;
+        pw=parseFloat(imageContainert.clientWidth)/4-2;
+        piz.style.width= pw+"px";
+        ph=parseFloat(imageContainert.clientHeight)/4-2;
+        piz.style.height= ph+"px";
+        piz.style.top=" "+(i*ph)+"px";
+        piz.style.left=" "+(j*pw)+"px";
+        piz.style.border="thin solid #000000";//Color="#000000";
+        //piz.style.borderWidth="thick";
+        piz.style.backgroundColor="#ff0000";
+
+        piz.style.opacity="0.6";
+        piz.style.position="absolute";
+      //  piz.innerText= piz.id;
+        piz.style.color="#ff0000";
+        piz.addEventListener('ondragover', allowDrop);
+        piz.addEventListener('ondrop', drop);
+        //ondrop="drop(event)" ondragover="allowDrop(event)"
+        imageContainer.appendChild(piz);
+      }
+    }
+  }
+
+  // Example usage
+  imageUrl = "assets/pic_trulli.jpg";
+
+  createPuzzleContainer(imageUrl);
+  
+  createJigsawPuzzle(imageUrl);
+</script>
+
+</body>
+</html>
