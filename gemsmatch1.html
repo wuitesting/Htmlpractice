@@ -180,13 +180,14 @@ Jemstone match
     const jewelTypes = ['diamo', 'emera', 'ruby', 'sapph', 'ameth', 'topaz', 'pearl', 'jade', 'garn', 'aquam'];
     colorInput1="#0000ff";
     colorInput2="#ff0000";
-    const tim=0;
+    var tim=0;
     var xtim;
+    var vtim=document.getElementById('timer');
     // Create a 6x6 game board filled with random myVar = setInterval(myTimer ,1000);
 function myTimer() {
   xtim=setinterval(function(){
     tim++;
-    document.getElementById("timer").innerHTML ='Timer : '+d;
+    vtim.innerHTML ='Timer : '+d;
   },1000);
   
 }
