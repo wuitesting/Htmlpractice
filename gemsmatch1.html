@@ -185,7 +185,7 @@ Jemstone match
     // Create a 6x6 game board filled with random myVar = setInterval(myTimer ,1000);
 function myTimer() {
   xtim=setinterval(function(){
-    d++;
+    tim++;
     document.getElementById("timer").innerHTML ='Timer : '+d;
   },1000);
   
@@ -337,13 +337,13 @@ function checkMatches() {
     function shuffleBoard() {
       createGameBoard();
       clearinterval(xtim);
-      d=0;
+      tim=0;
       myTimer();
     }
     
     function initialise()
    {
-     d=0;
+     tim=0;
      myTimer();
      createGameBoard();
         
