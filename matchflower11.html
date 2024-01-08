@@ -135,7 +135,7 @@ alert("Color 1:", selectedColor1);
         }
 
         function shuffle(array) {
-            for (let i = array.length - 1; i > 0; i--) {
+            for (var i = array.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
                 [array[i], array[j]] = [array[j], array[i]];
             }
@@ -143,11 +143,15 @@ alert("Color 1:", selectedColor1);
         }
         function removeChild(eid)
         {
-            let i=0;
-            eid.childNode.foreach((chnode)=>
+            var i=0;
+            //var list= 
+           /* eid.childNode.foreach((chnode)=>
             {  eid.childNode[i].removeChildNode();
                 i++;
-            })
+            })*/
+            while (eid.hasChildNodes()) {
+                eid.removeChild(eid.firstChild);
+             }
             
         }
 
