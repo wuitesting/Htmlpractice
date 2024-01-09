@@ -35,7 +35,7 @@
       touch-action: none;
      /* position: relative;
       opacity: 0.5;*/
-      width: 90%; /* Adjust the size as needed */
+      width: 95%; /* Adjust the size as needed */
    /*   height: 100px; /* Adjust the size as needed */
     }
 
@@ -70,6 +70,7 @@
 </div> 
 <!--div>END</div-->
 <script>
+  var nmatch=0;
   function allowDrop(event) {
     event.preventDefault();
     event.dataTransfer.dropEffect = "move";
@@ -103,6 +104,7 @@
       ttdiv=document.getElementById(event.target.id);
       ttdiv.style.backgroundColor="#000000";
       // ttdiv.innerText="";
+    nmatch++; 
       draggedPiece.style.backgroundColor="#000000";
    }
   }
@@ -136,7 +138,7 @@
         const piece = document.createElement('img');
         //piece.classList.add('puzzle-piece');
         piece.src = imageUrl;
-        pw=parseFloat(pieceContainer.style.width)-4;
+        pw=parseFloat(pieceContainer.style.width)-8;
         ph=parseFloat(pieceContainer.style.height);
         piece.style.width=pw+"px";//pieceContainer.style.width;
         piece.style.height=ph+"px";//pieceContainer.style.height;
@@ -225,9 +227,9 @@ for (let i = 0; i < 4; i++) {
         const piz = document.createElement('div');
        // piz.classList.add('piece-container');        
         piz.id = `pizpiece-${i}-${j}`;
-        pw=parseFloat(imageContainert.clientWidth)/4-2;
+        pw=parseFloat(imageContainert.clientWidth)/4;
         piz.style.width= pw+"px";
-        ph=parseFloat(imageContainert.clientHeight)/4-2;
+        ph=parseFloat(imageContainert.clientHeight)/4;
         piz.style.height= ph+"px";
         piz.style.top=" "+(i*ph)+"px";
         piz.style.left=" "+(j*pw)+"px";
