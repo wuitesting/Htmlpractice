@@ -176,6 +176,8 @@
       // ttdiv.innerText="";
         nmat++; 
       draggedPiece.style.backgroundColor="#000000";
+      if(nmat==16)
+      alert("Great you've matched ALL !! in"+tim+"seconds");
    }
   }
 
@@ -334,7 +336,8 @@ for (let i = 0; i < 4; i++) {
     clearInterval(xtim);
     var eid=document.getElementById('image-container');
     while (eid.hasChildNodes()) {
-                eid.removeChild(eid.childNodes[1]);
+                if(eid.childElementCount>1)
+                eid.removeChild(eid.children[1]);
              }   
 
     eid=document.getElementById('piece-container');
