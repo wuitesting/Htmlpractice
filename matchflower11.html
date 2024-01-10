@@ -54,11 +54,12 @@
         var tim=0;
         var xtim,nmat=0;
         var vtim=document.getElementById('timer');
-
+        var vmat=document.getElementById('nmatch');
  function myTimer() {
   xtim=setInterval(function(){
     tim++;
     vtim.innerHTML ='Timer : '+tim;
+    vmat.innerHTML='Matched : '+nmat;
   },1000);
   
 }

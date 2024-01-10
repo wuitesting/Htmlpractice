@@ -196,6 +196,7 @@ Jemstone match
     var tim=0;
     var xtim,nmat=0;
     var vtim=document.getElementById('timer');
+    var vmat=document.getElementById('nmatch');
     const colorPickerContainer = document.getElementById("colorPickerContainer");
         var colorInput1 = document.getElementById("color1");
         var colorInput2 = document.getElementById("color2");
@@ -226,10 +227,11 @@ Jemstone match
         }
 
    //////////// timer
-function myTimer() {
-  xtim=setInterval(function(){
-    tim++;
-    vtim.innerHTML ='Timer : '+tim;
+  function myTimer() {
+      xtim=setInterval(function(){
+      tim++;
+      vtim.innerHTML ='Timer : '+tim;
+      vmat.innerHTML='Matched : '+nmat;
   },1000);
   
 }
