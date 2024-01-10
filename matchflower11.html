@@ -27,9 +27,10 @@
 </head>
 <body style="background-color: #999898;">
     <h1>Match Flowers Game</h1>
-    <input type="button" value="restart" onclick="initializeGame()">
-    <!-- Button to show the pop-up -->
-    <button onclick="showColorPicker()">Open Color Picker</button>
+    <p><span id='nmatch'> </span>&nbsp;<span id='timer'> </span>&nbsp;
+    <a onclick="initializeGame()">START</a>
+    <!-- Button to show the pop-up -->&nbsp;
+    <a onclick="showColorPicker()">Color Picker</a></p>
     
     <!-- Pop-up box for color input -->
     <div id="colorPickerContainer">
@@ -50,6 +51,17 @@
         var colorInput2 = document.getElementById("color2");
         var selectedColor2 = colorInput2.value;
         var selectedColor1 = colorInput1.value;
+        var tim=0;
+        var xtim,nmat=0;
+        var vtim=document.getElementById('timer');
+
+ function myTimer() {
+  xtim=setInterval(function(){
+    tim++;
+    vtim.innerHTML ='Timer : '+tim;
+  },1000);
+  
+}
         function showColorPicker() {
             colorPickerContainer.style.display = "block";
         }
@@ -65,7 +77,7 @@
             // You can use selectedColor1 and selectedColor2 for your logic
             
                 
-alert("Color 1:", selectedColor1);
+            //alert("Color 1:", selectedColor1);
             console.log("Color 2:", selectedColor2);
             
             // Hide the pop-up after submission
@@ -73,16 +85,7 @@ alert("Color 1:", selectedColor1);
             initializeGame();
         }
     
-        const images = [];/*
-            "spiral.png",//"black-image.jpg",
-            "spiral.png",
-            "glasses.png",//"white-image.jpg",
-            "glasses.png",//"white-image.jpg"
-            "3peopleglobe.png",
-            "3peopleglobe.png",
-            "handsaveplant.png",
-            "handsaveplant.png"
-        ];*/
+        const images = [];
 
         function createimages()
           { 
@@ -91,9 +94,9 @@ alert("Color 1:", selectedColor1);
             {
               images[i]=[];*/
               for (j=0;j<25;j++)
-              images[j]= (j+1)+".png";
+              images[j]=url("assets/flower/"+(j+1)+".png");
 
-          //  }
+          //  }assets/flower/1.png
              
           }
         let shuffledImages ;//= shuffle(images);
@@ -120,14 +123,15 @@ alert("Color 1:", selectedColor1);
                             secondCard.style.visibility = 'hidden';
                             firstCard = null;
                             secondCard = null;
-                        }, 700);
+                            nmat++;
+                        }, 1000);
                     } else {
                         setTimeout(() => {
                             firstCard.style.transform = 'none';
                             secondCard.style.transform = 'none';
                             firstCard = null;
                             secondCard = null;
-                        }, 700);
+                        }, 1000);
                     }
                  }
             });
@@ -141,6 +145,7 @@ alert("Color 1:", selectedColor1);
             }
             return array;
         }
+
         function removeChild(eid)
         {
             var i=0;
@@ -151,8 +156,7 @@ alert("Color 1:", selectedColor1);
             })*/
             while (eid.hasChildNodes()) {
                 eid.removeChild(eid.firstChild);
-             }
-            
+             }            
         }
 
         function initializeGame() {
@@ -160,8 +164,7 @@ alert("Color 1:", selectedColor1);
             var ival=' ';
             var j;
             var indiv;
-            //shuffledImages = images;
-          
+            //shuffledImages = images;         
             const gameBoard = document.getElementById('game-board');
             if(gameBoard.hasChildNodes() )
                removeChild(gameBoard);
@@ -208,7 +211,6 @@ alert("Color 1:", selectedColor1);
             );
             }
         }
-
       //  initializeGame();
     </script>
 

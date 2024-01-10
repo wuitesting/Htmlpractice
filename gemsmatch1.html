@@ -170,8 +170,20 @@ Jemstone match
 </head>
 <body class="page" onload="initialise()">
   <h1>Jewel Matching Game</h1>
-   <p > <span id='timer'> </span><a onclick="shuffleBoard()">Shuffle Board</a></p> 
-
+   <p> <span id='nmatch'> </span>&nbsp;<span id='timer'> </span>&nbsp;<a onclick="shuffleBoard()">START</a>&nbsp; 
+   <a onclick="showColorPicker()">Color Picker</a></p>
+    
+   <!-- Pop-up box for color input -->
+   <div id="colorPickerContainer">
+       <h2>Select Two Colors</h2>
+       <label for="color1">Color 1:</label>
+       <input type="color" id="color1" value="#000000">
+       
+       <label for="color2">Color 2:</label>
+       <input type="color" id="color2" value="#ff0000">
+       
+       <button onclick="submitColors()">Submit</button>
+   </div>
   <div class="board" id="gameBoard"></div>
 
   <script>
@@ -179,12 +191,41 @@ Jemstone match
     //const jewelTypes = ['diamond', 'emerald', 'ruby', 'sapphire', 'amethyst', 'topaz', 'opal', 'pearl', 'jade', 'garnet', 'peridot', 'aquamarine'];
     //const jewelTypes = ['diamo', 'emera', 'ruby', 'sapph', 'ameth', 'topaz', 'opal', 'pearl', 'jade', 'garn', 'peri', 'aquam'];
     const jewelTypes = ['diamo', 'emera', 'ruby', 'sapph', 'ameth', 'topaz', 'pearl', 'jade', 'garn', 'aquam'];
-    colorInput1="#0000ff";
-    colorInput2="#ff0000";
+    //colorInput1="#0000ff";
+    //colorInput2="#ff0000";
     var tim=0;
-    var xtim;
+    var xtim,nmat=0;
     var vtim=document.getElementById('timer');
-    // Create a 6x6 game board filled with random myVar = setInterval(myTimer ,1000);
+    const colorPickerContainer = document.getElementById("colorPickerContainer");
+        var colorInput1 = document.getElementById("color1");
+        var colorInput2 = document.getElementById("color2");
+        var selectedColor2 = colorInput2.value;
+        var selectedColor1 = colorInput1.value;
+///////////////color picker
+        function showColorPicker() {
+            colorPickerContainer.style.display = "block";
+        }
+        
+        function hideColorPicker() {
+            colorPickerContainer.style.display = "none";
+        }
+        
+        function submitColors() {
+            selectedColor1 = colorInput1.value;
+            selectedColor2 = colorInput2.value;
+            
+            // You can use selectedColor1 and selectedColor2 for your logic
+            
+                
+//alert("Color 1:", selectedColor1);
+            console.log("Color 2:", selectedColor2);
+            
+            // Hide the pop-up after submission
+            hideColorPicker();
+            initialise();
+        }
+
+   //////////// timer
 function myTimer() {
   xtim=setInterval(function(){
     tim++;
@@ -223,15 +264,15 @@ function myTimer() {
                 if(i%2==0)
                 {
                    // indiv.style.backgroundColor="#0000ff";
-                    indiv.style.backgroundColor=colorInput1;
-                    indiv.style.color=colorInput1;
+                    indiv.style.backgroundColor=selectedColor1;
+                    indiv.style.color=selectedColor1;
                     
                 }
                 else
                 {
                     //indiv.style.backgroundColor="#ff0000";
-                    indiv.style.backgroundColor=colorInput2;
-                    indiv.style.color=colorInput2;
+                    indiv.style.backgroundColor=selectedColor2;
+                    indiv.style.color=selectedColor2;
                     //i=1;
                 }
                // i++;
@@ -329,7 +370,8 @@ function checkMatches() {
    jewel.innerHTML = " ";
    jewel.style.visibility ="hidden";
   jewel.parentElement.style.visibility = "hidden";
-   alert((jewel.parentElement.className).toString()+":: "+jewel.innerText);
+  nmat++;
+  // alert((jewel.parentElement.className).toString()+":: "+jewel.innerText);
   });
 
   // Implement replacing removed jewels with new ones and scoring logic
@@ -341,6 +383,7 @@ function checkMatches() {
       
       clearInterval(xtim);
       tim=0;
+      nmat=0;
       myTimer();
       createGameBoard();
     }
@@ -348,6 +391,7 @@ function checkMatches() {
     function initialise()
    {
      tim=0;
+     nmat=0;
      myTimer();
      createGameBoard();
         
