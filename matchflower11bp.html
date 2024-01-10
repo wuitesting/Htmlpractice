@@ -33,6 +33,70 @@
       color: #ffffff;
     }
     
+@media only screen and (max-width: 600px) {
+    /* Extra small devices (phones, 600px and down) */
+    .board {
+      
+     /* grid-template-rows: auto auto auto auto auto auto auto auto;/*repeat(8, 100px);*/
+     display : grid;
+             grid-template-columns: auto auto auto auto auto; /*auto;/*auto auto auto auto;     
+            grid-template-columns: auto auto auto auto auto auto auto auto auto auto;*/
+           /* height : 99vh;*/
+          grid-auto-flow : row;
+            background-color: #999898;
+      /*width: 95%;/*510px;
+      /*height: 60vh;*/
+      /*height: auto;/* 510px;*/
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    /* Small devices (portrait tablets and large phones, 600px and up) */
+    .board {
+        display : grid;
+             grid-template-columns: auto auto auto auto auto; /*auto;/*auto auto auto auto;     
+            grid-template-columns: auto auto auto auto auto auto auto auto auto auto;*/
+           /* height : 99vh;*/
+          grid-auto-flow : row;
+            background-color: #999898;
+    }
+ }
+
+@media only screen and (min-width: 768px) { 
+    /* Medium devices (landscape tablets, 768px and up) */
+    .board {
+        display : grid;
+             grid-template-rows: auto auto auto auto auto; /*auto;/*auto auto auto auto;     
+            grid-template-columns: auto auto auto auto auto auto auto auto auto auto;*/
+           /* height : 99vh;*/
+          grid-auto-flow : column;
+            background-color: #999898;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    /* Large devices (laptops/desktops, 992px and up) */
+    .board {
+        display : grid;
+             grid-template-rows: auto auto auto auto auto; /*auto;/*auto auto auto auto;     
+            grid-template-columns: auto auto auto auto auto auto auto auto auto auto;*/
+           /* height : 99vh;*/
+          grid-auto-flow : column;
+            background-color: #999898;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    /* Extra large devices (large laptops and desktops, 1200px and up) */
+    .board {
+        display : grid;
+             grid-template-rows: auto auto auto auto auto; /*auto;/*auto auto auto auto;     
+            grid-template-columns: auto auto auto auto auto auto auto auto auto auto;*/
+           /* height : 99vh;*/
+          grid-auto-flow : column;
+            background-color: #999898;
+    }
+}
     </style>
 </head>
 <body style="background-color: #999898;" onload="initializeGame()">
