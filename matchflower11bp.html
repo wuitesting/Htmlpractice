@@ -1,0 +1,239 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Match Card Game</title>
+    <style>
+        .card {
+            width: 100px;
+            height: 100px;
+            background-color: #ffffff;
+            display: inline-grid;
+            margin: 1px;
+            text-align: center;
+            cursor: pointer;
+          /*  font-size: 24px;*/
+        }
+
+        .board{
+            display : grid;
+             grid-template-rows: auto auto auto auto auto; /*auto;/*auto auto auto auto;     
+            grid-template-columns: auto auto auto auto auto auto auto auto auto auto;*/
+           /* height : 99vh;*/
+          grid-auto-flow : column;
+            background-color: #999898;
+        }
+        .spx {
+      background-color: rgb(100, 100, 100);
+      color: #ffffff;
+
+    }
+    .anc{
+      background-color: rgb(194, 194, 194);
+      color: #ffffff;
+    }
+    
+    </style>
+</head>
+<body style="background-color: #999898;" onload="initializeGame()">
+    <h1>Match Flowers Game</h1>
+    
+    <p> 
+        &nbsp;<span class="spx" id='nmatch'> </span>
+        &nbsp;<span class="spx" id='timer'> </span>
+        &nbsp;<a class="anc" onclick="initializeGame()">START</a>
+        &nbsp; 
+     <!-- Button to show the pop-up -->
+        <a class="anc" onclick="showColorPicker()">Color Picker</a></p>
+    
+    <!-- Pop-up box for color input -->
+    <div id="colorPickerContainer">
+        <h2>Select Two Colors</h2>
+        <label for="color1">Color 1:</label>
+        <input type="color" id="color1" value="#0000ff">
+        
+        <label for="color2">Color 2:</label>
+        <input type="color" id="color2" value="#ff0000">
+        
+        <button onclick="submitColors()">Submit</button>
+    </div>
+    
+    <!-- JavaScript code to show and hide the pop-up -->
+    <script>
+
+        const colorPickerContainer = document.getElementById("colorPickerContainer");
+        var colorInput1 = document.getElementById("color1");
+        var colorInput2 = document.getElementById("color2");
+        var selectedColor2 = colorInput2.value;
+        var selectedColor1 = colorInput1.value;
+        var tim=0;
+        var xtim,nmat=0;
+        var vtim=document.getElementById('timer');
+        var vmat=document.getElementById('nmatch');
+ function myTimer() {
+  xtim=setInterval(function(){
+    tim++;
+    vtim.innerHTML ='Timer : '+tim;
+    vmat.innerHTML='Matched : '+nmat;
+    if(nmat==25)
+    {
+         alert("Great you have matched them ALL !!! in "+tim+"seconds");
+        clearInterval(xtim);
+        initializeGame();
+    }
+  },1000);
+  
+}
+        function showColorPicker() {
+            colorPickerContainer.style.display = "block";
+        }
+        
+        function hideColorPicker() {
+            colorPickerContainer.style.display = "none";
+        }
+        hideColorPicker();
+        function submitColors() {
+            selectedColor1 = colorInput1.value;
+            selectedColor2 = colorInput2.value;
+            
+            // You can use selectedColor1 and selectedColor2 for your logic
+            
+                
+            //alert("Color 1:", selectedColor1);
+            console.log("Color 2:", selectedColor2);
+            
+            // Hide the pop-up after submission
+            hideColorPicker();
+            initializeGame();
+        }
+    
+        const images = [];
+
+        function createimages()
+          { 
+              var j;
+          /*    for (int i=0;i<2;i++)
+            {
+              images[i]=[];*/
+              for (j=0;j<25;j++)
+              images[j]="assets/flower/"+(j+1)+".png";
+
+          //  }assets/flower/1.png
+             
+          }
+        let shuffledImages ;//= shuffle(images);
+        let firstCard = null;
+        let secondCard = null;
+ 
+        function createCard(imageUrl) {
+            const card = document.createElement('div');
+            card.classList.add('card');
+            card.style.backgroundImage = `url(${imageUrl})`;
+            card.addEventListener('click', () => 
+            {
+                if (!firstCard) {
+                    firstCard = card;
+                    card.style.transform = 'rotateY(180deg)';
+                } else if (!secondCard && firstCard !== card)
+                 {
+                    secondCard = card;
+                    card.style.transform = 'rotateY(180deg)';
+
+                    if (firstCard.style.backgroundImage === secondCard.style.backgroundImage) {
+                        setTimeout(() => {
+                            firstCard.style.visibility = 'hidden';
+                            secondCard.style.visibility = 'hidden';
+                            firstCard = null;
+                            secondCard = null;
+                            nmat++;
+                        }, 1000);
+                    } else {
+                        setTimeout(() => {
+                            firstCard.style.transform = 'none';
+                            secondCard.style.transform = 'none';
+                            firstCard = null;
+                            secondCard = null;
+                        }, 1000);
+                    }
+                 }
+            });
+            return card;
+        }
+
+        function shuffle(array) {
+            for (var i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        function removeChild(eid)
+        {
+            var i=0;
+            //var list= 
+           /* eid.childNode.foreach((chnode)=>
+            {  eid.childNode[i].removeChildNode();
+                i++;
+            })*/
+            while (eid.hasChildNodes()) {
+                eid.removeChild(eid.firstChild);
+             }            
+        }
+
+        function initializeGame() {
+            var i=0;
+            var ival=' ';
+            var j;
+            var indiv;
+            //shuffledImages = images;         
+            const gameBoard = document.getElementById('game-board');
+            if(gameBoard.hasChildNodes() )
+               removeChild(gameBoard);
+           // gameBoard.innerHtml=' ';
+            createimages();
+            if(tim>0)
+            clearInterval(xtim);
+
+            nmat=0;
+            tim=0;
+            
+
+          for(j=0;j<2;j++)
+            {
+            shuffledImages= shuffle(images);
+            shuffledImages.forEach((image) => {
+           
+                const card = createCard(image);
+                indiv= document.createElement('div');
+                indiv.classList.add('card');
+                indiv.style.position="relative";
+              //  indiv.style.margin=0;
+                indiv.style.opacity= 0.8;
+                if(j%2==0)
+                {
+                   // indiv.style.backgroundColor="#0000ff";
+                    indiv.style.backgroundColor=selectedColor1;//colorInput1.value;
+                    
+                }
+                else
+                {
+                    //indiv.style.backgroundColor="#ff0000";
+                    indiv.style.backgroundColor=selectedColor2;//colorInput2.value;
+                  //  i=1;
+                }
+                //i++;
+                card.appendChild(indiv);
+                gameBoard.appendChild(card);
+            }
+            );
+            }
+            myTimer();
+            
+        }
+      //  initializeGame();
+    </script>
+
+<div id="game-board" class="board"></div>
+</body>
+</html>
