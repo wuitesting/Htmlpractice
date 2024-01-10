@@ -103,7 +103,7 @@
     /* Medium devices (landscape tablets, 768px and up) */
     .container {
       display: grid;
-      grid-template-rows: repeat(2, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 1px;
       user-select: none;
       touch-action: none;
@@ -118,7 +118,7 @@
     /* Large devices (laptops/desktops, 992px and up) */
     .container {
       display: grid;
-      grid-template-rows: repeat(2, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 1px;
       user-select: none;
       touch-action: none;
@@ -133,7 +133,7 @@
     /* Extra large devices (large laptops and desktops, 1200px and up) */
     .container {
       display: grid;
-      grid-template-rows: repeat(2, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 1px;
       user-select: none;
       touch-action: none;
@@ -148,7 +148,7 @@
 </head>
 <body class="container" >
   <!--div>b4 image con</div--> 
-  <h1>Jigsaw 12</h1>
+  <h1>Jigsaw 11bp</h1>
    <p>
     &nbsp;<span class="spx" id='nmatch'> </span>
     &nbsp;<span class="spx" id='timer'> </span>
