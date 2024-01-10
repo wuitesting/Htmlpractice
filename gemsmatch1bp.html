@@ -10,16 +10,16 @@ Jemstone match
   <style>
     /* Add your CSS styles for the game board here */
     
-    .board {
+   /* .board {
       display: grid;
       grid-template-columns: repeat(8, 65px);
       grid-template-rows: repeat(8, 65px);
      /* grid-template-rows: auto auto auto auto auto auto auto auto;/*repeat(8, 100px);*/
-      gap: 0px;
+     /* gap: 0px;
       width: 80%; /*510px;
       /*height: 60vh;*/
-      height: auto;/*510px;*/
-    }
+      /*height: auto;/*510px;*/
+    /*}*/
 
     .cell {
       width: 65px;
@@ -183,46 +183,75 @@ Jemstone match
     .board {
       
      /* grid-template-rows: auto auto auto auto auto auto auto auto;/*repeat(8, 100px);*/
-    
-      /*width: 80%;/*510px;
+     display: grid;
+      grid-template-columns: repeat(8, 65px);
+      grid-template-rows: repeat(8, 65px);
+     /* grid-template-rows: auto auto auto auto auto auto auto auto;/*repeat(8, 100px);*/
+      gap: 0px;
+     margin:0px;
+      width: 80%;/*510px;
       /*height: 60vh;*/
-      /*height: auto;/* 510px;*/
+      height: auto;/* 510px;*/
     }
 }
 
 @media only screen and (min-width: 600px) {
     /* Small devices (portrait tablets and large phones, 600px and up) */
     .board {
-      width: 70%;/*510px;
+        display: grid;
+      grid-template-columns: repeat(8, 65px);
+      grid-template-rows: repeat(8, 65px);
+     /* grid-template-rows: auto auto auto auto auto auto auto auto;/*repeat(8, 100px);*/
+      gap: 1px;
+     margin:0px;
+      /*width: 70%;/*510px;
       /*height: 60vh;*/
-      height: auto;/*510px;*/
+     /* height: auto;/*510px;*/
     }
  }
 
 @media only screen and (min-width: 768px) { 
     /* Medium devices (landscape tablets, 768px and up) */
     .board {
-      width: 65%;/*510px;
+        display: grid;
+      grid-template-columns: repeat(8, 65px);
+      grid-template-rows: repeat(8, 65px);
+     /* grid-template-rows: auto auto auto auto auto auto auto auto;/*repeat(8, 100px);*/
+      gap: 2px;
+     margin:0px;
+      /*width: 65%;/*510px;
       /*height: 60vh;*/
-      height: auto;/*510px;*/
+      /*height: auto;/*510px;*/
     }
 }
 
 @media only screen and (min-width: 992px) {
     /* Large devices (laptops/desktops, 992px and up) */
     .board {
-      width: 60%;/*510px;
+        display: grid;
+      grid-template-columns: repeat(8, 65px);
+      grid-template-rows: repeat(8, 65px);
+     /* grid-template-rows: auto auto auto auto auto auto auto auto;/*repeat(8, 100px);*/
+      gap: 4px;
+     margin:0px;
+     /* width: 60%;/*510px;
       /*height: 60vh;*/
-      height: auto;/*510px;*/
+      /*height: auto;/*510px;*/
     }
 }
 
 @media only screen and (min-width: 1200px) {
     /* Extra large devices (large laptops and desktops, 1200px and up) */
     .board {
-      width: 50%;/*510px;
+        display: grid;
+      grid-template-columns: repeat(8, 65px);
+      grid-template-rows: repeat(8, 65px);
+     /* grid-template-rows: auto auto auto auto auto auto auto auto;/*repeat(8, 100px);*/
+      gap: 5px;
+     margin:0px;
+      /*width: 50%;/*510px;
       /*height: 60vh;*/
-      height: auto;/*510px;*/
+      /*height: auto;/*510px;*/
     }
 }
   </style>
