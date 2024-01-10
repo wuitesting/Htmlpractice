@@ -58,6 +58,16 @@
       opacity: 0.5;*/
      display: inline-grid;
     }
+    .spx {
+      background-color: rgb(100, 100, 100);
+      color: #ffffff;
+
+    }
+    .anc{
+      background-color: rgb(194, 194, 194);
+      color: #ffffff;
+    }
+
   </style>
 </head>
 <body class="container" onload="initialise()">
@@ -319,7 +329,15 @@ for (let i = 0; i < 4; i++) {
     // myTimer();
     // createGameBoard();
     imageUrl = "assets/pic_trulli.jpg";
+  var eid=document.getElementById('image-container');
+    while (eid.hasChildNodes()) {
+                eid.removeChild(eid.firstChild);
+             }   
 
+    eid=document.getElementById('piece-container');
+    while (eid.hasChildNodes()) {
+                eid.removeChild(eid.firstChild);
+             } 
   createPuzzleContainer(imageUrl);
   
   createJigsawPuzzle(imageUrl);
