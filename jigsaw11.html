@@ -181,8 +181,9 @@
 
   function createJigsawPuzzle(imageUrl) {
     const pieceContainer = document.getElementById('piece-container');
-              pieceContainer.style.height= (document.getElementById('img1').height)+"px";
-              pieceContainer.style.width = ( document.getElementById('img1').width+16)+"px";
+              pieceContainer.style.width = ( document.getElementById('image-container').width)+"px";
+              pieceContainer.style.height= (document.getElementById('image-container').height)+"px";
+
     var pw,ph,i,j;
     var arrpicdiv=[];
     var jarrpicdiv=[];
