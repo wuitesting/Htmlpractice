@@ -164,12 +164,13 @@ Jemstone match
     }
 .page{
     background-color: rgb(0, 0, 0);
+    color: #ffffff;
 }
   </style>
 </head>
 <body class="page" onload="initialise()">
   <h1>Jewel Matching Game</h1>
-   <p> <span id='timer'> </span></p> <button onclick="shuffleBoard()">Shuffle Board</button>
+   <p > <span id='timer'> </span></p> <button onclick="shuffleBoard()">Shuffle Board</button>
 
   <div class="board" id="gameBoard"></div>
 
@@ -185,7 +186,7 @@ Jemstone match
     var vtim=document.getElementById('timer');
     // Create a 6x6 game board filled with random myVar = setInterval(myTimer ,1000);
 function myTimer() {
-  xtim=setinterval(function(){
+  xtim=setInterval(function(){
     tim++;
     vtim.innerHTML ='Timer : '+d;
   },1000);
@@ -336,10 +337,11 @@ function checkMatches() {
 
     // Shuffle the game board
     function shuffleBoard() {
-      createGameBoard();
-      clearinterval(xtim);
+      
+      clearInterval(xtim);
       tim=0;
       myTimer();
+      createGameBoard();
     }
     
     function initialise()
