@@ -338,6 +338,8 @@ for (let i = 0; i < 4; i++) {
     while (eid.hasChildNodes()) {
                 if(eid.childElementCount>1)
                 eid.removeChild(eid.children[1]);
+              else
+               break;
              }   
 
     eid=document.getElementById('piece-container');
