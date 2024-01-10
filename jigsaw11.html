@@ -326,15 +326,9 @@ for (let i = 0; i < 4; i++) {
   function initialise()
    {
 
-    if(tim>0)
+    if(tim>0){
     clearInterval(xtim);
-
-     tim=0;
-     nmat=0;
-    // myTimer();
-    // createGameBoard();
-    imageUrl = "assets/pic_trulli.jpg";
-  var eid=document.getElementById('image-container');
+    var eid=document.getElementById('image-container');
     while (eid.hasChildNodes()) {
                 eid.removeChild(eid.firstChild);
              }   
@@ -342,7 +336,14 @@ for (let i = 0; i < 4; i++) {
     eid=document.getElementById('piece-container');
     while (eid.hasChildNodes()) {
                 eid.removeChild(eid.firstChild);
-             } 
+             }
+    }
+     tim=0;
+     nmat=0;
+    // myTimer();
+    // createGameBoard();
+    imageUrl = "assets/pic_trulli.jpg";
+   
   createPuzzleContainer(imageUrl);
   
   createJigsawPuzzle(imageUrl);
