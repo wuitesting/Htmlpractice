@@ -324,6 +324,10 @@ for (let i = 0; i < 4; i++) {
 
   function initialise()
    {
+
+    if(tim>0)
+    clearInterval(xtim);
+
      tim=0;
      nmat=0;
     // myTimer();
@@ -341,7 +345,7 @@ for (let i = 0; i < 4; i++) {
   createPuzzleContainer(imageUrl);
   
   createJigsawPuzzle(imageUrl);
-        
+  myTimer();      
    }
 </script>
 
