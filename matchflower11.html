@@ -40,7 +40,7 @@
     <p> 
         &nbsp;<span class="spx" id='nmatch'> </span>
         &nbsp;<span class="spx" id='timer'> </span>
-        &nbsp;<a class="anc" onclick="shuffleBoard()">START</a>
+        &nbsp;<a class="anc" onclick="initializeGame()">START</a>
         &nbsp; 
      <!-- Button to show the pop-up -->
         <a class="anc" onclick="showColorPicker()">Color Picker</a></p>
@@ -59,6 +59,7 @@
     
     <!-- JavaScript code to show and hide the pop-up -->
     <script>
+
         const colorPickerContainer = document.getElementById("colorPickerContainer");
         var colorInput1 = document.getElementById("color1");
         var colorInput2 = document.getElementById("color2");
@@ -83,7 +84,7 @@
         function hideColorPicker() {
             colorPickerContainer.style.display = "none";
         }
-        
+        hideColorPicker();
         function submitColors() {
             selectedColor1 = colorInput1.value;
             selectedColor2 = colorInput2.value;
