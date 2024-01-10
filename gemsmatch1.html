@@ -170,7 +170,7 @@ Jemstone match
 </head>
 <body class="page" onload="initialise()">
   <h1>Jewel Matching Game</h1>
-   <p > <span id='timer'> </span></p> <button onclick="shuffleBoard()">Shuffle Board</button>
+   <p > <span id='timer'> </span><a onclick="shuffleBoard()">Shuffle Board</a></p> 
 
   <div class="board" id="gameBoard"></div>
 
@@ -245,6 +245,7 @@ function myTimer() {
 
     // Select a jewel
     let selectedJewel = null;
+    
     function selectJewel(cell) {
       if (selectedJewel) {
         if (cell !== selectedJewel) {
