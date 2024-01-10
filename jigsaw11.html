@@ -179,10 +179,14 @@
    }
   }
 
+
+  const imgcon=document.getElementById('image-container');
+
   function createJigsawPuzzle(imageUrl) {
     const pieceContainer = document.getElementById('piece-container');
-              pieceContainer.style.width = ( document.getElementById('image-container').width)+"px";
-              pieceContainer.style.height= (document.getElementById('image-container').height)+"px";
+    
+              pieceContainer.style.width = (imgcon.width)+"px";
+              pieceContainer.style.height= (imgcon.height)+"px";
 
     var pw,ph,i,j;
     var arrpicdiv=[];
@@ -209,8 +213,8 @@
         const piece = document.createElement('img');
         //piece.classList.add('puzzle-piece');
         piece.src = imageUrl;
-        pw=parseFloat(pieceContainer.style.width)-8;
-        ph=parseFloat(pieceContainer.style.height);
+        pw=parseFloat(imgcon.width)-8;
+        ph=parseFloat(imgcon.height);
         piece.style.width=pw+"px";//pieceContainer.style.width;
         piece.style.height=ph+"px";//pieceContainer.style.height;
       //  piece.style.aspectRatio= pieceContainer.style.width/pieceContainer.style.height;
@@ -330,7 +334,7 @@ for (let i = 0; i < 4; i++) {
     clearInterval(xtim);
     var eid=document.getElementById('image-container');
     while (eid.hasChildNodes()) {
-                eid.removeChild(eid.firstChild);
+                eid.removeChild(eid.childNodes[1]);
              }   
 
     eid=document.getElementById('piece-container');
