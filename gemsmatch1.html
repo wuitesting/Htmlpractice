@@ -385,6 +385,10 @@ function checkMatches() {
    jewel.style.visibility ="hidden";
   jewel.parentElement.style.visibility = "hidden";
   nmat++;
+  if(nmat==64){
+  alert("Great you've matched ALL !! in"+tim+"seconds");
+  initialise();
+  }
   // alert((jewel.parentElement.className).toString()+":: "+jewel.innerText);
   });
 
@@ -395,6 +399,7 @@ function checkMatches() {
     // Shuffle the game board
     function shuffleBoard() {
       
+      alert("Great you've matched ALL !! in"+tim+"seconds");
       clearInterval(xtim);
       tim=0;
       nmat=0;
@@ -404,6 +409,8 @@ function checkMatches() {
     
     function initialise()
    {
+    if(tim>0)
+    clearInterval(xtim);
      tim=0;
      nmat=0;
      myTimer();
