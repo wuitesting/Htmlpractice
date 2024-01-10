@@ -175,7 +175,7 @@
         }
 
         function initializeGame() {
-            var i=0,tim=0,nmat=0;
+            var i=0;
             var ival=' ';
             var j;
             var indiv;
@@ -185,23 +185,18 @@
                removeChild(gameBoard);
            // gameBoard.innerHtml=' ';
             createimages();
+            if(tim>0)
+            clearInterval(xtim);
+        
             nmat=0;
+            tim=0;
+            
+
           for(j=0;j<2;j++)
             {
             shuffledImages= shuffle(images);
             shuffledImages.forEach((image) => {
-           /* for(j=0;j<shuffledImages.length;j++){
-                i=Math.floor(Math.random() * j);
-                while(ival.includes(i.toString))
-                {
-                    
-                    i=Math.floor(Math.random() * j);
-
-                }
-                
-                image=shuffledImages[i];
-                ival=ival+i;
-                    shuffledImages[i]='';*/
+           
                 const card = createCard(image);
                 indiv= document.createElement('div');
                 indiv.classList.add('card');
