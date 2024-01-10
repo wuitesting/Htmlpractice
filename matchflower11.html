@@ -74,6 +74,12 @@
     tim++;
     vtim.innerHTML ='Timer : '+tim;
     vmat.innerHTML='Matched : '+nmat;
+    if(nmat==25)
+    {
+         alert("Great you have matched them ALL !!! in "+tim+"seconds");
+        clearInterval(xtim);
+        initializeGame();
+    }
   },1000);
   
 }
@@ -187,7 +193,7 @@
             createimages();
             if(tim>0)
             clearInterval(xtim);
-        
+
             nmat=0;
             tim=0;
             
@@ -222,6 +228,7 @@
             );
             }
             myTimer();
+            
         }
       //  initializeGame();
     </script>
