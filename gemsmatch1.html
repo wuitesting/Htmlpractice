@@ -162,6 +162,15 @@ Jemstone match
   background-repeat: no-repeat;
   background-size: cover;
     }
+    .spx {
+      background-color: rgb(100, 100, 100);
+      color: #ffffff;
+
+    }
+    .anc{
+      background-color: rgb(152, 192, 202);
+      color: #ffffff;
+    }
 .page{
     background-color: rgb(0, 0, 0);
     color: #ffffff;
@@ -170,8 +179,8 @@ Jemstone match
 </head>
 <body class="page" onload="initialise()">
   <h1>Jewel Matching Game</h1>
-   <p> <span id='nmatch'> </span>&nbsp;<span id='timer'> </span>&nbsp;<a onclick="shuffleBoard()">START</a>&nbsp; 
-   <a onclick="showColorPicker()">Color Picker</a></p>
+   <p> <span class="spx" id='nmatch'> </span>&nbsp;<span class="spx" id='timer'> </span>&nbsp;<a class="anc" onclick="shuffleBoard()">START</a>&nbsp; 
+   <a class="anc" onclick="showColorPicker()">Color Picker</a></p>
     
    <!-- Pop-up box for color input -->
    <div id="colorPickerContainer">
