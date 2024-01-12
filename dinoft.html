@@ -128,16 +128,22 @@ function update (time)
                 if (Phaser.Math.FloorTo(time)  % 6 == 0) {
                    // this.captus5.get().setActive(true).setVisible(true).setPosition(posX, game.config.height - 100).setScale(1, 1);
                     //this.captus5.setTint(0x0000ff);
-                    console.log(this.dino.y );//+ " dino" + this.platform.y)
-                } else {
-                    
-                    //this.captus1.get().setActive(true).setVisible(true).setPosition(Phaser.Math.Between(20, game.config.width-200),Phaser.Math.Between(0, game.config.height - 100)).setScale(1, 1);
                     captus1=captus1s.create(Phaser.Math.Between(20, game.config.width-100), Phaser.Math.Between(20, 100),'captus1');
                     captus1.setTint(0x0000ff);
                     captus1.setScale(0.9,0.9);
           //captus1.refreshBody();
           captus1.setInteractive();
           captus1.setVelocityY(10);
+                    console.log(this.dino.y );//+ " dino" + this.platform.y)
+                } else {
+                    
+                    //this.captus1.get().setActive(true).setVisible(true).setPosition(Phaser.Math.Between(20, game.config.width-200),Phaser.Math.Between(0, game.config.height - 100)).setScale(1, 1);
+                   /* captus1=captus1s.create(Phaser.Math.Between(20, game.config.width-100), Phaser.Math.Between(20, 100),'captus1');
+                    captus1.setTint(0x0000ff);
+                    captus1.setScale(0.9,0.9);
+          //captus1.refreshBody();
+          captus1.setInteractive();
+          captus1.setVelocityY(10);*/
                     //console.log(captus1.y + " captus1 " + platform.y);
                 }
                 //posx += 100
