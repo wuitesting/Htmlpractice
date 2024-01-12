@@ -69,7 +69,7 @@ platforms = this.physics.add.staticGroup();
 //  Scale it to fit the width of the game (the original sprite is 400x32 in size)
 platforms.create(400, game.config.height-20, 'ground').setScale(2).refreshBody();
 //sprite 
-this.dino = this.physics.add.sprite(100, game.config.height/5, 'dino', 0).setScale(0.8, 0.8);
+this.dino = this.physics.add.sprite(100, game.config.height*3/4, 'dino', 0).setScale(0.8, 0.8);
             this.dino.setCollideWorldBounds(true);
             this.anims.create({
                 key: 'run',
