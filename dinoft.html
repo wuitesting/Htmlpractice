@@ -49,8 +49,8 @@ function preload ()
     //this.load.image('ground', 'assets/platform.png');
     this.load.image("captus1", "dino-master/assets/captus1.png");
     // this.load.image("captus5", "dino-master/assets/captus5.png");
-            this.load.image('upa', 'flappy-Bird-master/assets/uparrow.png'); 
-           // this.load.image('downa', 'flappy-Bird-master/assets/downarrow.png');
+            this.load.image('larr', 'assets/Larrow.png'); 
+            this.load.image('rarr', 'assets/Rarrow.png'); 
             this.load.spritesheet('dino', "dino-master/assets/playerRunSprite1.png", {
                 frameWidth: 86, frameHight: 86
             });
@@ -69,7 +69,7 @@ platforms = this.physics.add.staticGroup();
 //  Scale it to fit the width of the game (the original sprite is 400x32 in size)
 platforms.create(400, game.config.height-20, 'ground').setScale(2).refreshBody();
 //sprite 
-this.dino = this.physics.add.sprite(100, game.config.height-300, 'dino', 0).setScale(0.8, 0.8);
+this.dino = this.physics.add.sprite(100, game.config.height/3, 'dino', 0).setScale(0.8, 0.8);
             this.dino.setCollideWorldBounds(true);
             this.anims.create({
                 key: 'run',
@@ -86,7 +86,29 @@ captus1s = this.physics.add.group({
     repeat: 2,
     //setXY: { x: 12, y: 0, stepX: 70 }
 });
-//dino.setCollideWorldBounds(true);
+dino.setCollideWorldBounds(true);
+upabtns = this.physics.add.staticGroup();
+//downabtns= this.physics.add.staticGroup();
+lbtn=upabtns.create(game.config.width/4,game.config.height-40,'larr');
+rbtn=upabtns.create(game.config.width*3/4,game.config.height-40,'rarr');
+//downabtn=downabtns.create(game.config.width*3/4,game.config.height-10,'downa');
+lbtn.setInteractive({ useHandCursor: true });
+lbtn.setScale(3,3);
+ 
+ lbtn.on('pointerdown', ()=>
+       {
+        this.dino.setVelocityX(-50);
+         console.log("LLLLL");
+       });
+   // downabtn.on('pointerdown', flyDown);
+   rbtn.setInteractive({ useHandCursor: true });
+rbtn.setScale(3,3);
+ 
+ rbtn.on('pointerdown', ()=>
+       {
+        this.dino.setVelocityX(50);
+         console.log("RRRR");
+       });
 
 }
 
