@@ -1,0 +1,84 @@
+<!doctype html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8" />
+    <title>Making your first Phaser 3 Game - Part 10</title>
+    <script src="//cdn.jsdelivr.net/npm/phaser@3.11.0/dist/phaser.js"></script>
+    <style type="text/css">
+        body {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+<script type="text/javascript">
+    var config = {
+    type: Phaser.AUTO,
+    width: 1200,
+    height: 800,
+    physics: {
+        default: 'arcade',
+        arcade: {
+            gravity: { y: 4 },
+            debug: false
+        }
+    },
+    scene: {
+        preload: preload,
+        create: create,
+        update: update
+    }
+};
+
+//var player;
+var stars;
+var bombs;
+//var platforms;
+var cursors;
+var score = 0;
+var gameOver = false;
+var scoreText;
+
+var game = new Phaser.Game(config);
+
+function preload ()
+{
+    //this.load.image('sky', 'assets/sky.png');
+    //this.load.image('ground', 'assets/platform.png');
+    this.load.image('star', 'assets/star.png');
+    this.load.image('bomb', 'assets/bomb.png');
+    //this.load.spritesheet('dude', 'assets/dude.png', { frameWidth: 32, frameHeight: 48 });
+}
+
+function create()
+{
+//  Input Events
+//cursors = this.InputEvent// this.input.keyboard.createCursorKeys();
+          
+this.inputEnabled=true;
+//  Some stars to collect, 12 in total, evenly spaced 70 pixels apart along the x axis
+stars = this.physics.add.group({
+    key: 'star',
+    repeat: 5,
+    setXY: { x: 12, y: 0, stepX: 70 }
+});
+
+}
+
+function update ()
+{
+
+    if(this.input.activePointer.isDown>-1)
+    {
+        if(stars.x==this.input.activePointer.position.x && stars.y==this.input.activePointer.position.y)
+         score++;
+
+         console.log(this.input.activePointer.position.x);
+    }
+}
+
+</script>
+
+</body>
+</html>
