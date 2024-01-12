@@ -143,19 +143,19 @@ function update (time)
 
    if (cursors.left.isDown)
     {
-        dino.setVelocityX(-160);
+        this.dino.setVelocityX(-160);
 
        // dino.anims.play('left', true);
     }
     else if (cursors.right.isDown)
     {
-        dino.setVelocityX(160);
+        this.dino.setVelocityX(160);
 
        // dino.anims.play('right', true);
     }
     else
     {
-        dino.setVelocityX(0);
+        this.dino.setVelocityX(0);
 
         //dino.anims.play('turn');
     }
