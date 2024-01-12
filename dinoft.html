@@ -21,7 +21,7 @@
     physics: {
         default: 'arcade',
         arcade: {
-            gravity: { y: 4 },
+            gravity: { y: 8 },
             debug: false
         }
     },
@@ -32,8 +32,8 @@
     }
 };
 
-//var player;
-var stars;
+//var dino;
+var captus1;
 var bombs;
 //var platforms;
 var cursors;
@@ -48,26 +48,45 @@ function preload ()
     //this.load.image('sky', 'assets/sky.png');
     //this.load.image('ground', 'assets/platform.png');
     this.load.image("captus1", "dino-master/assets/captus1.png");
-            this.load.image("captus5", "dino-master/assets/captus5.png");
+    // this.load.image("captus5", "dino-master/assets/captus5.png");
             this.load.image('upa', 'flappy-Bird-master/assets/uparrow.png'); 
            // this.load.image('downa', 'flappy-Bird-master/assets/downarrow.png');
-            this.load.spritesheet('dino', "dino-master/assets/playerRunSprite.png", {
+            this.load.spritesheet('dino', "dino-master/assets/dinoRunSprite.png", {
                 frameWidth: 86, frameHight: 86
             });
+  this.load.image('platform', "assets/platform.png")
 }
 
 function create()
 {
 //  Input Events
-//cursors = this.InputEvent// this.input.keyboard.createCursorKeys();
-          
+cursors = this.input.keyboard.createCursorKeys();
 this.inputEnabled=true;
-//  Some stars to collect, 12 in total, evenly spaced 70 pixels apart along the x axis
-stars = this.physics.add.group({
-    key: 'star',
-    repeat: 5,
-    setXY: { x: 12, y: 0, stepX: 70 }
+//  Some captus1 to collect, 12 in total, evenly spaced 70 pixels apart along the x axis
+platforms = this.physics.add.staticGroup();
+
+//  Here we create the ground.
+//  Scale it to fit the width of the game (the original sprite is 400x32 in size)
+platforms.create(400, game.config.height-20, 'ground').setScale(2).refreshBody();
+//sprite 
+this.dino = this.physics.add.sprite(100, game.config.height-70, 'dino', 0).setScale(0.8, 0.8);
+            this.dino.setCollideWorldBounds(true);
+            this.anims.create({
+                key: 'run',
+
+                frames: this.anims.generateFrameNumbers('dino', {
+                    start: 0, end: 3
+                }),
+                frameRate: 15,
+                repeat: -1
+            })
+this.dino.body.allowGravity=false;
+captus1s = this.physics.add.group({
+    key: 'captus1',
+    repeat: 2,
+    //setXY: { x: 12, y: 0, stepX: 70 }
 });
+//dino.setCollideWorldBounds(true);
 
 }
 
@@ -75,14 +94,92 @@ function update ()
 {
     
 
-    if(this.input.activePointer.isDown>-1)
+   /* if(this.input.activePointer.isDown>-1)
     {
-        if(stars.x==this.input.activePointer.position.x && stars.y==this.input.activePointer.position.y)
+        if(captus1.x==this.input.activePointer.position.x && captus1.y==this.input.activePointer.position.y)
          score++;
 
          console.log(this.input.activePointer.position.x);
+    }*/
+
+    if (Phaser.Math.FloorTo(time) % 9 == 0) {
+                if (Phaser.Math.FloorTo(time)  % 6 == 0) {
+                   // this.captus5.get().setActive(true).setVisible(true).setPosition(posX, game.config.height - 100).setScale(1, 1);
+                    //this.captus5.setTint(0x0000ff);
+                    console.log(this.dino.y + " dino" + this.platform.y)
+                } else {
+                    
+                    //this.captus1.get().setActive(true).setVisible(true).setPosition(Phaser.Math.Between(20, game.config.width-200),Phaser.Math.Between(0, game.config.height - 100)).setScale(1, 1);
+                    captus1=captus1s.create(Phaser.Math.Between(20, game.config.width-100), Phaser.Math.Between(200, 800),'captus1');
+                    captus1.setTint(0x0000ff);
+                    captus1.setScale(0.9,0.9);
+          captus1.refreshBody();
+          captus1.setInteractive();
+                    console.log(captus1.y + " captus1 " + platform.y)
+                }
+                posX += 100
+                exenum+=100
+                //score++
+              //  scoreText.setText('score:'+score);
+            } /*else if (Phaser.Math.FloorTo(time)  % 4 == 0) {
+                this.captus6.get().setActive(true).setVisible(true).setPosition(posX, game.config.height - 150).setScale(1, 1);
+                */
+                posX += 100
+                //console.log(this.captus6.position.y + " captus6 " + this.platform.y)
+            //}
+            this.captus1.setVelocityY(10)
+            //this.captus5.setVelocityX(-200)
+            //this.captus6.setVelocityX(-200)
+
+
+            console.log(this.dino.y + " " + this.platform.y)
+
+           /* if (this.cursors.up.isDown && this.dino.y > this.platform.y - 100) {
+                this.dino.setVelocityX(-50)
+                this.dino.anims.play('run', true);
+            }
+            this.dino.anims.play('run', false);*/
+
+   if (cursors.left.isDown)
+    {
+        dino.setVelocityX(-160);
+
+       // dino.anims.play('left', true);
     }
-}
+    else if (cursors.right.isDown)
+    {
+        dino.setVelocityX(160);
+
+       // dino.anims.play('right', true);
+    }
+    else
+    {
+        dino.setVelocityX(0);
+
+        //dino.anims.play('turn');
+    }
+    this.dino.anims.play('run', true)
+
+    /*if (cursors.up.isDown && dino.body.touching.down)
+    {
+        dino.setVelocityY(-330);
+    }*/
+            this.platform.tilePositionX += 5;
+        }
+        function flyHigh(d)
+       {
+         this.dino.setVelocityY(-500);
+         console.log("dino up");
+       }
+        function dinoDie(d, p) {
+            p.active = false;
+            p.setVisible(false);
+            score++;
+            //p.body.disableBody(true, true);
+           // p.destroy();
+          // disable(p);
+        }
+
 
 </script>
 
