@@ -87,6 +87,7 @@ captus1s = this.physics.add.group({
     //setXY: { x: 12, y: 0, stepX: 70 }
 });
 this.dino.setCollideWorldBounds(true);
+this.captus1s.setCollideWorldBounds(true);
 upabtns = this.physics.add.staticGroup();
 //downabtns= this.physics.add.staticGroup();
 lbtn=upabtns.create(game.config.width/4,game.config.height-40,'larr');
@@ -126,7 +127,7 @@ function update (time)
          console.log(this.input.activePointer.position.x);
     }*/
 
-    if (Phaser.Math.FloorTo(time) % 9 == 0) {
+    if (Phaser.Math.FloorTo(time) % 11 == 0) {
                 if (Phaser.Math.FloorTo(time)  % 19 == 0) {
                    // this.captus5.get().setActive(true).setVisible(true).setPosition(posX, game.config.height - 100).setScale(1, 1);
                     //this.captus5.setTint(0x0000ff);
