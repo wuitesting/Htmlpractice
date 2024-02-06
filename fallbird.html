@@ -1,0 +1,233 @@
+<!doctype html> 
+<html lang="en"> 
+<head>  
+    <meta charset="UTF-8" />
+    <title>Making your first Phaser 3 Game - Flappy bird</title>
+    <script src="//cdn.jsdelivr.net/npm/phaser@3.60.0/dist/phaser.js"></script>
+    <style type="text/css">
+        body {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+<script type="text/javascript">
+    var config = {
+    type: Phaser.AUTO,
+    scale: {
+              width: innerWidth-15 ,
+              height: innerHeight-5
+            },
+    backgroundColor: '#000000',
+    physics: {
+        default: 'arcade',
+        arcade: {
+            gravity: { y: 10 },
+            debug: false
+        }
+    },
+    scene: {
+        preload: preload,
+        create: create,
+        update: update
+    }
+};
+
+var bird,flyb,ar;
+var uppipes;
+var downpipes;
+var cursors,exenum;
+var score = 0;
+var snack = 0;
+var gameOver = false;
+var scoreHits,scoreSnack;
+var pointer1;
+
+const game = new Phaser.Game(config);
+
+function preload ()
+{
+    //this.load.image('sky', 'assets/sky.png');
+    //this.load.image('ground', 'assets/platform.png');
+    this.load.image('upa', 'flappy-Bird-master/assets/uparrow.png'); 
+    this.load.image('downa', 'flappy-Bird-master/assets/downarrow.png'); 
+    this.load.image('pipeup', 'flappy-Bird-master/assets/pipeUp.png');
+        this.load.image('berry', 'flappy-Bird-master/assets/berry1.png');
+    this.load.image('pipedown', 'flappy-Bird-master/assets/pipeDown.png');
+    this.load.spritesheet('bird', 'flappy-Bird-master/assets/birdsprite.png', { frameWidth: 81, frameHeight: 81 });
+}
+
+function create()
+{
+//  Input Events
+//cursors = this.InputEvent// this.input.keyboard.createCursorKeys();
+exenum=4; 
+  ar=game.config.width/game.config.height;
+   scalex=ar;
+   scaley=1.5/ar;     
+        
+//this.inputEnabled=true;
+//flyb = this.add.text(0, game.config.height-40, 'Fly Higher', { fill: '#0f0' });
+scoreHits = this.add.text(game.config.width*1/4, game.config.height-50, 'HITS ', { fill: '#0f0' });
+scoreSnack = this.add.text(game.config.width*3/4, game.config.height-50, 'SNACKS ', { fill: '#0f0' });
+scoreHits.depth=100;
+scoreSnack.depth=100;
+//flyb.setStyle({backgroundColor :0xffffff});
+// flyb.setInteractive({ useHandCursor: true });
+//flyb.on('pointerdown', flyHigh);
+//pointer1=this.input.activePointer;    
+upabtns = this.physics.add.staticGroup();
+downabtns= this.physics.add.staticGroup();
+upabtn=upabtns.create(game.config.width*1/4,game.config.height-200,'upa');
+downabtn=downabtns.create(game.config.width*3/4,game.config.height-200,'downa');
+upabtn.setInteractive({ useHandCursor: true });
+//upabtn.setScale(2,2);
+upabtn.depth=100;
+ //upabtn.on('pointerdown', flyHigh);
+downabtn.setInteractive({ useHandCursor: true });
+//downabtn.setScale(2,2);
+downabtn.depth=100;
+//const 
+//    pointer1=this.input.activepointer; p smallcase
+//  Some stars to collect, 3 in total, evenly spaced 100 pixels apart along the x axis
+uppipes = this.physics.add.group({
+    //key: 'pipeup',
+    allowGravity: true
+    //repeat: 1
+    //setScale: {x: 2,y: 3},
+    // setXY: { x: game.config.width, y: 40, stepX: 100 }
+    //setXY: { x: 100, y: 40, stepX: 100 }
+});//.setscale(2);
+    //uppipes.body.allowGravity=false;
+downpipes = this.physics.add.group({
+    //key: 'pipedown',
+    allowGravity: true
+    //repeat: 1
+    //setScale: {x: 2,y: 3}
+   // setXY: { x: game.config.width, y: game.config.height-140, stepX: 100 }
+ });
+    berry = this.physics.add.group({
+    //key: 'pipedown',
+    allowGravity: true
+    //repeat: 1
+    //setScale: {x: 2,y: 3}
+   // setXY: { x: game.config.width, y: game.config.height-140, stepX: 100 }
+ });
+    //.setscale(2);
+   // uppipes.scale.set(2,2);
+   // downpipes.body.allowGravity=false;
+//bird animation
+bird = this.physics.add.sprite(game.config.width/2,(game.config.height/4)+100,'bird',0);
+    this.anims.create({
+        key: 'fly',
+        frames: this.anims.generateFrameNumbers('bird',{
+            start: 0, end: 3
+        }),
+        frameRate: 15, 
+        repeat : -1
+    });
+   // flyb.on('pointerdown', flyHigh);
+    upabtn.on('pointerdown', flyHigh);
+    downabtn.on('pointerdown', flyDown);
+    bird.setTint(0xff0000);
+//bird aand pipe collision
+ bird.setCollideWorldBounds(true);
+    this.physics.add.overlap(bird, downpipes,birdDie);
+    this.physics.add.overlap(bird, uppipes,birdDie);
+    this.physics.add.overlap(bird, berry,birdDie);
+
+   // this.input.on('pointerdown', birdfly(pointer1), this);
+
+}
+
+function update ()
+{
+        
+        
+    scalex=ar*1.5;
+    scaley=5/ar;
+    if(exenum%9 == 0)
+    {
+        
+        if(exenum%6==0){
+        // uppipes.create(game.config.width, 140-exenum, 100);
+         //downpipes.create(game.config.width, game.config.height-140, 100).scale(2,3);
+         //console.log(exenum);
+          up=uppipes.create(exenum+1500, 90,'pipeup');
+         up.setTint(0x0000ff);
+         up.setScale(scalex,3);
+         up.refreshBody();
+
+         //up.setActive(true);
+         up.setVisible(true);
+                 }
+
+        if(exenum%8 == 0)
+        {
+         //var up=uppipes.create(exenum+100, 90,'pipeup');
+         //up.setScale(3,3);
+         //up.setActive(true);
+         //up.setVisible(true);
+         //up.refreshBody();
+        // dp=downpipes.create(exenum+1700, game.config.height-100,'pipedown');
+         //dp.setTint(0x0000ff);
+        // dp.setScale(scalex,scaley);
+        // dp.refreshBody();
+        // dp.setVisible(true);
+        ber=berry.create(exenum+1700, Phaser.Math.Between(0,game.config.height),'berry');
+         ber.setTint(0x0000ff);
+         //ber.setScale(scalex,scaley);
+        // dp.refreshBody();
+          ber.setVisible(true);
+         
+         //score++;
+         console.log(exenum);
+        }
+    }
+    exenum=exenum+100;
+    uppipes.setVelocityY(-70);
+    berry.setVelocityY(-70);
+    //downpipes.setVelocityX(-70);
+    // pointer1=this.input.activePointer;    
+    scoreHits.setText('Hits:'+score);
+    scoreSnack.setText('Snacks'+snack);
+    bird.anims.play('fly', true);
+}
+function birdDie(b,p){
+   
+  if(p.key=='berry')
+      snack++;
+  else
+      score++;
+
+  p.active = false;
+   p.disableBody(true, true)
+   // b.disableBody(true, true)
+}
+
+    
+function flyHigh()
+    {
+        bird.setVelocityX(-70);
+         console.log("bird up");
+    }
+
+    function flyDown()
+    {
+        bird.setVelocityX(70);
+         console.log("bird up");
+    }
+    
+/*function birdfly(pointer)
+        {
+
+            console.log(pointer);
+
+           // this.add.image(pointer.x, pointer.y, 'balls', Phaser.Math.Between(0, 5));
+
+        }*/
+</script>
+
+</body>
+</html>
