@@ -16,10 +16,10 @@
     var config = {
     type: Phaser.AUTO,
     scale: {
-              width: innerWidth-15 ,
-              height: innerHeight-5
+              width: innerWidth-10 ,
+              height: innerHeight-10
             },
-    backgroundColor: '#000000',
+    backgroundColor: '#222222',
     physics: {
         default: 'arcade',
         arcade: {
@@ -53,7 +53,7 @@ function preload ()
     this.load.image('upa', 'flappy-Bird-master/assets/uparrow.png'); 
     this.load.image('downa', 'flappy-Bird-master/assets/downarrow.png'); 
     this.load.image('pipeup', 'flappy-Bird-master/assets/pipeUp.png');
-        this.load.image('berry', 'flappy-Bird-master/assets/berry1.png');
+    this.load.image('berry', 'flappy-Bird-master/assets/berry1.png');
     this.load.image('pipedown', 'flappy-Bird-master/assets/pipeDown.png');
     this.load.spritesheet('bird', 'flappy-Bird-master/assets/birdsprite.png', { frameWidth: 81, frameHeight: 81 });
 }
@@ -135,7 +135,7 @@ bird = this.physics.add.sprite(game.config.width/2,(game.config.height/4)+100,'b
  bird.setCollideWorldBounds(true);
     this.physics.add.overlap(bird, downpipes,birdDie);
     this.physics.add.overlap(bird, uppipes,birdDie);
-    this.physics.add.overlap(bird, berry,birdDie);
+    this.physics.add.overlap(bird, berry,birdEat);
 
    // this.input.on('pointerdown', birdfly(pointer1), this);
 
@@ -154,7 +154,7 @@ function update ()
         // uppipes.create(game.config.width, 140-exenum, 100);
          //downpipes.create(game.config.width, game.config.height-140, 100).scale(2,3);
          //console.log(exenum);
-          up=uppipes.create(exenum+1500, 90,'pipeup');
+          up=uppipes.create(Phaser.Math.Between(20,game.config.width),Phaser.Math.Between(20,game.config.height),'pipeup');
          up.setTint(0x0000ff);
          up.setScale(scalex,3);
          up.refreshBody();
@@ -170,12 +170,12 @@ function update ()
          //up.setActive(true);
          //up.setVisible(true);
          //up.refreshBody();
-        // dp=downpipes.create(exenum+1700, game.config.height-100,'pipedown');
+         dp=downpipes.create( Phaser.Math.Between(20,game.config.height), Phaser.Math.Between(20,game.config.height),'pipedown');
          //dp.setTint(0x0000ff);
         // dp.setScale(scalex,scaley);
         // dp.refreshBody();
         // dp.setVisible(true);
-        ber=berry.create(exenum+1700, Phaser.Math.Between(0,game.config.height),'berry');
+        ber=berry.create(Phaser.Math.Between(20,game.config.width), Phaser.Math.Between(20,game.config.height),'berry');
          ber.setTint(0x0000ff);
          //ber.setScale(scalex,scaley);
         // dp.refreshBody();
@@ -196,9 +196,7 @@ function update ()
 }
 function birdDie(b,p){
    
-  if(p.key=='berry')
-      snack++;
-  else
+//  if(p.key=='pipes')
       score++;
 
   p.active = false;
@@ -206,7 +204,15 @@ function birdDie(b,p){
    // b.disableBody(true, true)
 }
 
-    
+   function birdEat(b,p){
+   
+ // if(p.key=='berry')
+      snack++;
+
+  p.active = false;
+   p.disableBody(true, true)
+   // b.disableBody(true, true)
+} 
 function flyHigh()
     {
         bird.setVelocityX(-70);
