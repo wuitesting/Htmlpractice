@@ -7,7 +7,7 @@ Promise.all([
   //faceapi.nets.tinyFaceDetector.loadFromUri('model'),loadFaceLandmarkTinyModel(
   faceapi.loadFaceLandmarkTinyModel('./'),
   faceapi.loadFaceLandmarkModel('./'),
-  faceapi.loadSsdMobilenetv1Model('./')
+  faceapi.loadSsdMobilenetv1Model('./weights/')
 
  // faceapi.nets.faceLandmark68Net.loadFromUri('model')
  //
