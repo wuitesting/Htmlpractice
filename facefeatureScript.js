@@ -1,14 +1,14 @@
 //////// script is
 
 // Load models
-//Promise.all([
- async function loadModels() {
+Promise.all([
+// async function loadModels() {
       console.log("Loading models...");
-  faceapi.nets.tinyFaceDetector.loadFromUri('./model'),
-  faceapi.nets.faceLandmark68Net.loadFromUri('./model')
+  faceapi.nets.tinyFaceDetector.loadFromUri('/model'),
+  faceapi.nets.faceLandmark68Net.loadFromUri('/model')
    console.log("Models loaded.");
-    }
-//]).then(startMeasurement);
+ //   }
+]).then(startMeasurement);
 
 async function startMeasurement() {
   const inputImage = document.getElementById('inputImage');
