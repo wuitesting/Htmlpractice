@@ -26,11 +26,19 @@ async function startMeasurement() {
   const foreheadWidth = distanceBetweenPoints(forehead[0], forehead[5]);
   const jawWidth = distanceBetweenPoints(jawOutline[0], jawOutline[16]);
   const faceLength = distanceBetweenPoints(jawOutline[8], forehead[8]);
-  
+  var outp = getElementById("output");
+
   console.log(`Eye Width: ${eyeWidth.toFixed(2)} pixels`);
   console.log(`Forehead Width: ${foreheadWidth.toFixed(2)} pixels`);
   console.log(`Jaw Width: ${jawWidth.toFixed(2)} pixels`);
   console.log(`Face Length: ${faceLength.toFixed(2)} pixels`);
+  outp.innerHTML += `
+  Eye width: ${eyeWidth.toFixed(2)} cm
+  forehead Height: ${foreheadWidth.toFixed(2)} cm
+  face Height: ${faceLength.toFixed(2)} cm
+  jaw Width: ${jawWidth.toFixed(2)} cm
+`;
+
 }
 
 function distanceBetweenPoints(point1, point2) {
