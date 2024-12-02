@@ -6,7 +6,9 @@ Promise.all([
   //    console.log("Loading models...");
   //faceapi.nets.tinyFaceDetector.loadFromUri('model'),loadFaceLandmarkTinyModel(
   faceapi.loadFaceLandmarkTinyModel('./'),
-  faceapi.loadFaceLandmarkModel('./')
+  faceapi.loadFaceLandmarkModel('./'),
+  faceapi.loadSsdMobilenetv1Model('./')
+
  // faceapi.nets.faceLandmark68Net.loadFromUri('model')
  //
  //   }
