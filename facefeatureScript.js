@@ -3,13 +3,13 @@
 // Load models
 Promise.all([
 // async function loadModels() {
-      console.log("Loading models...");
+  //    console.log("Loading models...");
   faceapi.nets.tinyFaceDetector.loadFromUri('/model'),
   faceapi.nets.faceLandmark68Net.loadFromUri('/model')
-   console.log("Models loaded.");
+ //
  //   }
 ]).then(startMeasurement);
-
+  console.log("Models loaded.");
 async function startMeasurement() {
   const inputImage = document.getElementById('inputImage');
   const detections = await faceapi.detectSingleFace(inputImage).withFaceLandmarks();
