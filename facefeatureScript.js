@@ -4,8 +4,8 @@
 //Promise.all([
  async function loadModels() {
       console.log("Loading models...");
-  faceapi.nets.tinyFaceDetector.loadFromUri('https://cdn.jsdelivr.net/npm/@vladmandic/face-api/model'),
-  faceapi.nets.faceLandmark68Net.loadFromUri('https://cdn.jsdelivr.net/npm/@vladmandic/face-api/model')
+  faceapi.nets.tinyFaceDetector.loadFromUri('https://cdn.jsdelivr.net/npm/face-api/model'),
+  faceapi.nets.faceLandmark68Net.loadFromUri('https://cdn.jsdelivr.net/npm/face-api/model')
    console.log("Models loaded.");
     }
 //]).then(startMeasurement);
