@@ -4,8 +4,10 @@
 Promise.all([
 // async function loadModels() {
   //    console.log("Loading models...");
-  faceapi.nets.tinyFaceDetector.loadFromUri('model'),
-  faceapi.nets.faceLandmark68Net.loadFromUri('model')
+  //faceapi.nets.tinyFaceDetector.loadFromUri('model'),loadFaceLandmarkTinyModel(
+  faceapi.nets.loadFaceLandmarkTinyModel('model'),
+  faceapi.nets.loadFaceLandmarkModel('model')
+ // faceapi.nets.faceLandmark68Net.loadFromUri('model')
  //
  //   }
 ]).then(startMeasurement);
