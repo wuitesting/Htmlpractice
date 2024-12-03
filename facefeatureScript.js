@@ -5,8 +5,8 @@ Promise.all([
 // async function loadModels() {
   //    console.log("Loading models...");
   //faceapi.nets.tinyFaceDetector.loadFromUri('model'),loadFaceLandmarkTinyModel(
-  faceapi.loadFaceLandmarkTinyModel('./'),
-  faceapi.loadFaceLandmarkModel('./'),
+  faceapi.loadFaceLandmarkTinyModel('./weights'),
+  faceapi.loadFaceLandmarkModel('./weights'),
   faceapi.loadSsdMobilenetv1Model('./weights')
 
  // faceapi.nets.faceLandmark68Net.loadFromUri('model')
@@ -34,7 +34,7 @@ async function startMeasurement() {
   const foreheadWidth = faceLandmarks.foreheadWidth;//distanceBetweenPoints(forehead[0], forehead[5]);
   const jawWidth = distanceBetweenPoints(jawOutline[0], jawOutline[16]);
   const faceLength = faceLandmarks.faceLength;//distanceBetweenPoints(jawOutline[8], forehead[8]);
-  var outp = getElementById("output");
+  var outp = document.getElementById("output");
 
   console.log(`Eye Width: ${eyeWidth.toFixed(2)} pixels`);
   console.log(`Forehead Width: ${foreheadWidth.toFixed(2)} pixels`);
