@@ -33,7 +33,7 @@ async function startMeasurement() {
   const eyeWidth = distanceBetweenPoints(leftEye[0], rightEye[3]);
   const foreheadWidth = faceLandmarks.foreheadWidth;//distanceBetweenPoints(forehead[0], forehead[5]);
   const jawWidth = distanceBetweenPoints(jawOutline[0], jawOutline[16]);
-  const faceLength = distanceBetweenPoints(jawOutline[8], forehead[8]);
+  const faceLength = faceLandmarks.faceLength;//distanceBetweenPoints(jawOutline[8], forehead[8]);
   var outp = getElementById("output");
 
   console.log(`Eye Width: ${eyeWidth.toFixed(2)} pixels`);
