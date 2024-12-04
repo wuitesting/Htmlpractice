@@ -4,12 +4,12 @@
   <script src="face-api.js"></script>
   <!--<script src="js/commons.js"></script>-->
   <!--<script src="js/faceDetectionControls.js"></script>-->
-  <link rel="stylesheet" href="styles.css">
+  <!--<link rel="stylesheet" href="styles.css">-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.css">
-  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <!--<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 </head>
-<body>
+<body onReady=run()>
   <div id="navbar"></div>
   <div class="center-content page-container">
 
@@ -161,8 +161,9 @@
 
     async function run() {
       // load face detection and face landmark models  await changeFaceDetector(TINY_FACE_DETECTOR)
-      await faceapi.loadFaceLandmarkModel('/weights')
-      changeInputSize(224)
+      
+      await faceapi.loadFaceLandmarkModel('/weights');
+      changeInputSize(224);
 
       // try to access users webcam and stream the images
       // to the video element
@@ -173,9 +174,10 @@
 
     function updateResults() {}
 
-    $(document).ready(function() {
-      renderNavBar('#navbar', 'webcam_face_landmark_detection')
-      initFaceDetectionControls()
+    document.onReady(){
+      //$(document).ready(function() {
+      //renderNavBar('#navbar', 'webcam_face_landmark_detection')
+      //initFaceDetectionControls()
       run()
     })
   </script>
