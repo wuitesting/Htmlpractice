@@ -33,7 +33,8 @@ async function calculateFaceMetrics(face) {
 // Main function
 async function main() {
   await loadModels();
-
+ const options = new faceapi.TinyFaceDetectorOptions({ inputSize: 320 });
+  //const options = new faceapi.SsdMobilenetv1Options({ minConfidence: 0.8 })
   // Create a video element to display the webcam feed
   const video = document.createElement('video');// document.getElementById('ínputVideo'); //document.createElement('video');
   video.width = 640;
@@ -54,7 +55,7 @@ async function main() {
       setInterval(async () => {
         // Get the current frame from the video element
         const dims = faceapi.matchDimensions(canvas, video,true);
-        const detections = faceapi.detectSingleFace(video,'ssd_mobilenetv1').withFaceLandmarks();
+        const detections = faceapi.detectSingleFace(video,options).withFaceLandmarks();
          if (!detections) {
                 console.log("No face detected");
                 return;
