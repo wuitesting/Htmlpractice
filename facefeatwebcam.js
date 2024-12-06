@@ -61,7 +61,7 @@ async function main() {
                 return;
           }
         const faceLandmarks = detections.landmarks;
-  
+  /**
   const leftEye = faceLandmarks.getLeftEye();
   const rightEye = faceLandmarks.getRightEye();
   const forehead = 0;//faceLandmarks.getForehead();
@@ -70,7 +70,7 @@ async function main() {
   const eyeWidth = distanceBetweenPoints(leftEye[0], rightEye[3]);
   const foreheadWidth = faceLandmarks.foreheadWidth;//distanceBetweenPoints(forehead[0], forehead[5]);
   const jawWidth = distanceBetweenPoints(jawOutline[0], jawOutline[16]);
-        
+      */  
         const frame = faceapi.resizeResults(detections, dims);
 
         // Draw the face detection results on the canvas
