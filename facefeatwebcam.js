@@ -35,7 +35,7 @@ async function main() {
   await loadModels();
 
   // Create a video element to display the webcam feed
-  const video = document.getElementById("ínutVideo'); document.createElement('video');
+  const video = document.getElementById('ínputVideo'); //document.createElement('video');
   video.width = 640;
   video.height = 480;
 
