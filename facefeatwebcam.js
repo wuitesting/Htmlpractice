@@ -7,9 +7,10 @@
 
 // Load the face detection model
 async function loadModels() {
-  await faceapi.loadSsdMobilenetv1Model('./weights')
-  await faceapi.loadFaceDetectionModel('/weights');
-  await faceapi.loadFaceLandmarkModel('/weights');
+  
+  await faceapi.loadFaceDetectionModel('./weights');
+  await faceapi.loadFaceLandmarkModel('./weights');
+  await faceapi.loadSsdMobilenetv1Model('./weights');
 }
 
 // Calculate nose length, mouth width, and face length
