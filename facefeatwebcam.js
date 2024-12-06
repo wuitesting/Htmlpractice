@@ -54,7 +54,23 @@ async function main() {
       setInterval(async () => {
         // Get the current frame from the video element
         const dims = faceapi.matchDimensions(canvas, video,true);
-        const frame = faceapi.resizeResults(faceapi.detectSingleFace(video).withFaceLandmarks(), dims);
+        const detections = faceapi.detectSingleFace(video,'ssd_mobilenetv1').withFaceLandmarks();
+         if (!detections) {
+                console.log("No face detected");
+                return;
+          }
+        const faceLandmarks = detections.landmarks;
+  
+  const leftEye = faceLandmarks.getLeftEye();
+  const rightEye = faceLandmarks.getRightEye();
+  const forehead = 0;//faceLandmarks.getForehead();
+  const jawOutline = faceLandmarks.getJawOutline();
+  
+  const eyeWidth = distanceBetweenPoints(leftEye[0], rightEye[3]);
+  const foreheadWidth = faceLandmarks.foreheadWidth;//distanceBetweenPoints(forehead[0], forehead[5]);
+  const jawWidth = distanceBetweenPoints(jawOutline[0], jawOutline[16]);
+        
+        const frame = faceapi.resizeResults(detections, dims);
 
         // Draw the face detection results on the canvas
         //faceapi.matchDimensions(canvas, video,true);
@@ -63,8 +79,8 @@ async function main() {
         
         ctx.drawImage(video, 0, 0);*/
         if (frame) { // Draw the face landmarks on the canvas
-          //faceapi.draw.drawDetections(canvas, frame);
-            faceapi.draw.drawFaceLandmarks(canvas, frame);
+          faceapi.draw.drawDetections(canvas, frame);
+            //faceapi.draw.drawFaceLandmarks(canvas, frame);
           // Calculate nose length, mouth width, and face length
           const { noseLength, mouthWidth, faceLength } = await calculateFaceMetrics(frame);
 
