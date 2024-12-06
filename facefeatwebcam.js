@@ -3,7 +3,7 @@
 
 
 // Import FaceAPI.js
-const faceapi = require('face-api.js');
+//const faceapi = require('face-api.js');
 
 // Load the face detection model
 async function loadModels() {
