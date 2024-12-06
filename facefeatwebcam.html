@@ -22,7 +22,10 @@
   <div id="video-container">
     <!-- The video element will be created dynamically by the JavaScript code -->
   </div>
-
+ <div style="position: relative" class="margin">
+      <video onloadedmetadata="onPlay(this)" id="inputVideo" autoplay muted playsinline></video>
+      <canvas id="overlay" />
+    </div>
  
   <script src="facefeatwebcam.js"></script>
 </body>
