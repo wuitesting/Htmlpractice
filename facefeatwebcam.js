@@ -11,6 +11,7 @@ async function loadModels() {
   await faceapi.loadFaceDetectionModel('./weights');
   await faceapi.loadFaceLandmarkModel('./weights');
   await faceapi.loadSsdMobilenetv1Model('./weights');
+  await faceapi.loadTinyYolov2Model('./weights');
 }
 
 // Calculate nose length, mouth width, and face length
@@ -55,7 +56,7 @@ async function main() {
       setInterval(async () => {
         // Get the current frame from the video element
         const dims = faceapi.matchDimensions(canvas, video,true);
-        const detections = faceapi.detectSingleFace(video,options).withFaceLandmarks();
+        const detections = faceapi.detectSingleFace(video,options,true).withFaceLandmarks();
          if (!detections) {
                 console.log("No face detected");
                 return;
