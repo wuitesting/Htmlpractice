@@ -33,8 +33,8 @@ async function calculateFaceMetrics(face) {
 // Main function
 async function main() {
   await loadModels();
- const options = new faceapi.TinyFaceDetectorOptions({ inputSize: 320 });
-  //const options = new faceapi.SsdMobilenetv1Options({ minConfidence: 0.8 })
+ //const options = new faceapi.TinyFaceDetectorOptions({ inputSize: 320 });
+  const options = new faceapi.SsdMobilenetv1Options({ minConfidence: 0.8 })
   // Create a video element to display the webcam feed
   const video = document.createElement('video');// document.getElementById('ínputVideo'); //document.createElement('video');
   video.width = 640;
