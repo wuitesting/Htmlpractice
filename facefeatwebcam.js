@@ -63,8 +63,8 @@ async function main() {
         
         ctx.drawImage(video, 0, 0);*/
         if (frame) { // Draw the face landmarks on the canvas
-          faceapi.draw.drawDetections(canvas, frame);
-
+          //faceapi.draw.drawDetections(canvas, frame);
+            faceapi.draw.drawFaceLandmarks(canvas, frame);
           // Calculate nose length, mouth width, and face length
           const { noseLength, mouthWidth, faceLength } = await calculateFaceMetrics(frame);
 
