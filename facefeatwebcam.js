@@ -35,7 +35,7 @@ async function main() {
   await loadModels();
 
   // Create a video element to display the webcam feed
-  const video = document.createElement('video');
+  const video = document.getElementById("ínutVideo'); document.createElement('video');
   video.width = 640;
   video.height = 480;
 
@@ -46,22 +46,23 @@ async function main() {
       video.srcObject = stream;
 
       // Create a canvas element to draw the face detection results
-      const canvas = document.createElement('canvas');
+      const canvas =  document.getElementById('overlay');//document.createElement('canvas');
       canvas.width = 640;
       canvas.height = 480;
 
       // Create a face detection interval
       setInterval(async () => {
         // Get the current frame from the video element
-        const frame = faceapi.resizeResults(faceapi.detectSingleFace(video).withFaceLandmarks(), video);
+        const dims = faceapi.matchDimensions(canvas, video,true);
+        const frame = faceapi.resizeResults(faceapi.detectSingleFace(video).withFaceLandmarks(), dims);
 
         // Draw the face detection results on the canvas
-        faceapi.matchDimensions(canvas, video);
-        const ctx = canvas.getContext('2d');
+        //faceapi.matchDimensions(canvas, video,true);
+        /*const ctx = document.getElementById('overlay');canvas.getContext('2d');
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.drawImage(video, 0, 0);
-        if (frame) {
-          // Draw the face landmarks on the canvas
+        
+        ctx.drawImage(video, 0, 0);*/
+        if (frame) { // Draw the face landmarks on the canvas
           faceapi.draw.drawDetections(canvas, frame);
 
           // Calculate nose length, mouth width, and face length
