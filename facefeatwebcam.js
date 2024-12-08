@@ -84,7 +84,7 @@ async function main() {
           faceapi.draw.drawDetections(canvas, frame);
             //faceapi.draw.drawFaceLandmarks(canvas, frame);
           // Calculate nose length, mouth width, and face length
-          const { noseLength, mouthWidth, faceLength } = await calculateFaceMetrics(frame);
+          const { noseLength, mouthWidth, faceLength } = await calculateFaceMetrics(detections);
 
           // Print results
           console.log(`Nose Length: ${noseLength}`);
