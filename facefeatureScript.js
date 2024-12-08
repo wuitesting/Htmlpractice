@@ -52,11 +52,11 @@ async function startMeasurement() {
   console.log(`Jaw Width: ${jawWidth.toFixed(2)} pixels`);
   //console.log(`Face Length: ${faceLength.toFixed(2)} pixels`);
   outp.innerHTML = `
-  Face Length: ${faceLength} cm
+  Face Length: ${faceLength.toFixed(2)} cm
   Eye width: ${eyeWidth.toFixed(2)} cm 
-  Mouth Width: ${mouthWidth} cm
+  Mouth Width: ${mouthWidth.toFixed(2)} cm
   Jaw Width: ${jawWidth.toFixed(2)} cm
-  Nose Length: ${noseLength} cm
+  Nose Length: ${noseLength.toFixed(2)} cm
 `;
  //forehead Height: ${foreheadWidth.toFixed(2)} cm
   //face Height: ${faceLength.toFixed(2)} cm
