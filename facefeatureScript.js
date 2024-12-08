@@ -38,15 +38,15 @@ async function startMeasurement() {
   ///
   const noseTip = faceLandmarks.positions[27];
   const noseBridge = faceLandmarks.positions[28];
-  const noseLength = faceapi.euclideanDistance(noseTip, noseBridge);
+  const noseLength =  distanceBetweenPoints(noseTip, noseBridge); //faceapi.euclideanDistance(noseTip, noseBridge);
 
   const mouthLeft = faceLandmarks.positions[48];
   const mouthRight = faceLandmarks.positions[54];
-  const mouthWidth = faceapi.euclideanDistance(mouthLeft, mouthRight);
+  const mouthWidth =  distanceBetweenPoints(mouthLeft, mouthRight);
 
   const faceTop = faceLandmarks.positions[19];
   const faceBottom = faceLandmarks.positions[8];
-  const faceLength = faceapi.euclideanDistance(faceTop, faceBottom);
+  const faceLength =  distanceBetweenPoints(faceTop, faceBottom);//faceapi.euclideanDistance(faceTop, faceBottom);
   console.log(`Eye Width: ${eyeWidth.toFixed(2)} pixels`);
   //console.log(`Forehead Width: ${foreheadWidth.toFixed(2)} pixels`);
   console.log(`Jaw Width: ${jawWidth.toFixed(2)} pixels`);
