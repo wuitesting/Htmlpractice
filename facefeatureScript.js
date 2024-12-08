@@ -16,7 +16,7 @@ Promise.all([
   console.log("Models loaded.");
 async function startMeasurement() {
   const inputImage = document.getElementById('inputImage');
-  const detections = await faceapi.detectSingleFace(inputImage).withFaceLandmarks();
+  const detections = await faceapi.detectSingleFace(inputImage).withFaceLandmarks();/// points detected with face 
   
   if (!detections) {
     console.log("No face detected");
@@ -35,15 +35,28 @@ async function startMeasurement() {
   const jawWidth = distanceBetweenPoints(jawOutline[0], jawOutline[16]);
   const faceLength = faceLandmarks.faceLength;//distanceBetweenPoints(jawOutline[8], forehead[8]);
   var outp = document.getElementById("output");
+  ///
+  const noseTip = facelandmarks.positions[27];
+  const noseBridge = facelandmarks.positions[28];
+  const noseLength = faceapi.euclideanDistance(noseTip, noseBridge);
 
+  const mouthLeft = facelandmarks.positions[48];
+  const mouthRight = facelandmarks.positions[54];
+  const mouthWidth = faceapi.euclideanDistance(mouthLeft, mouthRight);
+
+  const faceTop = facelandmarks.positions[19];
+  const faceBottom = facelandmarks.positions[8];
+  const faceLength = faceapi.euclideanDistance(faceTop, faceBottom);
   console.log(`Eye Width: ${eyeWidth.toFixed(2)} pixels`);
   //console.log(`Forehead Width: ${foreheadWidth.toFixed(2)} pixels`);
   console.log(`Jaw Width: ${jawWidth.toFixed(2)} pixels`);
   //console.log(`Face Length: ${faceLength.toFixed(2)} pixels`);
   outp.innerHTML = `
-  Eye width: ${eyeWidth.toFixed(2)} cm
- 
-  jaw Width: ${jawWidth.toFixed(2)} cm
+  Face Length: ${faceLength} cm
+  Eye width: ${eyeWidth.toFixed(2)} cm 
+  Mouth Width: ${mouthWidth} cm
+  Jaw Width: ${jawWidth.toFixed(2)} cm
+  Nose Length: ${noseLength} cm
 `;
  //forehead Height: ${foreheadWidth.toFixed(2)} cm
   //face Height: ${faceLength.toFixed(2)} cm
