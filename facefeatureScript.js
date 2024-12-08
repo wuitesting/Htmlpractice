@@ -31,21 +31,21 @@ async function startMeasurement() {
   const jawOutline = faceLandmarks.getJawOutline();
   
   const eyeWidth = distanceBetweenPoints(leftEye[0], rightEye[3]);
-  const foreheadWidth = faceLandmarks.foreheadWidth;//distanceBetweenPoints(forehead[0], forehead[5]);
+  const foreheadWidth = .foreheadWidth;//distanceBetweenPoints(forehead[0], forehead[5]);
   const jawWidth = distanceBetweenPoints(jawOutline[0], jawOutline[16]);
   //const faceLength = faceLandmarks.faceLength;//distanceBetweenPoints(jawOutline[8], forehead[8]);
   var outp = document.getElementById("output");
   ///
-  const noseTip = facelandmarks.positions[27];
-  const noseBridge = facelandmarks.positions[28];
+  const noseTip = faceLandmarks.positions[27];
+  const noseBridge = faceLandmarks.positions[28];
   const noseLength = faceapi.euclideanDistance(noseTip, noseBridge);
 
-  const mouthLeft = facelandmarks.positions[48];
-  const mouthRight = facelandmarks.positions[54];
+  const mouthLeft = faceLandmarks.positions[48];
+  const mouthRight = faceLandmarks.positions[54];
   const mouthWidth = faceapi.euclideanDistance(mouthLeft, mouthRight);
 
-  const faceTop = facelandmarks.positions[19];
-  const faceBottom = facelandmarks.positions[8];
+  const faceTop = faceLandmarks.positions[19];
+  const faceBottom = faceLandmarks.positions[8];
   const faceLength = faceapi.euclideanDistance(faceTop, faceBottom);
   console.log(`Eye Width: ${eyeWidth.toFixed(2)} pixels`);
   //console.log(`Forehead Width: ${foreheadWidth.toFixed(2)} pixels`);
