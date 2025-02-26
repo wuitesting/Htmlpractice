@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>India Political Map Drag and Drop</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    #map-container {
+      position: relative;
+      width: 800px;
+      height: 600px;
+      margin: 20px auto;
+      border: 2px solid #000;
+      background-image: url('india-political-map.jpg'); /* Replace with actual map URL */
+      background-size: cover;
+      background-position: center;
+    }
+    .draggable {
+      width: 120px;
+      padding: 10px;
+      background-color: lightblue;
+      border: 1px solid #ccc;
+      cursor: pointer;
+      margin: 5px;
+      text-align: center;
+      display: inline-block;
+    }
+    .droppable {
+      position: absolute;
+      width: 120px;
+      height: 60px;
+      border: 2px dashed #ccc;
+      padding: 10px;
+      text-align: center;
+      font-weight: bold;
+    }
+    #message {
+      text-align: center;
+      font-weight: bold;
+      color: green;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Drag and Drop: India Political Map</h1>
+
+  <div id="map-container">
+    <!-- Droppable areas for states will be dynamically created here -->
+  </div>
+
+  <div id="message"></div>
+
+  <script>
+    // CSV Data (state name, capital, river)
+    const csvData = [
+      ["MadhyaPradesh", "Bhopal", "Narmada"],
+      ["Jharkhand", "Ranchi", "Damodar"],
+      ["Chhattisgarh", "Raipur", "Mahanadi"],
+      ["Telangana", "Hyderabad", "Godavari"],
+      ["Rajasthan", "Jaipur", "Luni"],
+      ["Gujarat", "Gandhinagar", "Narmada"],
+      ["Maharashtra", "Mumbai", "Tapi"],
+      ["Goa", "Panaji", "Zuari"],
+      ["Karnataka", "Bengaluru", "Kaveri"],
+      ["Andhrapradesh", "Hyderabad", "Penneru"],
+      ["Kerala", "Thiruvananthapuram", "Periyar"],
+      ["Tamilnadu", "Chennai", "Vaigai"],
+      ["Puducherry", "Puducherry", "Mahe"],
+      ["AndamanNicobar", "Port Blair", "Small Streams"],
+      ["Lakshadweep", "Kavaratti", ""]
+    ];
+
+    // Function to create droppable areas and draggable items dynamically based on CSV data
+    function createMapElements() {
+      const mapContainer = document.getElementById('map-container');
+
+      // Loop through each row of the CSV data
+      csvData.forEach((row, index) => {
+        const [state, capital, river] = row;
+
+        // Create droppable area for the state
+        const stateElement = document.createElement('div');
+        stateElement.id = `state-${state}`;
+        stateElement.classList.add('droppable', state);
+        stateElement.style.top = `${(index * 50) + 50}px`; // Positioning states
+        stateElement.style.left = `${(index * 60) + 50}px`;
+        stateElement.innerHTML = `<p>${state}</p>`;
+        stateElement.ondrop = drop;
+        stateElement.ondragover = allowDrop;
+        mapContainer.appendChild(stateElement);
+
+        // Create droppable area for the capital
+        const capitalElement = document.createElement('div');
+        capitalElement.id = `capital-${capital}`;
+        capitalElement.classList.add('droppable', `${state}-capital`);
+        capitalElement.style.top = `${(index * 50) + 100}px`;
+        capitalElement.style.left = `${(index * 60) + 150}px`;
+        capitalElement.innerHTML = `<p>${capital}</p>`;
+        capitalElement.ondrop = drop;
+        capitalElement.ondragover = allowDrop;
+        mapContainer.appendChild(capitalElement);
+
+        // Create droppable area for the river
+        const riverElement = document.createElement('div');
+        riverElement.id = `river-${river}`;
+        riverElement.classList.add('droppable', `${state}-river`);
+        riverElement.style.top = `${(index * 50) + 150}px`;
+        riverElement.style.left = `${(index * 60) + 200}px`;
+        riverElement.innerHTML = `<p>${river}</p>`;
+        riverElement.ondrop = drop;
+        riverElement.ondragover = allowDrop;
+        mapContainer.appendChild(riverElement);
+
+        // Create draggable items for the state, capital, and river
+        createDraggableItem(state, 'state', state);
+        createDraggableItem(capital, 'capital', state);
+        createDraggableItem(river, 'river', state);
+      });
+    }
+
+    // Function to create a draggable item for the state, capital, or river
+    function createDraggableItem(item, type, state) {
+      const itemElement = document.createElement('div');
+      itemElement.id = `drag-${state}-${item}`;
+      itemElement.classList.add('draggable');
+      itemElement.draggable = true;
+      itemElement.ondragstart = drag;
+      itemElement.innerHTML = item;
+      itemElement.dataset.type = type;
+      itemElement.dataset.state = state;
+      document.body.appendChild(itemElement);
+    }
+
+    // Allow the drop operation
+    function allowDrop(ev) {
+      ev.preventDefault();
+    }
+
+    // Handle the drag start operation
+    function drag(ev) {
+      ev.dataTransfer.setData("text", ev.target.id);
+    }
+
+    // Handle the drop operation and verify correctness
+    function drop(ev) {
+      ev.preventDefault();
+      const data = ev.dataTransfer.getData("text");
+      const draggedElement = document.getElementById(data);
+
+      const dropZone = ev.target;
+      const itemType = draggedElement.dataset.type;
+      const state = draggedElement.dataset.state;
+
+      // Check if the item dropped corresponds to the correct state, capital, or river
+      if (itemType === "state" && dropZone.classList.contains(state)) {
+        dropZone.appendChild(draggedElement);
+        document.getElementById("message").innerText = "Correct!";
+      } else if (itemType === "capital" && dropZone.classList.contains(`${state}-capital`)) {
+        dropZone.appendChild(draggedElement);
+        document.getElementById("message").innerText = "Correct!";
+      } else if (itemType === "river" && dropZone.classList.contains(`${state}-river`)) {
+        dropZone.appendChild(draggedElement);
+        document.getElementById("message").innerText = "Correct!";
+      } else {
+        document.getElementById("message").innerText = "Try Again!";
+      }
+    }
+
+    // Call the function to dynamically create elements
+    createMapElements();
+  </script>
+
+</body>
+</html>
