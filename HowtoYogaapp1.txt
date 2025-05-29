@@ -1,0 +1,24 @@
+How to Interact with the App:
+
+Browse Poses:
+You'll see sections for "Beginner," "Intermediate," and "Advanced" poses.
+Each pose card has a name, description, and controls for Reps (repetitions) and Mins (duration).
+Adjust Reps (for dynamic poses like Cat-Cow) or Mins (for held poses like Downward Dog) as desired for that specific instance.
+Click "Add to Playlist" to add the configured pose to your session list.
+Your Yoga Playlist:
+As you add poses, they will appear in this section.
+You can remove items using the "Remove" button next to each.
+The "Start Playlist Session" button will become active once you have at least one pose.
+Exercise Session:
+Click "Start Playlist Session" to begin.
+The YouTube video will load and play (muted), the pose name and instructions will appear, and voice guidance will begin.
+The timer will count down for the set duration/reps.
+Controls:
+Pause/Resume: Pauses or resumes the timer, video, and voice guidance.
+Next Pose: Skips to the next pose in your playlist.
+End Session: Stops the current session entirely and returns you to the main sections.
+Global Controls (at the top):
+Session Video Speed: Adjusts the playback speed of all YouTube videos in the session.
+Toggle Voice (ON/OFF): Turns the voice guidance on or off.
+Back to Playlist: After a session ends (either by completing all poses or manually ending), this button will appear, allowing you to go back and create a new playlist or modify your existing one.
+This comprehensive single-file web app should give you a great starting point for your voice-guided yoga practice!
