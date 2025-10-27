@@ -45,6 +45,206 @@
     
     <audio id="audio-alert" src="bell.mp3"></audio> <video id="video-display" width="100%" height="auto" autoplay muted loop style="display:none;"></video> 
     
-    <script src="script.js"></script>
+    <script src="script.js">
+
+        // --- Core Timer Variables and State ---
+let timerSeries = []; 
+let currentTimerIndex = 0;
+let timeRemaining = 0; // in seconds
+let isRunning = false;
+let intervalId = null;
+
+// --- DOM Element References ---
+const countdownDisplay = document.getElementById('countdown-display');
+const currentTimerName = document.getElementById('current-timer-name');
+const timerSeriesList = document.getElementById('timer-series');
+
+// Buttons
+const startBtn = document.getElementById('start-btn');
+const pauseBtn = document.getElementById('pause-btn');
+const resetBtn = document.getElementById('reset-btn');
+const addTimerBtn = document.getElementById('add-timer-btn');
+
+// Input Form
+const timerNameInput = document.getElementById('timer-name');
+const durationSelect = document.getElementById('timer-duration-select');
+
+// Media Elements (Features #2 & #3)
+const audioAlert = document.getElementById('audio-alert');
+const videoDisplay = document.getElementById('video-display');
+
+// --- Feature #1: Timer Display and Logic ---
+
+function formatTime(totalSeconds) {
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = totalSeconds % 60;
+    
+    // Pad with leading zeros (e.g., 5 -> 05)
+    const formattedMinutes = String(minutes).padStart(2, '0');
+    const formattedSeconds = String(seconds).padStart(2, '0');
+    
+    return `${formattedMinutes}:${formattedSeconds}`;
+}
+
+function updateDisplay() {
+    countdownDisplay.textContent = formatTime(timeRemaining);
+}
+
+function startCountdown() {
+    if (isRunning) return;
+    if (timeRemaining <= 0 && timerSeries.length > 0) {
+        // Start the first timer in the series
+        startNextTimer();
+        if (timeRemaining <= 0) return; // Series finished on start attempt
+    } else if (timeRemaining <= 0) {
+        // No timers in series
+        currentTimerName.textContent = "Series Empty. Add Timers.";
+        return;
+    }
+
+    isRunning = true;
+    startBtn.disabled = true;
+    pauseBtn.disabled = false;
+    resetBtn.disabled = false;
+
+    intervalId = setInterval(() => {
+        timeRemaining--;
+        updateDisplay();
+
+        if (timeRemaining <= 0) {
+            clearInterval(intervalId);
+            handleTimerFinish();
+        }
+    }, 1000);
+}
+
+function pauseCountdown() {
+    if (!isRunning) return;
+    isRunning = false;
+    clearInterval(intervalId);
+    startBtn.disabled = false;
+    pauseBtn.disabled = true;
+}
+
+function resetTimer() {
+    pauseCountdown();
+    currentTimerIndex = 0;
+    timeRemaining = 0;
+    updateDisplay();
+    currentTimerName.textContent = "Series Reset";
+    startBtn.disabled = false;
+    resetBtn.disabled = true;
+    
+    // Reset media
+    videoDisplay.style.display = 'none';
+    videoDisplay.pause();
+}
+
+// --- Feature #4: Series Management ---
+
+function startNextTimer() {
+    if (currentTimerIndex < timerSeries.length) {
+        const nextTimer = timerSeries[currentTimerIndex];
+        timeRemaining = nextTimer.duration;
+        currentTimerName.textContent = `▶️ ${currentTimerIndex + 1}/${timerSeries.length}: ${nextTimer.name}`;
+        updateDisplay();
+        
+        // --- Placeholder for Feature #3: Picture/Video Logic ---
+        // In a full app, you'd check nextTimer.mediaSource and update the video element's src here.
+        // For now, we'll just hide it until the next timer is explicitly started.
+        videoDisplay.style.display = 'none'; 
+        videoDisplay.pause();
+
+        currentTimerIndex++;
+    } else {
+        // Series Complete
+        handleSeriesFinish();
+    }
+}
+
+function handleTimerFinish() {
+    // --- Placeholder for Feature #2: Audio/Voiceover Logic ---
+    audioAlert.play(); // Play sound when a timer finishes
+    
+    // --- Placeholder for Feature #3: End-of-Timer Media (Optional) ---
+    // If you want a success video/image to show at the end of each timer, put that logic here.
+    
+    if (currentTimerIndex < timerSeries.length) {
+        // Wait a moment before starting the next one for the alert to be noticed
+        setTimeout(startCountdown, 1000); 
+    } else {
+        handleSeriesFinish();
+    }
+}
+
+function handleSeriesFinish() {
+    currentTimerName.textContent = "✅ Series Complete!";
+    countdownDisplay.textContent = formatTime(0);
+    isRunning = false;
+    clearInterval(intervalId);
+    startBtn.disabled = true; // Disable start until reset or new timers added
+    pauseBtn.disabled = true;
+    
+    // Optionally auto-reset state for next use
+    currentTimerIndex = 0; 
+}
+
+function renderSeries() {
+    timerSeriesList.innerHTML = '';
+    timerSeries.forEach((timer, index) => {
+        const li = document.createElement('li');
+        li.innerHTML = `
+            <span>${index + 1}. ${timer.name} (${formatTime(timer.duration)})</span>
+            <button class="delete-btn" data-index="${index}">Delete</button>
+        `;
+        timerSeriesList.appendChild(li);
+    });
+}
+
+function addTimerToSeries() {
+    const name = timerNameInput.value || 'Untitled Timer';
+    const duration = parseInt(durationSelect.value, 10);
+    
+    if (isNaN(duration) || duration <= 0) {
+        alert("Please select a valid duration.");
+        return;
+    }
+    
+    timerSeries.push({
+        name: name, 
+        duration: duration,
+        // In a full app, you'd add: mediaSource: 'path/to/media.mp4' 
+    });
+    
+    timerNameInput.value = ''; // Clear input
+    renderSeries();
+}
+
+function deleteTimerFromSeries(index) {
+    if (isRunning) {
+        alert("Cannot delete while timer is running. Please reset first.");
+        return;
+    }
+    timerSeries.splice(index, 1);
+    renderSeries();
+}
+
+// --- Event Listeners ---
+startBtn.addEventListener('click', startCountdown);
+pauseBtn.addEventListener('click', pauseCountdown);
+resetBtn.addEventListener('click', resetTimer);
+addTimerBtn.addEventListener('click', addTimerToSeries);
+
+// Event delegation for dynamically created delete buttons
+timerSeriesList.addEventListener('click', (e) => {
+    if (e.target.classList.contains('delete-btn')) {
+        const index = e.target.getAttribute('data-index');
+        deleteTimerFromSeries(parseInt(index, 10));
+    }
+});
+
+// Initial rendering
+renderSeries();
+    </script>
 </body>
 </html>
