@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customizable Timer Series</title>
+    <link rel="stylesheet" href="customtimserstyles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Series Timer</h1>
+        
+        <div class="timer-display">
+            <h2 id="current-timer-name">Series Timer Ready</h2>
+            <div id="countdown-display">00:00</div>
+        </div>
+        
+        <div class="controls">
+            <button id="start-btn">START Series</button>
+            <button id="pause-btn" disabled>PAUSE</button>
+            <button id="reset-btn" disabled>RESET</button>
+        </div>
+
+        <div class="form-container">
+            <h3>Add New Timer to Series</h3>
+            <input type="text" id="timer-name" placeholder="Timer Name (e.g., 'Work', 'Rest')">
+            <select id="timer-duration-select">
+                <option value="10">10 Seconds</option>
+                <option value="20">20 Seconds</option>
+                <option value="30">30 Seconds</option>
+                <option value="60">1 Minute</option>
+                <option value="120">2 Minutes</option>
+                <option value="180">3 Minutes</option>
+                <option value="240">4 Minutes</option>
+                <option value="300" selected>5 Minutes</option>
+                </select>
+            <button id="add-timer-btn">Add Timer</button>
+        </div>
+
+        <div class="series-list-container">
+            <h3>Current Series</h3>
+            <ol id="timer-series"></ol>
+        </div>
+    </div>
+    
+    <audio id="audio-alert" src="bell.mp3"></audio> <video id="video-display" width="100%" height="auto" autoplay muted loop style="display:none;"></video> 
+    
+    <script src="script.js"></script>
+</body>
+</html>
